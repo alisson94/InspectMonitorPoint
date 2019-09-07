@@ -1,4 +1,4 @@
-package monitor;
+package professor;
 
 import java.util.List;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
-public class MonitorDAO {
+public class ProfessorDAO {
     Session sessao;
     Transaction transacao;
     
@@ -15,38 +15,38 @@ public class MonitorDAO {
         transacao = sessao.beginTransaction();
     }
     
-    public void salvarMonitor(Monitor monitor){
+    public void salvarProfessor(Professor professor){
         iniciarSessao();
-        sessao.save(monitor);
+        sessao.save(professor);
         transacao.commit();
         sessao.close();
     }
     
-    public void editarMonitor(Monitor monitor){
+    public void editarProfessor(Professor professor){
         iniciarSessao();
-        sessao.update(monitor);
+        sessao.update(professor);
         transacao.commit();
         sessao.close();
     }
     
-    public void exclurMonitor(Monitor monitor){
+    public void exclurProfessor(Professor professor){
         iniciarSessao();
-        sessao.delete(monitor);
+        sessao.delete(professor);
         transacao.commit();
         sessao.close();
     }
     
-    public List<Monitor> listarMonitor(){
+    public List<Professor> listarProfessor(){
         iniciarSessao();
-        List<Monitor> monitores = sessao.createCriteria(Monitor.class).list();
+        List<Professor> professores = sessao.createCriteria(Professor.class).list();
         sessao.close();
-        return monitores;
+        return professores;
     }
     
-    public Monitor pesquisarMonitorMatricula(int matricula){
+    public Professor pesquisarProfessorId(int id){
         iniciarSessao();
-        Monitor monitor = (Monitor) sessao.createCriteria(Monitor.class).add(Restrictions.eq("matricula", matricula)).uniqueResult();
+        Professor professor = (Professor) sessao.createCriteria(Professor.class).add(Restrictions.eq("id", id)).uniqueResult();
         sessao.close();
-        return monitor;
+        return professor;
     }
 }

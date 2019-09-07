@@ -1,4 +1,4 @@
-package monitor;
+package disciplina;
 
 import java.util.List;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
-public class MonitorDAO {
+public class DisciplinaDAO {
     Session sessao;
     Transaction transacao;
     
@@ -15,38 +15,38 @@ public class MonitorDAO {
         transacao = sessao.beginTransaction();
     }
     
-    public void salvarMonitor(Monitor monitor){
+    public void salvarDisciplina(Disciplina disciplina){
         iniciarSessao();
-        sessao.save(monitor);
+        sessao.save(disciplina);
         transacao.commit();
         sessao.close();
     }
     
-    public void editarMonitor(Monitor monitor){
+    public void editarDisciplina(Disciplina disciplina){
         iniciarSessao();
-        sessao.update(monitor);
+        sessao.update(disciplina);
         transacao.commit();
         sessao.close();
     }
     
-    public void exclurMonitor(Monitor monitor){
+    public void exclurDisciplina(Disciplina disciplina){
         iniciarSessao();
-        sessao.delete(monitor);
+        sessao.delete(disciplina);
         transacao.commit();
         sessao.close();
     }
     
-    public List<Monitor> listarMonitor(){
+    public List<Disciplina> listarDisciplina(){
         iniciarSessao();
-        List<Monitor> monitores = sessao.createCriteria(Monitor.class).list();
+        List<Disciplina> disciplinaes = sessao.createCriteria(Disciplina.class).list();
         sessao.close();
-        return monitores;
+        return disciplinaes;
     }
     
-    public Monitor pesquisarMonitorMatricula(int matricula){
+    public Disciplina pesquisarDisciplinaId(int id){
         iniciarSessao();
-        Monitor monitor = (Monitor) sessao.createCriteria(Monitor.class).add(Restrictions.eq("matricula", matricula)).uniqueResult();
+        Disciplina disciplina = (Disciplina) sessao.createCriteria(Disciplina.class).add(Restrictions.eq("id", id)).uniqueResult();
         sessao.close();
-        return monitor;
+        return disciplina;
     }
 }
