@@ -29,6 +29,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfNome.setText("");
         tfMatricula.setText("");
         tfEmail.setText("");
+        tfSemestre.setText("");
     }
     
     /**
@@ -41,13 +42,11 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private void initComponents() {
 
         tfNome = new javax.swing.JTextField();
-        tfMatricula = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        tfSemestre = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tfMatricula = new javax.swing.JFormattedTextField();
+        tfSemestre = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,10 +62,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 267, 680, 30));
-
-        tfMatricula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        tfMatricula.setBorder(null);
-        getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 326, 190, 30));
 
         tfEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfEmail.setBorder(null);
@@ -91,30 +86,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 500, -1, -1));
 
-        tfSemestre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        tfSemestre.setAlignmentX(10.0F);
-        tfSemestre.setBorder(null);
-        tfSemestre.setMargin(null);
-        tfSemestre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfSemestreActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 444, 180, 30));
+        try {
+            tfMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 130, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBox1.setOpaque(false);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 385, 370, 30));
-
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBox2.setOpaque(false);
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 385, 370, 30));
+        try {
+            tfSemestre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 120, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -127,18 +111,18 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        monitor.setNome(tfNome.getText());
-        monitor.setMatricula(Integer.parseInt(tfMatricula.getText()));
-        monitor.setEmail(tfEmail.getText());
-        limparCampos();
-        monitorDAO.salvarMonitor(monitor);
-        JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
-
+        if(tfNome.getText().equals("") || tfMatricula.getText().equals("") || tfEmail.getText().equals("") || tfSemestre.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos corretamente");
+        }else{
+            monitor.setNome(tfNome.getText());
+            monitor.setMatricula( Integer.parseInt(tfMatricula.getText()) );
+            monitor.setEmail(tfEmail.getText());
+            monitor.setSemestre(Integer.parseInt(tfSemestre.getText()));
+            limparCampos();
+            monitorDAO.salvarMonitor(monitor);
+            JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void tfSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSemestreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfSemestreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,12 +162,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfEmail;
-    private javax.swing.JTextField tfMatricula;
+    private javax.swing.JFormattedTextField tfMatricula;
     private javax.swing.JTextField tfNome;
-    private javax.swing.JTextField tfSemestre;
+    private javax.swing.JFormattedTextField tfSemestre;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ public class Monitor {
     private int matricula;
     private String nome;
     private String email;
+    private int semestre;
 
     public int getMatricula() {
         return matricula;
@@ -32,6 +33,14 @@ public class Monitor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
     }
     
     
