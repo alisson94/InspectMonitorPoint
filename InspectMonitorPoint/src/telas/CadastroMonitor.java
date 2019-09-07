@@ -46,6 +46,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         tfSemestre = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,6 +100,13 @@ public class CadastroMonitor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 444, 180, 30));
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(null);
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox1.setOpaque(false);
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 385, 370, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -162,6 +170,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfMatricula;
