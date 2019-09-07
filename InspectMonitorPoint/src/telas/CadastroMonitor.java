@@ -45,6 +45,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfEmail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        tfSemestre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +74,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -84,7 +86,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 500, -1, -1));
+
+        tfSemestre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfSemestre.setAlignmentX(10.0F);
+        tfSemestre.setBorder(null);
+        tfSemestre.setMargin(null);
+        tfSemestre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSemestreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 444, 180, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -105,6 +119,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tfSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSemestreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSemestreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,5 +166,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfMatricula;
     private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfSemestre;
     // End of variables declaration//GEN-END:variables
 }
