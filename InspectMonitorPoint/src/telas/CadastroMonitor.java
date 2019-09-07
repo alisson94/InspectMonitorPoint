@@ -43,10 +43,11 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfNome = new javax.swing.JTextField();
         tfMatricula = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         tfSemestre = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,17 +72,17 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfEmail.setBorder(null);
         getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 326, 370, 30));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
+        btnSalvar.setBorder(null);
+        btnSalvar.setBorderPainted(false);
+        btnSalvar.setContentAreaFilled(false);
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 500, -1, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 500, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -108,6 +109,13 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jComboBox1.setOpaque(false);
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 385, 370, 30));
 
+        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setBorder(null);
+        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox2.setOpaque(false);
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 385, 370, 30));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -118,7 +126,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         monitor.setNome(tfNome.getText());
         monitor.setMatricula(Integer.parseInt(tfMatricula.getText()));
         monitor.setEmail(tfEmail.getText());
@@ -126,7 +134,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         monitorDAO.salvarMonitor(monitor);
         JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void tfSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSemestreActionPerformed
         // TODO add your handling code here:
@@ -168,9 +176,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfMatricula;
