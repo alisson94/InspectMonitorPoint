@@ -15,6 +15,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /** Creates new form MenuPrincipal */
     public MenuPrincipal() {
         initComponents();
+        jPanel1.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -27,6 +28,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton6 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         backgroundMenuPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,15 +46,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 175, -1, -1));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 150, 150));
+
         backgroundMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundmenuprincipal.jpg"))); // NOI18N
+        backgroundMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backgroundMenuPrincipalMouseClicked(evt);
+            }
+        });
         getContentPane().add(backgroundMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-          
+        jPanel1.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void backgroundMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMenuPrincipalMouseClicked
+        jPanel1.setVisible(false);
+    }//GEN-LAST:event_backgroundMenuPrincipalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -92,6 +106,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundMenuPrincipal;
     private javax.swing.JButton jButton6;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
 }
