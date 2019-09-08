@@ -11,11 +11,14 @@ package telas;
  * @author Everton
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
+    private boolean seVisivelPainelCadastro;
+    
     /** Creates new form MenuPrincipal */
     public MenuPrincipal() {
         initComponents();
         jPanel1.setVisible(false);
+        seVisivelPainelCadastro = false;
     }
 
     /** This method is called from within the constructor to
@@ -61,11 +64,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        jPanel1.setVisible(true);
+        if(seVisivelPainelCadastro){
+            jPanel1.setVisible(false);
+            seVisivelPainelCadastro = false;
+        }else{
+            jPanel1.setVisible(true);
+            seVisivelPainelCadastro = true;
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void backgroundMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMenuPrincipalMouseClicked
         jPanel1.setVisible(false);
+        seVisivelPainelCadastro = false;
     }//GEN-LAST:event_backgroundMenuPrincipalMouseClicked
 
     /**

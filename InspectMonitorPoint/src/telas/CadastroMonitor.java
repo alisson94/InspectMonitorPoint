@@ -5,6 +5,9 @@
  */
 package telas;
 
+import curso.Curso;
+import curso.CursoDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 import monitor.Monitor;
 import monitor.MonitorDAO;
@@ -18,11 +21,14 @@ public class CadastroMonitor extends javax.swing.JFrame {
     Monitor monitor = new Monitor();
     MonitorDAO monitorDAO = new MonitorDAO();
     
+    CursoDAO cursoDAO = new CursoDAO();
     /**
      * Creates new form CadastroMonitor
      */
     public CadastroMonitor() {
         initComponents();
+        
+        
     }
 
     public void limparCampos(){
@@ -48,7 +54,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfMatricula = new javax.swing.JFormattedTextField();
         tfSemestre = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbCurso = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
@@ -95,7 +101,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        tfMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tfMatricula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,13 +123,13 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 370, 40));
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 370, 40));
+        cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 40));
 
         jComboBox3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 40));
+        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 370, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -190,9 +196,9 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cbCurso;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfEmail;

@@ -1,7 +1,9 @@
 package monitor;
 
+import curso.Curso;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Monitor {
@@ -10,6 +12,8 @@ public class Monitor {
     private String nome;
     private String email;
     private int semestre;
+    @OneToOne
+    private Curso curso;
 
     public int getMatricula() {
         return matricula;
