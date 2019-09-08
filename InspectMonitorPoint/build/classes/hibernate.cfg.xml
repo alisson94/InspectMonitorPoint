@@ -16,7 +16,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="monitor.Monitor"/>
         <mapping class="curso.Curso"/>
-
+        <mapping class="disciplina.Disciplina"/>
         
     </session-factory>
 </hibernate-configuration>

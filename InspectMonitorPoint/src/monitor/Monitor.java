@@ -8,18 +8,18 @@ import javax.persistence.OneToOne;
 @Entity
 public class Monitor {
     @Id
-    private int matricula;
+    private String matricula;
     private String nome;
     private String email;
     private int semestre;
     @OneToOne
     private Curso curso;
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -45,6 +45,14 @@ public class Monitor {
 
     public void setSemestre(int semestre) {
         this.semestre = semestre;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
     
     

@@ -4,6 +4,7 @@ import curso.Curso;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Disciplina {
@@ -11,6 +12,7 @@ public class Disciplina {
     @GeneratedValue
     private int id;
     private String nome;
+    @OneToOne
     private Curso curso;
 
     public String getNome() {
@@ -27,6 +29,11 @@ public class Disciplina {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
     
     

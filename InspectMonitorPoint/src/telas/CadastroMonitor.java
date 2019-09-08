@@ -7,6 +7,9 @@ package telas;
 
 import curso.Curso;
 import curso.CursoDAO;
+import disciplina.Disciplina;
+import disciplina.DisciplinaDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import monitor.Monitor;
@@ -22,13 +25,16 @@ public class CadastroMonitor extends javax.swing.JFrame {
     MonitorDAO monitorDAO = new MonitorDAO();
     
     CursoDAO cursoDAO = new CursoDAO();
+    DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     /**
      * Creates new form CadastroMonitor
      */
     public CadastroMonitor() {
         initComponents();
         
-        
+        for (Curso curso : cursoDAO.listarCurso()) {
+            cbCurso.addItem(curso);
+        }
     }
 
     public void limparCampos(){
@@ -55,7 +61,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         tfSemestre = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         cbCurso = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbDisciplina = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,12 +130,24 @@ public class CadastroMonitor extends javax.swing.JFrame {
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 370, 40));
 
         cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCurso.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cbCursoPopupMenuWillBecomeVisible(evt);
+            }
+        });
+        cbCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCursoActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 40));
 
-        jComboBox3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 370, 40));
+        cbDisciplina.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 370, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -142,15 +160,17 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(tfNome.getText().equals("") || tfMatricula.getText().equals("") || tfEmail.getText().equals("") || tfSemestre.getText().equals("")){
+        if(tfNome.getText().equals("") || tfMatricula.getText().equals("          ") || tfEmail.getText().equals("") || tfSemestre.getText().equals("     ")){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos corretamente");
         }else{
             monitor.setNome(tfNome.getText());
-            monitor.setMatricula( Integer.parseInt(tfMatricula.getText()) );
+            monitor.setMatricula(tfMatricula.getText());
             monitor.setEmail(tfEmail.getText());
             monitor.setSemestre(Integer.parseInt(tfSemestre.getText()));
+            monitor.setCurso((Curso) cbCurso.getSelectedItem());
             limparCampos();
             monitorDAO.salvarMonitor(monitor);
+            monitor = new Monitor();
             JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -158,6 +178,27 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private void tfMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfMatriculaActionPerformed
+
+    private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
+//        List<Disciplina> listaDisciplina = new ArrayList<>();
+//        for (Disciplina disciplina : disciplinaDAO.listarDisciplina()) {
+//            if(disciplina.getCurso().equals((Curso)cbCurso.getSelectedItem())){
+//                listaDisciplina.add(disciplina);
+//            }
+//        }
+//        for (Disciplina disciplina : listaDisciplina) {
+//            cbDisciplina.addItem(disciplina);
+//        }
+
+        for (Disciplina disciplina : disciplinaDAO.listarDisciplina()) {
+            cbDisciplina.addItem(disciplina);
+        }
+
+    }//GEN-LAST:event_cbCursoActionPerformed
+
+    private void cbCursoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbCursoPopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCursoPopupMenuWillBecomeVisible
 
     /**
      * @param args the command line arguments
@@ -196,10 +237,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cbCurso;
+    private javax.swing.JComboBox<Curso> cbCurso;
+    private javax.swing.JComboBox<Disciplina> cbDisciplina;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfMatricula;
