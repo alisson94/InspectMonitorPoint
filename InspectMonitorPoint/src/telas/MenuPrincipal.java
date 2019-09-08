@@ -13,12 +13,17 @@ package telas;
 public class MenuPrincipal extends javax.swing.JFrame {
     
     private boolean seVisivelPainelCadastro;
-    
-    /** Creates new form MenuPrincipal */
+    private boolean seVisivelPainelBiometria;
+    private boolean seVisivelPainelRelatorio;
+   
     public MenuPrincipal() {
         initComponents();
-        jPanel1.setVisible(false);
+        panelBotaoCadastro.setVisible(false);
+        panelBotaoBiometria.setVisible(false);
+        panelBotaoRelatorio.setVisible(false);
         seVisivelPainelCadastro = false;
+        seVisivelPainelBiometria = false;
+        seVisivelPainelRelatorio = false;
     }
 
     /** This method is called from within the constructor to
@@ -30,27 +35,179 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnCadastroMenu = new javax.swing.JButton();
+        btnBiometriaMenu = new javax.swing.JButton();
+        btnRelatorioMenu = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        panelBotaoBiometria = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panelBotaoCadastro = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        panelBotaoRelatorio = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         backgroundMenuPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaocadastro.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaocadastro.png"))); // NOI18N
+        btnCadastroMenu.setBorder(null);
+        btnCadastroMenu.setBorderPainted(false);
+        btnCadastroMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCadastroMenu.setFocusPainted(false);
+        btnCadastroMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCadastroMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 175, -1, -1));
+        getContentPane().add(btnCadastroMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 175, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 150, 150));
+        btnBiometriaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaobiometria.png"))); // NOI18N
+        btnBiometriaMenu.setBorder(null);
+        btnBiometriaMenu.setBorderPainted(false);
+        btnBiometriaMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBiometriaMenu.setFocusPainted(false);
+        btnBiometriaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBiometriaMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBiometriaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 175, -1, -1));
+
+        btnRelatorioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaorelatorio.png"))); // NOI18N
+        btnRelatorioMenu.setBorder(null);
+        btnRelatorioMenu.setBorderPainted(false);
+        btnRelatorioMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRelatorioMenu.setFocusPainted(false);
+        btnRelatorioMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRelatorioMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 175, -1, -1));
+
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosair.png"))); // NOI18N
+        jButton11.setBorder(null);
+        jButton11.setContentAreaFilled(false);
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 503, -1, -1));
+
+        panelBotaoBiometria.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotaoBiometria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelBotaoBiometria.setPreferredSize(new java.awt.Dimension(148, 120));
+
+        jButton4.setText("jButton1");
+
+        jButton5.setText("jButton2");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("jButton3");
+
+        javax.swing.GroupLayout panelBotaoBiometriaLayout = new javax.swing.GroupLayout(panelBotaoBiometria);
+        panelBotaoBiometria.setLayout(panelBotaoBiometriaLayout);
+        panelBotaoBiometriaLayout.setHorizontalGroup(
+            panelBotaoBiometriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelBotaoBiometriaLayout.setVerticalGroup(
+            panelBotaoBiometriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotaoBiometriaLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addGap(6, 6, 6))
+        );
+
+        getContentPane().add(panelBotaoBiometria, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 210, 149, 120));
+
+        panelBotaoCadastro.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotaoCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelBotaoCadastro.setPreferredSize(new java.awt.Dimension(148, 120));
+
+        jButton1.setText("Cadastrar Monitor");
+
+        jButton2.setText("Cadastrar Professor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Cadastrar Curso");
+
+        javax.swing.GroupLayout panelBotaoCadastroLayout = new javax.swing.GroupLayout(panelBotaoCadastro);
+        panelBotaoCadastro.setLayout(panelBotaoCadastroLayout);
+        panelBotaoCadastroLayout.setHorizontalGroup(
+            panelBotaoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelBotaoCadastroLayout.setVerticalGroup(
+            panelBotaoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotaoCadastroLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(6, 6, 6))
+        );
+
+        getContentPane().add(panelBotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 149, 120));
+
+        panelBotaoRelatorio.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotaoRelatorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelBotaoRelatorio.setPreferredSize(new java.awt.Dimension(148, 120));
+
+        jButton7.setText("jButton1");
+
+        jButton8.setText("jButton2");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("jButton3");
+
+        javax.swing.GroupLayout panelBotaoRelatorioLayout = new javax.swing.GroupLayout(panelBotaoRelatorio);
+        panelBotaoRelatorio.setLayout(panelBotaoRelatorioLayout);
+        panelBotaoRelatorioLayout.setHorizontalGroup(
+            panelBotaoRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelBotaoRelatorioLayout.setVerticalGroup(
+            panelBotaoRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotaoRelatorioLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton9)
+                .addGap(6, 6, 6))
+        );
+
+        getContentPane().add(panelBotaoRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 149, 120));
 
         backgroundMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundmenuprincipal.jpg"))); // NOI18N
         backgroundMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,22 +218,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(backgroundMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnCadastroMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroMenuActionPerformed
         if(seVisivelPainelCadastro){
-            jPanel1.setVisible(false);
+            panelBotaoCadastro.setVisible(false);
             seVisivelPainelCadastro = false;
         }else{
-            jPanel1.setVisible(true);
+            panelBotaoCadastro.setVisible(true);
             seVisivelPainelCadastro = true;
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnCadastroMenuActionPerformed
 
     private void backgroundMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMenuPrincipalMouseClicked
-        jPanel1.setVisible(false);
+        panelBotaoCadastro.setVisible(false);
         seVisivelPainelCadastro = false;
+        panelBotaoBiometria.setVisible(false);
+        seVisivelPainelBiometria = false;
+        panelBotaoRelatorio.setVisible(false);
+        seVisivelPainelRelatorio = false;
     }//GEN-LAST:event_backgroundMenuPrincipalMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnBiometriaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiometriaMenuActionPerformed
+        if(seVisivelPainelBiometria){
+            panelBotaoBiometria.setVisible(false);
+            seVisivelPainelBiometria = false;
+        } else{
+            panelBotaoBiometria.setVisible(true);
+            seVisivelPainelBiometria = true;
+        }
+    }//GEN-LAST:event_btnBiometriaMenuActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void btnRelatorioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioMenuActionPerformed
+        if(seVisivelPainelRelatorio){
+            panelBotaoRelatorio.setVisible(false);
+            seVisivelPainelRelatorio = false;
+        } else{
+            panelBotaoRelatorio.setVisible(true);
+            seVisivelPainelRelatorio = true;
+        }
+    }//GEN-LAST:event_btnRelatorioMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,8 +309,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundMenuPrincipal;
+    private javax.swing.JButton btnBiometriaMenu;
+    private javax.swing.JButton btnCadastroMenu;
+    private javax.swing.JButton btnRelatorioMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JPanel panelBotaoBiometria;
+    private javax.swing.JPanel panelBotaoCadastro;
+    private javax.swing.JPanel panelBotaoRelatorio;
     // End of variables declaration//GEN-END:variables
 
 }
