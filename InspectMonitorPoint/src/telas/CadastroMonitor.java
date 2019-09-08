@@ -162,7 +162,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
         getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 395, 310, 40));
 
         jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jRadioButton2.setSelected(true);
         jRadioButton2.setText("INATIVO");
         getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 453, -1, -1));
 
