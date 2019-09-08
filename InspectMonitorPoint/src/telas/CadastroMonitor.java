@@ -55,13 +55,16 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         tfNome = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
+        btnExcluir = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         tfMatricula = new javax.swing.JFormattedTextField();
         tfSemestre = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         cbCurso = new javax.swing.JComboBox<>();
         cbDisciplina = new javax.swing.JComboBox<>();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,11 +79,16 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 tfNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 267, 680, 30));
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 245, 530, 30));
 
         tfEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfEmail.setBorder(null);
-        getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 326, 370, 30));
+        getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 297, 530, 30));
+
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
+        btnExcluir.setBorder(null);
+        btnExcluir.setContentAreaFilled(false);
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 498, -1, -1));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
@@ -92,14 +100,13 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 500, -1, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 490, -1, 50));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 500, -1, -1));
+        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
+        btnLimpar.setBorder(null);
+        btnLimpar.setContentAreaFilled(false);
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 500, -1, -1));
 
         tfMatricula.setBorder(null);
         try {
@@ -114,7 +121,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 tfMatriculaActionPerformed(evt);
             }
         });
-        getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 326, 190, 30));
+        getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 349, 190, 30));
 
         tfSemestre.setBorder(null);
         try {
@@ -123,11 +130,16 @@ public class CadastroMonitor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfSemestre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 444, 190, 30));
+        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 350, 190, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 370, 40));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 250, 40));
 
         cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbCurso.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -144,10 +156,20 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 cbCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 40));
+        getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 395, 250, 40));
 
         cbDisciplina.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 370, 40));
+        getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 395, 310, 40));
+
+        jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("INATIVO");
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 453, -1, -1));
+
+        jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("ATIVO");
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -200,6 +222,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCursoPopupMenuWillBecomeVisible
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,12 +262,15 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<Curso> cbCurso;
     private javax.swing.JComboBox<Disciplina> cbDisciplina;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfMatricula;
     private javax.swing.JTextField tfNome;
