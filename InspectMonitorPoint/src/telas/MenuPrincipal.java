@@ -44,7 +44,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         panelBotaoCadastro = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnCadastrarMonitorMenu = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         panelBotaoRelatorio = new javax.swing.JPanel();
@@ -139,7 +139,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelBotaoCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelBotaoCadastro.setPreferredSize(new java.awt.Dimension(148, 120));
 
-        jButton1.setText("Cadastrar Monitor");
+        btnCadastrarMonitorMenu.setText("Cadastrar Monitor");
+        btnCadastrarMonitorMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMonitorMenuActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cadastrar Professor");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +159,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelBotaoCadastro.setLayout(panelBotaoCadastroLayout);
         panelBotaoCadastroLayout.setHorizontalGroup(
             panelBotaoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCadastrarMonitorMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -162,7 +167,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             panelBotaoCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotaoCadastroLayout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCadastrarMonitorMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,6 +277,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRelatorioMenuActionPerformed
 
+    private void btnCadastrarMonitorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenuActionPerformed
+        CadastroMonitor frame = new CadastroMonitor();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCadastrarMonitorMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,9 +321,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundMenuPrincipal;
     private javax.swing.JButton btnBiometriaMenu;
+    private javax.swing.JButton btnCadastrarMonitorMenu;
     private javax.swing.JButton btnCadastroMenu;
     private javax.swing.JButton btnRelatorioMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
