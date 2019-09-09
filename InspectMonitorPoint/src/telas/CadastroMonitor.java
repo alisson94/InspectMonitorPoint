@@ -215,18 +215,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_tfMatriculaActionPerformed
 
     private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
-//        List<Disciplina> listaDisciplina = new ArrayList<>();
-//        for (Disciplina disciplina : disciplinaDAO.listarDisciplina()) {
-//            if(disciplina.getCurso().equals((Curso)cbCurso.getSelectedItem())){
-//                listaDisciplina.add(disciplina);
-//            }
-//        }
-//        for (Disciplina disciplina : listaDisciplina) {
-//            cbDisciplina.addItem(disciplina);
-//        }
-
-        for (Disciplina disciplina : disciplinaDAO.listarDisciplina()) {
-            cbDisciplina.addItem(disciplina);
+        cbDisciplina.removeAllItems();
+        Curso curso = (Curso) cbCurso.getSelectedItem();
+        for(Disciplina disciplina : disciplinaDAO.listarDisciplina()){
+            if(disciplina.getCurso().getId() == curso.getId()){
+                cbDisciplina.addItem(disciplina);
+            }
         }
 
     }//GEN-LAST:event_cbCursoActionPerformed

@@ -45,7 +45,7 @@ public class CursoDAO {
     
     public Curso pesquisarCursoId(int id){
         iniciarSessao();
-        Curso curso = (Curso) sessao.createCriteria(Curso.class).add(Restrictions.eq("matricula", id)).uniqueResult();
+        Curso curso = (Curso) sessao.createCriteria(Curso.class).add(Restrictions.eq("id", id)).uniqueResult();
         sessao.close();
         return curso;
     }
