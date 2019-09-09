@@ -58,14 +58,13 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
         tfMatricula = new javax.swing.JFormattedTextField();
         tfSemestre = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         cbCurso = new javax.swing.JComboBox<>();
         cbDisciplina = new javax.swing.JComboBox<>();
-        rbInativo = new javax.swing.JRadioButton();
-        rbAtivo = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,37 +88,25 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 500, -1, -1));
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 498, -1, -1));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 495, -1, 50));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 490, -1, 50));
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
         btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 500, -1, -1));
-
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
-        btnVoltar.setBorder(null);
-        btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 495, -1, -1));
 
         tfMatricula.setBorder(null);
         try {
@@ -152,7 +139,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 445, 250, 40));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 250, 40));
 
         cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbCurso.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -174,20 +161,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
         cbDisciplina.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 395, 310, 40));
 
-        rbInativo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        rbInativo.setText("INATIVO");
-        getContentPane().add(rbInativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 453, -1, -1));
+        jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton2.setText("INATIVO");
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 453, -1, -1));
 
-        rbAtivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        rbAtivo.setSelected(true);
-        rbAtivo.setText("ATIVO");
-        getContentPane().add(rbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
+        jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("ATIVO");
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
@@ -239,12 +225,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        MenuPrincipal frame = new MenuPrincipal();
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -284,13 +264,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<Curso> cbCurso;
     private javax.swing.JComboBox<Disciplina> cbDisciplina;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton rbAtivo;
-    private javax.swing.JRadioButton rbInativo;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfMatricula;
     private javax.swing.JTextField tfNome;
