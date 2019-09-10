@@ -179,8 +179,9 @@ public class CadastroMonitor extends javax.swing.JFrame {
         rbAtivo.setText("ATIVO");
         getContentPane().add(rbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
 
+        lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbProfessor.setText(" ");
-        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 60, -1));
+        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 455, 210, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
