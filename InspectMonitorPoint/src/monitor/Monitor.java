@@ -1,9 +1,11 @@
 package monitor;
 
 import curso.Curso;
+import disciplina.Disciplina;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import professor.Professor;
 
 @Entity
 public class Monitor {
@@ -14,7 +16,11 @@ public class Monitor {
     private int semestre;
     @OneToOne
     private Curso curso;
-
+    @OneToOne
+    private Disciplina disciplina;
+    @OneToOne
+    private Professor professor;
+    
     public String getMatricula() {
         return matricula;
     }
@@ -53,6 +59,22 @@ public class Monitor {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
     
     

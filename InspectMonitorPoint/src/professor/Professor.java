@@ -1,9 +1,10 @@
 package professor;
 
-import disciplina.Disciplina;
+import curso.Curso;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Professor {
@@ -11,8 +12,13 @@ public class Professor {
     @GeneratedValue
     private int id;
     private String nome;
-    private Disciplina disciplina;
+    @OneToOne
+    private Curso curso;
 
+    public int getId() {
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -21,12 +27,17 @@ public class Professor {
         this.nome = nome;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
     
     

@@ -61,11 +61,11 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         tfMatricula = new javax.swing.JFormattedTextField();
         tfSemestre = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         cbCurso = new javax.swing.JComboBox<>();
         cbDisciplina = new javax.swing.JComboBox<>();
         rbInativo = new javax.swing.JRadioButton();
         rbAtivo = new javax.swing.JRadioButton();
+        lbProfessor = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,11 +134,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
         }
         tfMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tfMatricula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        tfMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfMatriculaActionPerformed(evt);
-            }
-        });
         getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 349, 190, 30));
 
         tfSemestre.setBorder(null);
@@ -149,15 +144,6 @@ public class CadastroMonitor extends javax.swing.JFrame {
         }
         tfSemestre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 350, 190, 30));
-
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 445, 250, 40));
 
         cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbCurso.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -177,6 +163,11 @@ public class CadastroMonitor extends javax.swing.JFrame {
         getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 395, 250, 40));
 
         cbDisciplina.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cbDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDisciplinaActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 395, 310, 40));
 
         rbInativo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -187,6 +178,9 @@ public class CadastroMonitor extends javax.swing.JFrame {
         rbAtivo.setSelected(true);
         rbAtivo.setText("ATIVO");
         getContentPane().add(rbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
+
+        lbProfessor.setText(" ");
+        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 60, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -208,16 +202,15 @@ public class CadastroMonitor extends javax.swing.JFrame {
             monitor.setEmail(tfEmail.getText());
             monitor.setSemestre(Integer.parseInt(tfSemestre.getText()));
             monitor.setCurso((Curso) cbCurso.getSelectedItem());
+            Disciplina disciplina = (Disciplina) cbDisciplina.getSelectedItem();
+            monitor.setDisciplina(disciplina);
+            monitor.setProfessor(disciplina.getProfessor());
             limparCampos();
             monitorDAO.salvarMonitor(monitor);
             monitor = new Monitor();
             JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void tfMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfMatriculaActionPerformed
 
     private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
         cbDisciplina.removeAllItems();
@@ -227,16 +220,11 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 cbDisciplina.addItem(disciplina);
             }
         }
-
     }//GEN-LAST:event_cbCursoActionPerformed
 
     private void cbCursoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbCursoPopupMenuWillBecomeVisible
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCursoPopupMenuWillBecomeVisible
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         MenuPrincipal frame = new MenuPrincipal();
@@ -247,6 +235,15 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void cbDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDisciplinaActionPerformed
+        if(cbDisciplina.getItemCount() > 0){
+            Disciplina disciplina = (Disciplina) cbDisciplina.getSelectedItem();
+            lbProfessor.setText(disciplina.getProfessor().getNome());
+        }else{
+            lbProfessor.setText("");
+        }
+    }//GEN-LAST:event_cbDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,8 +287,8 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<Curso> cbCurso;
     private javax.swing.JComboBox<Disciplina> cbDisciplina;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbProfessor;
     private javax.swing.JRadioButton rbAtivo;
     private javax.swing.JRadioButton rbInativo;
     private javax.swing.JTextField tfEmail;
