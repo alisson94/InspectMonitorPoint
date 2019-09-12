@@ -95,30 +95,12 @@ public abstract class GenericDAO<T> {
         return lista;
     }
 
-    /*
-     * ao passar uma chave primária
-     * ele retorna um objeto referente a chave primária
-     */
-    public T carregaChavePrimaria(int chavePrimaria) {
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            Object o = sessao.load(classe, chavePrimaria);
-            return (T) o;
-        } catch (HibernateException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível executar essa operação"
-                    + ". Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            sessao.close();
-        }
-        return null;
-    }
-
-    public List<T> checkExists(String campo, String valor) {
-        List<T> lista = null;
+    public T consultarObjetoId(String campo, Object valor) {
+        T objeto = null;
         try {
             this.setSessao(HibernateUtil.getSessionFactory().openSession());
             setTransacao(getSessao().beginTransaction());
-            lista = this.getSessao().createCriteria(classe).add(Restrictions.ilike(campo, valor, MatchMode.ANYWHERE)).list();
+            objeto = (T) this.getSessao().createCriteria(classe).add(Restrictions.eq(campo, valor)).uniqueResult();
             sessao.close();
         } catch (Throwable e) {
             if (getTransacao().isActive()) {
@@ -127,7 +109,7 @@ public abstract class GenericDAO<T> {
             JOptionPane.showMessageDialog(null, "Não foi possível executar essa operação"
                     + ". Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        return lista;
+        return objeto;
 
     }
     /**
