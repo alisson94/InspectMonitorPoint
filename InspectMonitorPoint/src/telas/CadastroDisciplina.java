@@ -136,7 +136,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
         cbProfessor.removeAllItems();
         Curso curso = (Curso) cbCurso.getSelectedItem();
-        for(Professor professor : professorDAO.listarProfessor()){
+        for(Professor professor : professorDAO.listar()){
             if(professor.getCurso().getId() == curso.getId()){
                 cbProfessor.addItem(professor);
             }
