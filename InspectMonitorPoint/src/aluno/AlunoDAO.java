@@ -1,4 +1,4 @@
-package monitor;
+package aluno;
 
 import java.util.List;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
-public class MonitorDAO {
+public class AlunoDAO {
     Session sessao;
     Transaction transacao;
     
@@ -15,37 +15,37 @@ public class MonitorDAO {
         transacao = sessao.beginTransaction();
     }
     
-    public void salvarMonitor(Monitor monitor){
+    public void salvarMonitor(Aluno monitor){
         iniciarSessao();
         sessao.save(monitor);
         transacao.commit();
         sessao.close();
     }
     
-    public void editarMonitor(Monitor monitor){
+    public void editarMonitor(Aluno monitor){
         iniciarSessao();
         sessao.update(monitor);
         transacao.commit();
         sessao.close();
     }
     
-    public void exclurMonitor(Monitor monitor){
+    public void exclurMonitor(Aluno monitor){
         iniciarSessao();
         sessao.delete(monitor);
         transacao.commit();
         sessao.close();
     }
     
-    public List<Monitor> listarMonitor(){
+    public List<Aluno> listarMonitor(){
         iniciarSessao();
-        List<Monitor> monitores = sessao.createCriteria(Monitor.class).list();
+        List<Aluno> monitores = sessao.createCriteria(Aluno.class).list();
         sessao.close();
         return monitores;
     }
     
-    public Monitor pesquisarMonitorMatricula(int matricula){
+    public Aluno pesquisarMonitorMatricula(int matricula){
         iniciarSessao();
-        Monitor monitor = (Monitor) sessao.createCriteria(Monitor.class).add(Restrictions.eq("matricula", matricula)).uniqueResult();
+        Aluno monitor = (Aluno) sessao.createCriteria(Aluno.class).add(Restrictions.eq("matricula", matricula)).uniqueResult();
         sessao.close();
         return monitor;
     }

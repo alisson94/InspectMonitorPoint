@@ -12,8 +12,8 @@ import disciplina.DisciplinaDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import monitor.Monitor;
-import monitor.MonitorDAO;
+import aluno.Aluno;
+import aluno.AlunoDAO;
 
 /**
  *
@@ -21,8 +21,8 @@ import monitor.MonitorDAO;
  */
 public class CadastroMonitor extends javax.swing.JFrame {
     
-    Monitor monitor = new Monitor();
-    MonitorDAO monitorDAO = new MonitorDAO();
+    Aluno monitor = new Aluno();
+    AlunoDAO monitorDAO = new AlunoDAO();
     
     CursoDAO cursoDAO = new CursoDAO();
     DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
@@ -208,7 +208,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
             monitor.setProfessor(disciplina.getProfessor());
             limparCampos();
             monitorDAO.salvarMonitor(monitor);
-            monitor = new Monitor();
+            monitor = new Aluno();
             JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed

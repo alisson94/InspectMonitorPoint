@@ -1,4 +1,4 @@
-package monitor;
+package aluno;
 
 import curso.Curso;
 import disciplina.Disciplina;
@@ -8,12 +8,14 @@ import javax.persistence.OneToOne;
 import professor.Professor;
 
 @Entity
-public class Monitor {
+public class Aluno {
     @Id
     private String matricula;
     private String nome;
     private String email;
     private int semestre;
+    private String cpf;
+    
     @OneToOne
     private Curso curso;
     @OneToOne
