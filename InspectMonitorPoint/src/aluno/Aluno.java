@@ -3,6 +3,7 @@ package aluno;
 import curso.Curso;
 import disciplina.Disciplina;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import professor.Professor;
@@ -10,6 +11,8 @@ import professor.Professor;
 @Entity
 public class Aluno {
     @Id
+    @GeneratedValue
+    private int id;
     private String matricula;
     private String nome;
     private String email;
@@ -22,6 +25,10 @@ public class Aluno {
     private Disciplina disciplina;
     @OneToOne
     private Professor professor;
+
+    public int getId() {
+        return id;
+    }
     
     public String getMatricula() {
         return matricula;

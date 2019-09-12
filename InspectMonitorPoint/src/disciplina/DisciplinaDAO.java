@@ -1,52 +1,34 @@
 package disciplina;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import util.GenericDAO;
 import util.HibernateUtil;
 
-public class DisciplinaDAO {
-    Session sessao;
-    Transaction transacao;
+public class DisciplinaDAO extends GenericDAO<Disciplina>{
     
-    public void iniciarSessao(){
-        sessao = HibernateUtil.getSessionFactory().openSession();
-        transacao = sessao.beginTransaction();
+    public DisciplinaDAO() {
+        super(Disciplina.class);
     }
     
-    public void salvarDisciplina(Disciplina disciplina){
-        iniciarSessao();
-        sessao.save(disciplina);
-        transacao.commit();
-        sessao.close();
-    }
-    
-    public void editarDisciplina(Disciplina disciplina){
-        iniciarSessao();
-        sessao.update(disciplina);
-        transacao.commit();
-        sessao.close();
-    }
-    
-    public void exclurDisciplina(Disciplina disciplina){
-        iniciarSessao();
-        sessao.delete(disciplina);
-        transacao.commit();
-        sessao.close();
-    }
-    
-    public List<Disciplina> listarDisciplina(){
-        iniciarSessao();
-        List<Disciplina> disciplinaes = sessao.createCriteria(Disciplina.class).list();
-        sessao.close();
-        return disciplinaes;
-    }
-    
-    public Disciplina pesquisarDisciplinaId(int id){
-        iniciarSessao();
-        Disciplina disciplina = (Disciplina) sessao.createCriteria(Disciplina.class).add(Restrictions.eq("id", id)).uniqueResult();
-        sessao.close();
-        return disciplina;
+    public void salvar(Disciplina disciplina) {
+        Object[] options = {"Sim", "Não"};
+        if (disciplina.getId() == 0) {
+            if (adicionar(disciplina)) {
+                JOptionPane.showMessageDialog(null, "Disciplina cadastrado com sucesso!");
+            }
+        } else if (JOptionPane.showOptionDialog(null, "Deseja mesmo realizar essa edição"
+                + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
+            if (atualizar(disciplina)) {
+                JOptionPane.showMessageDialog(null, "Disciplina editada com sucesso!!");
+      
+            } else {
+                JOptionPane.showMessageDialog(null, "A edição foi cancelada!");
+            }
+        }
+
     }
 }

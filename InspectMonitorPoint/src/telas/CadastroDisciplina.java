@@ -30,7 +30,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     public CadastroDisciplina() {
         initComponents();
         
-        for (Curso curso : cursoDAO.listarCurso()) {
+        for (Curso curso : cursoDAO.listar()) {
             cbCurso.addItem(curso);
         }
     }
@@ -127,10 +127,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         disciplina.setNome(tfNome.getText());
         disciplina.setCurso((Curso) cbCurso.getSelectedItem());
         disciplina.setProfessor((Professor) cbProfessor.getSelectedItem());
-        disciplinaDAO.salvarDisciplina(disciplina);
+        disciplinaDAO.salvar(disciplina);
         disciplina = new Disciplina();
         limparCampos();
-        JOptionPane.showMessageDialog(null, "Salvo com sucesso");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed

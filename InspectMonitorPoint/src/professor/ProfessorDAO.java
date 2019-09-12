@@ -25,7 +25,7 @@ public class ProfessorDAO extends GenericDAO<Professor>{
         } else if (JOptionPane.showOptionDialog(null, "Deseja mesmo realizar essa edição"
                 + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
             if (atualizar(professor)) {
-                JOptionPane.showMessageDialog(null, "Empresa editada com sucesso!!");
+                JOptionPane.showMessageDialog(null, "Professor editada com sucesso!!");
       
             } else {
                 JOptionPane.showMessageDialog(null, "A edição foi cancelada!");

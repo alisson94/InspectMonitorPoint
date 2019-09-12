@@ -19,7 +19,7 @@ import aluno.AlunoDAO;
  *
  * @author Everton
  */
-public class CadastroMonitor extends javax.swing.JFrame {
+public class CadastroAluno extends javax.swing.JFrame {
     
     Aluno monitor = new Aluno();
     AlunoDAO monitorDAO = new AlunoDAO();
@@ -29,10 +29,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
     /**
      * Creates new form CadastroMonitor
      */
-    public CadastroMonitor() {
+    public CadastroAluno() {
         initComponents();
         
-        for (Curso curso : cursoDAO.listarCurso()) {
+        for (Curso curso : cursoDAO.listar()) {
             cbCurso.addItem(curso);
         }
     }
@@ -89,14 +89,14 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 500, -1, -1));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -107,7 +107,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
-        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -207,16 +207,15 @@ public class CadastroMonitor extends javax.swing.JFrame {
             monitor.setDisciplina(disciplina);
             monitor.setProfessor(disciplina.getProfessor());
             limparCampos();
-            monitorDAO.salvarMonitor(monitor);
+            monitorDAO.salvar(monitor);
             monitor = new Aluno();
-            JOptionPane.showMessageDialog(null, "Monitor cadastrado com sucesso!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
         cbDisciplina.removeAllItems();
         Curso curso = (Curso) cbCurso.getSelectedItem();
-        for(Disciplina disciplina : disciplinaDAO.listarDisciplina()){
+        for(Disciplina disciplina : disciplinaDAO.listar()){
             if(disciplina.getCurso().getId() == curso.getId()){
                 cbDisciplina.addItem(disciplina);
             }
@@ -263,20 +262,21 @@ public class CadastroMonitor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroMonitor().setVisible(true);
+                new CadastroAluno().setVisible(true);
             }
         });
     }

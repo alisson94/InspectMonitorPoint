@@ -84,10 +84,9 @@ public class CadastroCurso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         curso.setNome(tfNome.getText());
-        dao.salvarCurso(curso);
+        dao.salvar(curso);
         curso = new Curso();
         limparCampos();
-        JOptionPane.showMessageDialog(null, "Salvo com sucesso");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

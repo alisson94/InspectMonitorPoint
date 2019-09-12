@@ -27,7 +27,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     public CadastroProfessor() {
         initComponents();
         
-        for (Curso curso : cursoDAO.listarCurso()) {
+        for (Curso curso : cursoDAO.listar()) {
             cbCurso.addItem(curso);
         }
     }
