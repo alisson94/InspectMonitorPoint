@@ -101,7 +101,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         professor.setNome(tfNome.getText());
         professor.setCurso((Curso) cbCurso.getSelectedItem());
-        professorDAO.salvarProfessor(professor);
+        professorDAO.adicionar(professor);
         JOptionPane.showMessageDialog(null, "Salvo");
     }//GEN-LAST:event_jButton1ActionPerformed
 
