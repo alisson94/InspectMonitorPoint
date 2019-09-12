@@ -78,6 +78,14 @@ public class Aluno {
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
     
     
 }
