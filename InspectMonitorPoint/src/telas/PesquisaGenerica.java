@@ -74,16 +74,17 @@ public class PesquisaGenerica extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbPesquisa = new javax.swing.JTable();
         tfPesquisa = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(602, 421));
         setModal(true);
         setUndecorated(true);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btEditar.setText("Selecionar");
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoselecionar.png"))); // NOI18N
+        btEditar.setBorder(null);
         btEditar.setContentAreaFilled(false);
         btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -93,11 +94,11 @@ public class PesquisaGenerica extends javax.swing.JDialog {
                 btEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btEditar);
-        btEditar.setBounds(160, 240, 110, 60);
+        getContentPane().add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 493, 150, 60));
 
         btVoltar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btVoltar.setText("Voltar");
+        btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
+        btVoltar.setBorder(null);
         btVoltar.setContentAreaFilled(false);
         btVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -107,8 +108,7 @@ public class PesquisaGenerica extends javax.swing.JDialog {
                 btVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btVoltar);
-        btVoltar.setBounds(370, 260, 80, 60);
+        getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 493, 130, 60));
 
         tbPesquisa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,17 +133,20 @@ public class PesquisaGenerica extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbPesquisa);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 100, 560, 240);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 240, 780, 250));
 
-        tfPesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfPesquisa.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfPesquisa.setBorder(null);
+        tfPesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tfPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tfPesquisaKeyPressed(evt);
             }
         });
-        getContentPane().add(tfPesquisa);
-        tfPesquisa.setBounds(100, 53, 340, 30);
+        getContentPane().add(tfPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 183, 450, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundpesquisagenerica.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
         pack();
         setLocationRelativeTo(null);
@@ -232,6 +235,7 @@ public class PesquisaGenerica extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbPesquisa;
     private javax.swing.JTextField tfPesquisa;
