@@ -18,6 +18,7 @@
         <mapping class="curso.Curso"/>
         <mapping class="disciplina.Disciplina"/>
         <mapping class="professor.Professor"/>
+        <mapping class="monitor.Monitor"/>
 
     </session-factory>
 </hibernate-configuration>
