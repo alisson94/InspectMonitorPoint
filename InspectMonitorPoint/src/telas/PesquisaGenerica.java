@@ -94,7 +94,7 @@ public class PesquisaGenerica extends javax.swing.JDialog {
                 btEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 493, 150, 60));
+        getContentPane().add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 504, 150, 40));
 
         btVoltar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N

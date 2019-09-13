@@ -44,125 +44,88 @@ public class CadastroProfessor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         btnSalvarProfessor = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         tfCpf = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         tfTelefone = new javax.swing.JFormattedTextField();
         btnExcluir = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nome:");
+        tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfNome.setBorder(null);
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 258, 410, 35));
 
-        btnSalvarProfessor.setText("Salvar");
+        btnSalvarProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
+        btnSalvarProfessor.setBorder(null);
+        btnSalvarProfessor.setContentAreaFilled(false);
         btnSalvarProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarProfessorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvarProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 438, -1, -1));
 
-        jLabel3.setText("CPF:");
-
+        tfCpf.setBorder(null);
         try {
             tfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfCpf.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(tfCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 160, 35));
 
-        jLabel4.setText("Email:");
+        tfEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfEmail.setBorder(null);
+        getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 305, 460, 35));
 
-        btnPesquisar.setText("Pesquisa Geral");
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
+        btnPesquisar.setBorder(null);
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setContentAreaFilled(false);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 254, -1, -1));
 
-        jLabel5.setText("Telefone:");
-
+        tfTelefone.setBorder(null);
         try {
-            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfTelefone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(tfTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 180, 35));
 
-        btnExcluir.setText("Excluir");
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
+        btnExcluir.setBorder(null);
+        btnExcluir.setContentAreaFilled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 438, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                    .addComponent(tfCpf)
-                    .addComponent(tfEmail))
-                .addGap(107, 107, 107))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnExcluir)
-                        .addGap(84, 84, 84)
-                        .addComponent(btnSalvarProfessor)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(1, 1, 1)
-                        .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnPesquisar)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCpf)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTelefone)
-                    .addComponent(jLabel5))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarProfessor)
-                    .addComponent(btnExcluir))
-                .addContainerGap())
-        );
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
+        btnVoltar.setBorder(null);
+        btnVoltar.setContentAreaFilled(false);
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 438, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastroprofessor.jpg"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(615, 488));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProfessorActionPerformed
@@ -247,10 +210,8 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvarProfessor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JFormattedTextField tfCpf;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNome;
