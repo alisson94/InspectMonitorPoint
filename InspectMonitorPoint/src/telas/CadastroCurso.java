@@ -39,10 +39,10 @@ public class CadastroCurso extends javax.swing.JFrame {
     private void initComponents() {
 
         tfNome = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSalvarCurso = new javax.swing.JButton();
         btnExcluirCurso = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVoltarCurso = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,24 +53,24 @@ public class CadastroCurso extends javax.swing.JFrame {
         tfNome.setBorder(null);
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 267, 410, 35));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setPreferredSize(new java.awt.Dimension(159, 49));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
+        btnSalvarCurso.setBorder(null);
+        btnSalvarCurso.setBorderPainted(false);
+        btnSalvarCurso.setContentAreaFilled(false);
+        btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalvarCurso.setPreferredSize(new java.awt.Dimension(159, 49));
+        btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSalvarCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 429, -1, -1));
+        getContentPane().add(btnSalvarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 429, -1, -1));
 
         btnExcluirCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
         btnExcluirCurso.setBorder(null);
         btnExcluirCurso.setBorderPainted(false);
         btnExcluirCurso.setContentAreaFilled(false);
-        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCursoActionPerformed(evt);
@@ -81,15 +81,15 @@ public class CadastroCurso extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 264, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
+        btnVoltarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
+        btnVoltarCurso.setBorder(null);
+        btnVoltarCurso.setBorderPainted(false);
+        btnVoltarCurso.setContentAreaFilled(false);
+        btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(btnVoltarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrocurso.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
@@ -98,12 +98,16 @@ public class CadastroCurso extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        curso.setNome(tfNome.getText());
-        dao.salvar(curso);
-        curso = new Curso();
-        limparCampos();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCursoActionPerformed
+        if(!tfNome.getText().equals("")) {
+            curso.setNome(tfNome.getText());
+            dao.salvar(curso);
+            curso = new Curso();
+           limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
+        }
+    }//GEN-LAST:event_btnSalvarCursoActionPerformed
 
     private void btnExcluirCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCursoActionPerformed
         // TODO add your handling code here:
@@ -146,8 +150,8 @@ public class CadastroCurso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluirCurso;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSalvarCurso;
+    private javax.swing.JButton btnVoltarCurso;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField tfNome;
