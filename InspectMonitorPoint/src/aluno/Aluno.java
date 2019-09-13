@@ -16,15 +16,8 @@ public class Aluno {
     private String matricula;
     private String nome;
     private String email;
-    private int semestre;
     private String cpf;
-    
-    @OneToOne
-    private Curso curso;
-    @OneToOne
-    private Disciplina disciplina;
-    @OneToOne
-    private Professor professor;
+    private String telefone;
 
     public int getId() {
         return id;
@@ -54,38 +47,6 @@ public class Aluno {
         this.email = email;
     }
 
-    public int getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -93,6 +54,13 @@ public class Aluno {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
 }

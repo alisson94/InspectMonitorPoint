@@ -12,9 +12,9 @@ public class Professor {
     @GeneratedValue
     private int id;
     private String nome;
+    private String email;
     private String cpf;
-    @OneToOne
-    private Curso curso;
+    private String telefone;
 
     public int getId() {
         return id;
@@ -28,6 +28,14 @@ public class Professor {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public String getCpf() {
         return cpf;
     }
@@ -35,15 +43,15 @@ public class Professor {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
     @Override
     public String toString() {
         return nome;

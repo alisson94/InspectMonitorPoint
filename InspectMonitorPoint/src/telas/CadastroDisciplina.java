@@ -5,17 +5,11 @@
  */
 package telas;
 
-import curso.Curso;
 import curso.CursoDAO;
-import curso.CursoTableModel;
 import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
-import professor.Professor;
 import professor.ProfessorDAO;
-import professor.ProfessorTableModel;
 
 /**
  *
@@ -38,8 +32,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     
     public void limparCampos(){
         tfNome.setText("");
-        lbCurso.setText("Selecione um curso");
-        lbProfessor.setText("Selecione um professor");
+        tfCargaHoraria.setText("");
         disciplina = new Disciplina();
     }
     
@@ -54,13 +47,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         jButton3 = new javax.swing.JButton();
         tfNome = new javax.swing.JTextField();
-        lbCurso = new javax.swing.JLabel();
-        lbProfessor = new javax.swing.JLabel();
         btnExcluirDisciplina = new javax.swing.JButton();
         btnSalvarDisciplina = new javax.swing.JButton();
         btnVoltarDisciplina = new javax.swing.JButton();
-        btnPesquisarCurso = new javax.swing.JButton();
-        btnPesquisarProfessor = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        tfCargaHoraria = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +60,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -81,19 +72,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         tfNome.setBorder(null);
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 258, 410, 35));
 
-        lbCurso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbCurso.setText("Selecione um curso");
-        getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 311, -1, -1));
-
-        lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbProfessor.setText("Selecione um professor");
-        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 357, -1, -1));
-
         btnExcluirDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
         btnExcluirDisciplina.setBorder(null);
         btnExcluirDisciplina.setBorderPainted(false);
         btnExcluirDisciplina.setContentAreaFilled(false);
-        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirDisciplinaActionPerformed(evt);
@@ -105,7 +88,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnSalvarDisciplina.setBorder(null);
         btnSalvarDisciplina.setBorderPainted(false);
         btnSalvarDisciplina.setContentAreaFilled(false);
-        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarDisciplina.setPreferredSize(new java.awt.Dimension(159, 49));
         btnSalvarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,30 +101,12 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltarDisciplina.setBorder(null);
         btnVoltarDisciplina.setBorderPainted(false);
         btnVoltarDisciplina.setContentAreaFilled(false);
-        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnVoltarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
-        btnPesquisarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
-        btnPesquisarCurso.setBorder(null);
-        btnPesquisarCurso.setContentAreaFilled(false);
-        btnPesquisarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisarCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarCursoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPesquisarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 302, 40, 40));
-
-        btnPesquisarProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
-        btnPesquisarProfessor.setBorder(null);
-        btnPesquisarProfessor.setContentAreaFilled(false);
-        btnPesquisarProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisarProfessor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarProfessorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPesquisarProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 349, 40, 40));
+        jLabel1.setText("CargaHoraia");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
+        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 50, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrodisciplina.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -154,8 +119,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
-        if(!tfNome.getText().equals("") && !lbCurso.getText().equals("Selecione um curso") && !lbProfessor.getText().equals("Selecione um professor")) {
+        if(!tfNome.getText().equals("") && !tfCargaHoraria.equals("")) {
             disciplina.setNome(tfNome.getText());
+            disciplina.setCargaHoraria(Integer.parseInt(tfCargaHoraria.getText()));
             disciplinaDAO.salvar(disciplina);
             limparCampos();
         } else {
@@ -166,40 +132,6 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void btnPesquisarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCursoActionPerformed
-        List<Curso> lista = cursoDAO.listar();
-        CursoTableModel model = new CursoTableModel(lista);
-        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Curso");
-        if(objetoRetorno != null){
-            Curso curso = cursoDAO.consultarObjetoId("id", objetoRetorno);
-            disciplina.setCurso(curso);
-            lbCurso.setText(curso.getNome());
-        }
-    }//GEN-LAST:event_btnPesquisarCursoActionPerformed
-
-    private void btnPesquisarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarProfessorActionPerformed
-        if(disciplina.getCurso() != null){
-            List<Professor> lista = professorDAO.listar();
-            List<Professor> listaFiltrada = new ArrayList<>();
-
-            for(Professor professor : lista){
-                if(professor.getCurso().getId() == disciplina.getCurso().getId()){
-                    listaFiltrada.add(professor);
-                }
-            }
-            ProfessorTableModel model = new ProfessorTableModel(listaFiltrada);
-
-            Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Professor");
-            if(objetoRetorno != null){
-                Professor professor = professorDAO.consultarObjetoId("id", objetoRetorno);
-                disciplina.setProfessor(professor);
-                lbProfessor.setText(professor.getNome());
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione um curso antes");
-        }
-    }//GEN-LAST:event_btnPesquisarProfessorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,14 +170,12 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluirDisciplina;
-    private javax.swing.JButton btnPesquisarCurso;
-    private javax.swing.JButton btnPesquisarProfessor;
     private javax.swing.JButton btnSalvarDisciplina;
     private javax.swing.JButton btnVoltarDisciplina;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lbCurso;
-    private javax.swing.JLabel lbProfessor;
+    private javax.swing.JTextField tfCargaHoraria;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,8 +21,8 @@ import aluno.AlunoDAO;
  */
 public class CadastroAluno extends javax.swing.JFrame {
     
-    Aluno monitor = new Aluno();
-    AlunoDAO monitorDAO = new AlunoDAO();
+    Aluno aluno = new Aluno();
+    AlunoDAO alunoDAO = new AlunoDAO();
     
     CursoDAO cursoDAO = new CursoDAO();
     DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
@@ -32,16 +32,16 @@ public class CadastroAluno extends javax.swing.JFrame {
     public CadastroAluno() {
         initComponents();
         
-        for (Curso curso : cursoDAO.listar()) {
-            cbCurso.addItem(curso);
-        }
+        
     }
 
     public void limparCampos(){
-        tfNome.setText("");
         tfMatricula.setText("");
+        tfNome.setText("");
         tfEmail.setText("");
-        tfSemestre.setText("");
+        tfCpf.setText("");
+        tfTelefone.setText("");
+        aluno = new Aluno();
     }
     
     /**
@@ -60,12 +60,10 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnLimpar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         tfMatricula = new javax.swing.JFormattedTextField();
-        tfSemestre = new javax.swing.JFormattedTextField();
-        cbCurso = new javax.swing.JComboBox<>();
-        cbDisciplina = new javax.swing.JComboBox<>();
-        rbInativo = new javax.swing.JRadioButton();
-        rbAtivo = new javax.swing.JRadioButton();
-        lbProfessor = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tfCpf = new javax.swing.JFormattedTextField();
+        tfTelefone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,52 +134,21 @@ public class CadastroAluno extends javax.swing.JFrame {
         tfMatricula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 349, 190, 30));
 
-        tfSemestre.setBorder(null);
+        jLabel1.setText("cpf");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
+
+        jLabel2.setText("telefone:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
+
         try {
-            tfSemestre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+            tfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfSemestre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        getContentPane().add(tfSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 350, 190, 30));
+        getContentPane().add(tfCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, -1, -1));
 
-        cbCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cbCurso.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                cbCursoPopupMenuWillBecomeVisible(evt);
-            }
-        });
-        cbCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCursoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 395, 250, 40));
-
-        cbDisciplina.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cbDisciplina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbDisciplinaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 395, 310, 40));
-
-        rbInativo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        rbInativo.setText("INATIVO");
-        getContentPane().add(rbInativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 453, -1, -1));
-
-        rbAtivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        rbAtivo.setSelected(true);
-        rbAtivo.setText("ATIVO");
-        getContentPane().add(rbAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 453, -1, -1));
-
-        lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbProfessor.setText(" ");
-        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 455, 210, -1));
+        tfTelefone.setText("jTextField1");
+        getContentPane().add(tfTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastromonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -195,36 +162,17 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(tfNome.getText().equals("") || tfMatricula.getText().equals("          ") || tfEmail.getText().equals("") || tfSemestre.getText().equals("     ")){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos corretamente");
-        }else{
-            monitor.setNome(tfNome.getText());
-            monitor.setMatricula(tfMatricula.getText());
-            monitor.setEmail(tfEmail.getText());
-            monitor.setSemestre(Integer.parseInt(tfSemestre.getText()));
-            monitor.setCurso((Curso) cbCurso.getSelectedItem());
-            Disciplina disciplina = (Disciplina) cbDisciplina.getSelectedItem();
-            monitor.setDisciplina(disciplina);
-            monitor.setProfessor(disciplina.getProfessor());
+        
+            aluno.setMatricula(tfMatricula.getText());
+            aluno.setNome(tfNome.getText());
+            aluno.setEmail(tfEmail.getText());
+            aluno.setCpf(tfCpf.getText());
+            aluno.setTelefone(tfTelefone.getText());
             limparCampos();
-            monitorDAO.salvar(monitor);
-            monitor = new Aluno();
-        }
+            alunoDAO.salvar(aluno);
+            
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
-        cbDisciplina.removeAllItems();
-        Curso curso = (Curso) cbCurso.getSelectedItem();
-        for(Disciplina disciplina : disciplinaDAO.listar()){
-            if(disciplina.getCurso().getId() == curso.getId()){
-                cbDisciplina.addItem(disciplina);
-            }
-        }
-    }//GEN-LAST:event_cbCursoActionPerformed
-
-    private void cbCursoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbCursoPopupMenuWillBecomeVisible
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbCursoPopupMenuWillBecomeVisible
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         MenuPrincipal frame = new MenuPrincipal();
@@ -235,15 +183,6 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
-
-    private void cbDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDisciplinaActionPerformed
-        if(cbDisciplina.getItemCount() > 0){
-            Disciplina disciplina = (Disciplina) cbDisciplina.getSelectedItem();
-            lbProfessor.setText(disciplina.getProfessor().getNome());
-        }else{
-            lbProfessor.setText("");
-        }
-    }//GEN-LAST:event_cbDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,15 +225,13 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<Curso> cbCurso;
-    private javax.swing.JComboBox<Disciplina> cbDisciplina;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lbProfessor;
-    private javax.swing.JRadioButton rbAtivo;
-    private javax.swing.JRadioButton rbInativo;
+    private javax.swing.JFormattedTextField tfCpf;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfMatricula;
     private javax.swing.JTextField tfNome;
-    private javax.swing.JFormattedTextField tfSemestre;
+    private javax.swing.JTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }

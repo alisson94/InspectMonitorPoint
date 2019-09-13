@@ -13,10 +13,7 @@ public class Disciplina {
     @GeneratedValue
     private int id;
     private String nome;
-    @OneToOne
-    private Curso curso;
-    @OneToOne
-    private Professor professor;
+    private int cargaHoraria;
     
     public String getNome() {
         return nome;
@@ -26,27 +23,14 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public Curso getCurso() {
-        return curso;
+    public int getCargaHoraria() {
+        return cargaHoraria;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
     
-    @Override
-    public String toString() {
-        return nome;
-    }
-
     public int getId() {
         return id;
     }
