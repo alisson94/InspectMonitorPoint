@@ -104,6 +104,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnVoltarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
+        tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfCargaHoraria.setBorder(null);
         getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 321, 165, 35));
 
@@ -114,7 +115,20 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirDisciplinaActionPerformed
-        // TODO add your handling code here:
+ Object[] options = {"Sim", "Não"};
+        if (disciplina.getId()!= 0) {
+            if (JOptionPane.showOptionDialog(rootPane, "Deseja excluir a " + disciplina.getNome()
+                    + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
+                if (disciplinaDAO.remover(disciplina)) {
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Não foi possível excluir a disciplina " + disciplina.getNome(),
+                            "Erro ao Excluir", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A exclusão foi cancelada!");
+            }
+        limparCampos();
+        }
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed

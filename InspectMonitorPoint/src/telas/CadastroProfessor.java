@@ -54,6 +54,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
         btnPesquisar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         tfTelefone = new javax.swing.JFormattedTextField();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +92,13 @@ public class CadastroProfessor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,8 +123,10 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExcluir)
+                        .addGap(84, 84, 84)
                         .addComponent(btnSalvarProfessor)
-                        .addGap(107, 107, 107))
+                        .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(1, 1, 1)
@@ -146,7 +156,9 @@ public class CadastroProfessor extends javax.swing.JFrame {
                     .addComponent(tfTelefone)
                     .addComponent(jLabel5))
                 .addGap(30, 30, 30)
-                .addComponent(btnSalvarProfessor)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarProfessor)
+                    .addComponent(btnExcluir))
                 .addContainerGap())
         );
 
@@ -154,7 +166,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProfessorActionPerformed
-        if(!tfNome.getText().equals("") && !tfCpf.getText().equals("")) {
+        if(!tfNome.getText().equals("") && !tfCpf.getText().equals("   .   .   -  ") && !tfTelefone.getText().equals("(  )     -    ")) {
             professor.setNome(tfNome.getText());
             professor.setEmail(tfEmail.getText());
             professor.setCpf(tfCpf.getText());
@@ -178,6 +190,23 @@ public class CadastroProfessor extends javax.swing.JFrame {
             tfTelefone.setText(professor.getTelefone());
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+         Object[] options = {"Sim", "Não"};
+        if (professor.getId()!= 0) {
+            if (JOptionPane.showOptionDialog(rootPane, "Deseja excluir o(a) professor(a) " + professor.getNome()
+                    + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
+                if (professorDAO.remover(professor)) {
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Não foi possível excluir o(a) professor(a) " + professor.getNome(),
+                            "Erro ao Excluir", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A exclusão foi cancelada!");
+            }
+        limparCampos();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +244,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvarProfessor;
     private javax.swing.JLabel jLabel1;
