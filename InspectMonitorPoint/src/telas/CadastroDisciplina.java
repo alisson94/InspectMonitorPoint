@@ -7,11 +7,15 @@ package telas;
 
 import curso.Curso;
 import curso.CursoDAO;
+import curso.CursoTableModel;
 import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import professor.Professor;
 import professor.ProfessorDAO;
+import professor.ProfessorTableModel;
 
 /**
  *
@@ -30,9 +34,6 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     public CadastroDisciplina() {
         initComponents();
         
-        for (Curso curso : cursoDAO.listar()) {
-            cbCurso.addItem(curso);
-        }
     }
     
     public void limparCampos(){
@@ -52,9 +53,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         tfNome = new javax.swing.JTextField();
-        cbCurso = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        cbProfessor = new javax.swing.JComboBox<>();
+        lbCurso = new javax.swing.JLabel();
+        lbProfessor = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,13 +72,25 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             }
         });
 
-        cbCurso.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("Professor:");
+
+        lbCurso.setText("Selecione um curso");
+
+        lbProfessor.setText("Selecione um prof");
+
+        jButton2.setText("P");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCursoActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Professor:");
+        jButton3.setText("P");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,20 +100,24 @@ public class CadastroDisciplina extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cbProfessor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbProfessor)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton3))
+                        .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cbCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(lbCurso)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 78, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,12 +129,14 @@ public class CadastroDisciplina extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbCurso)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                    .addComponent(lbProfessor)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
         );
@@ -125,22 +146,44 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         disciplina.setNome(tfNome.getText());
-        disciplina.setCurso((Curso) cbCurso.getSelectedItem());
-        disciplina.setProfessor((Professor) cbProfessor.getSelectedItem());
         disciplinaDAO.salvar(disciplina);
         disciplina = new Disciplina();
         limparCampos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursoActionPerformed
-        cbProfessor.removeAllItems();
-        Curso curso = (Curso) cbCurso.getSelectedItem();
-        for(Professor professor : professorDAO.listar()){
-            if(professor.getCurso().getId() == curso.getId()){
-                cbProfessor.addItem(professor);
-            }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        List<Curso> lista = cursoDAO.listar();
+        CursoTableModel model = new CursoTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Curso");
+        if(objetoRetorno != null){
+            Curso curso = cursoDAO.consultarObjetoId("id", objetoRetorno);
+            disciplina.setCurso(curso);
+            lbCurso.setText(curso.getNome());
         }
-    }//GEN-LAST:event_cbCursoActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(disciplina.getCurso() != null){
+            List<Professor> lista = professorDAO.listar();
+            List<Professor> listaFiltrada = new ArrayList<>();
+
+            for(Professor professor : lista){
+                if(professor.getCurso().getId() == disciplina.getCurso().getId()){
+                    listaFiltrada.add(professor);
+                }
+            }
+            ProfessorTableModel model = new ProfessorTableModel(listaFiltrada);
+
+            Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Professor");
+            if(objetoRetorno != null){
+                Professor professor = professorDAO.consultarObjetoId("id", objetoRetorno);
+                disciplina.setProfessor(professor);
+                lbProfessor.setText(professor.getNome());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um curso antes");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,12 +221,14 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Curso> cbCurso;
-    private javax.swing.JComboBox<Professor> cbProfessor;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lbCurso;
+    private javax.swing.JLabel lbProfessor;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }
