@@ -31,7 +31,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
         
     }
 
-    public void limparCapmos() {
+    public void limparCampos() {
         tfNome.setText("");
         tfCpf.setText("");
         lbCurso.setText("SELECIONE UM CURSO");
@@ -141,8 +141,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
             professor.setNome(tfNome.getText());
             professor.setCpf(tfCpf.getText());
             professorDAO.salvar(professor);
-            limparCapmos();
-            professor = new Professor();
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
         }

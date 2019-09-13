@@ -7,6 +7,8 @@ package telas;
 
 import curso.Curso;
 import curso.CursoDAO;
+import curso.CursoTableModel;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,7 @@ public class CadastroCurso extends javax.swing.JFrame {
     
     public void limparCampos(){
         tfNome.setText("");
+        curso = new Curso();
     }
     
     /**
@@ -57,7 +60,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnSalvarCurso.setBorder(null);
         btnSalvarCurso.setBorderPainted(false);
         btnSalvarCurso.setContentAreaFilled(false);
-        btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarCurso.setPreferredSize(new java.awt.Dimension(159, 49));
         btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +73,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnExcluirCurso.setBorder(null);
         btnExcluirCurso.setBorderPainted(false);
         btnExcluirCurso.setContentAreaFilled(false);
-        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluirCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCursoActionPerformed(evt);
@@ -80,15 +83,19 @@ public class CadastroCurso extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 264, -1, -1));
 
         btnVoltarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
         btnVoltarCurso.setBorder(null);
         btnVoltarCurso.setBorderPainted(false);
         btnVoltarCurso.setContentAreaFilled(false);
-        btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(btnVoltarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrocurso.jpg"))); // NOI18N
@@ -102,16 +109,38 @@ public class CadastroCurso extends javax.swing.JFrame {
         if(!tfNome.getText().equals("")) {
             curso.setNome(tfNome.getText());
             dao.salvar(curso);
-            curso = new Curso();
-           limparCampos();
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
         }
     }//GEN-LAST:event_btnSalvarCursoActionPerformed
 
     private void btnExcluirCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCursoActionPerformed
-        // TODO add your handling code here:
+        Object[] options = {"Sim", "Não"};
+        if (curso.getId()!= 0) {
+            if (JOptionPane.showOptionDialog(rootPane, "Deseja excluir o Curso " + curso.getNome()
+                    + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
+                if (dao.remover(curso)) {
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Não foi possível excluir o(a) Curso(a) " + curso.getNome(),
+                            "Erro ao Excluir", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A exclusão foi cancelada!");
+            }
+        limparCampos();
+        }
     }//GEN-LAST:event_btnExcluirCursoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        List<Curso> lista = dao.listar();
+        CursoTableModel model = new CursoTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Curso");
+        if(objetoRetorno != null){
+            curso = dao.consultarObjetoId("id", objetoRetorno);
+            tfNome.setText(curso.getNome());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
