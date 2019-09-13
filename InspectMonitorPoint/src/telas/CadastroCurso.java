@@ -38,48 +38,64 @@ public class CadastroCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnExcluirCurso = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nome:");
+        tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfNome.setBorder(null);
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 267, 410, 35));
 
-        jButton1.setText("Salvar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setPreferredSize(new java.awt.Dimension(159, 49));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 429, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
+        btnExcluirCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
+        btnExcluirCurso.setBorder(null);
+        btnExcluirCurso.setBorderPainted(false);
+        btnExcluirCurso.setContentAreaFilled(false);
+        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCursoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluirCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 428, 130, 50));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 264, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrocurso.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -88,6 +104,10 @@ public class CadastroCurso extends javax.swing.JFrame {
         curso = new Curso();
         limparCampos();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnExcluirCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +145,11 @@ public class CadastroCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluirCurso;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }
