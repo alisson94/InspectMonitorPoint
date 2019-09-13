@@ -33,7 +33,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbCurso" min="-2" pref="63" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSalvarProfessor" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSalvarProfessor" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -99,12 +99,12 @@
         <Property name="text" type="java.lang.String" value="Curso:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSalvarProfessor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarProfessorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
@@ -117,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbCurso">
       <Properties>
-        <Property name="text" type="java.lang.String" value="--------"/>
+        <Property name="text" type="java.lang.String" value="SELECIONE UM CURSO"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
