@@ -12,6 +12,7 @@ public class Professor {
     @GeneratedValue
     private int id;
     private String nome;
+    private String cpf;
     @OneToOne
     private Curso curso;
 
@@ -27,6 +28,14 @@ public class Professor {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public Curso getCurso() {
         return curso;
     }
