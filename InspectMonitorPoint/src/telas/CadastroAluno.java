@@ -87,14 +87,19 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 507, -1, -1));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -105,7 +110,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
-        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -116,7 +121,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
         btnVoltar.setBorder(null);
         btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -150,7 +155,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnPesquisar.setBorder(null);
         btnPesquisar.setBorderPainted(false);
         btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisar.setFocusPainted(false);
         getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(788, 271, -1, -1));
 
@@ -175,16 +180,17 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
-            aluno.setMatricula(tfMatricula.getText());
+        if(!tfNome.getText().equals("") && !tfEmail.getText().equals("") && !tfCpf.getText().equals("   .   .   -  ") && !tfTelefone.getText().equals("(  )     -    ") && !tfMatricula.getText().equals("          ")) {
             aluno.setNome(tfNome.getText());
             aluno.setEmail(tfEmail.getText());
+            aluno.setMatricula(tfMatricula.getText());
             aluno.setCpf(tfCpf.getText());
             aluno.setTelefone(tfTelefone.getText());
-            limparCampos();
             alunoDAO.salvar(aluno);
-            
-        
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique se os campos estão preenchidos corretamente!");
+        }    
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -196,6 +202,23 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+     Object[] options = {"Sim", "Não"};
+        if (aluno.getId()!= 0) {
+            if (JOptionPane.showOptionDialog(rootPane, "Deseja excluir o(a) aluno(a) " + aluno.getNome()
+                    + "?", "InspectMonitorPoint", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION) {
+                if (alunoDAO.remover(aluno)) {
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Não foi possível excluir o(a) aluno(a) " + aluno.getNome(),
+                            "Erro ao Excluir", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A exclusão foi cancelada!");
+            }
+        limparCampos();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
