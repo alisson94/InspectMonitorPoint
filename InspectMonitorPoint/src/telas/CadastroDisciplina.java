@@ -38,6 +38,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     
     public void limparCampos(){
         tfNome.setText("");
+        lbCurso.setText("Selecione um curso");
+        lbProfessor.setText("Selecione um professor");
+        disciplina = new Disciplina();
     }
     
     /**
@@ -151,10 +154,13 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
-        disciplina.setNome(tfNome.getText());
-        disciplinaDAO.salvar(disciplina);
-        disciplina = new Disciplina();
-        limparCampos();
+        if(!tfNome.getText().equals("") && !lbCurso.getText().equals("Selecione um curso") && !lbProfessor.getText().equals("Selecione um professor")) {
+            disciplina.setNome(tfNome.getText());
+            disciplinaDAO.salvar(disciplina);
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
+        }
     }//GEN-LAST:event_btnSalvarDisciplinaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
