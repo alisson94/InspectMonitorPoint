@@ -49,109 +49,119 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         tfNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         lbCurso = new javax.swing.JLabel();
         lbProfessor = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExcluirDisciplina = new javax.swing.JButton();
+        btnSalvarDisciplina = new javax.swing.JButton();
+        btnVoltarDisciplina = new javax.swing.JButton();
+        btnPesquisarCurso = new javax.swing.JButton();
+        btnPesquisarProfessor = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nome:");
-
-        jLabel2.setText("Curso:");
-
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Professor:");
-
-        lbCurso.setText("Selecione um curso");
-
-        lbProfessor.setText("Selecione um prof");
-
-        jButton2.setText("P");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("P");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 256, 40, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbProfessor)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton3))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(lbCurso)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 61, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbCurso)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lbProfessor)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(24, 24, 24))
-        );
+        tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfNome.setBorder(null);
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 258, 410, 35));
+
+        lbCurso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbCurso.setText("Selecione um curso");
+        getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 311, -1, -1));
+
+        lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbProfessor.setText("Selecione um professor");
+        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 357, -1, -1));
+
+        btnExcluirDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
+        btnExcluirDisciplina.setBorder(null);
+        btnExcluirDisciplina.setBorderPainted(false);
+        btnExcluirDisciplina.setContentAreaFilled(false);
+        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirDisciplinaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluirDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 436, 105, 35));
+
+        btnSalvarDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
+        btnSalvarDisciplina.setBorder(null);
+        btnSalvarDisciplina.setBorderPainted(false);
+        btnSalvarDisciplina.setContentAreaFilled(false);
+        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarDisciplina.setPreferredSize(new java.awt.Dimension(159, 49));
+        btnSalvarDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarDisciplinaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalvarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 434, 105, 35));
+
+        btnVoltarDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
+        btnVoltarDisciplina.setBorder(null);
+        btnVoltarDisciplina.setBorderPainted(false);
+        btnVoltarDisciplina.setContentAreaFilled(false);
+        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(btnVoltarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
+
+        btnPesquisarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
+        btnPesquisarCurso.setBorder(null);
+        btnPesquisarCurso.setContentAreaFilled(false);
+        btnPesquisarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCursoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 302, 40, 40));
+
+        btnPesquisarProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
+        btnPesquisarProfessor.setBorder(null);
+        btnPesquisarProfessor.setContentAreaFilled(false);
+        btnPesquisarProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarProfessorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisarProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 349, 40, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrodisciplina.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnExcluirDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirDisciplinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
+
+    private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
         disciplina.setNome(tfNome.getText());
         disciplinaDAO.salvar(disciplina);
         disciplina = new Disciplina();
         limparCampos();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSalvarDisciplinaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnPesquisarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCursoActionPerformed
         List<Curso> lista = cursoDAO.listar();
         CursoTableModel model = new CursoTableModel(lista);
         Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Curso");
@@ -160,9 +170,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             disciplina.setCurso(curso);
             lbCurso.setText(curso.getNome());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPesquisarCursoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnPesquisarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarProfessorActionPerformed
         if(disciplina.getCurso() != null){
             List<Professor> lista = professorDAO.listar();
             List<Professor> listaFiltrada = new ArrayList<>();
@@ -183,7 +193,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Selecione um curso antes");
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnPesquisarProfessorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,12 +231,13 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnExcluirDisciplina;
+    private javax.swing.JButton btnPesquisarCurso;
+    private javax.swing.JButton btnPesquisarProfessor;
+    private javax.swing.JButton btnSalvarDisciplina;
+    private javax.swing.JButton btnVoltarDisciplina;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbCurso;
     private javax.swing.JLabel lbProfessor;
     private javax.swing.JTextField tfNome;
