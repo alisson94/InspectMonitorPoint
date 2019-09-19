@@ -5,13 +5,14 @@
  */
 package telas;
 
+import curso.Curso;
 import curso.CursoDAO;
+import curso.CursoTableModel;
 import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
 import disciplina.DisciplinaTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
-import professor.ProfessorDAO;
 
 /**
  *
@@ -22,8 +23,8 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     Disciplina disciplina = new Disciplina();
     DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     
+    Curso curso = new Curso();
     CursoDAO cursoDAO = new CursoDAO();
-    ProfessorDAO professorDAO = new ProfessorDAO();
     /**
      * Creates new form CadastroDisciplina
      */
@@ -35,6 +36,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     public void limparCampos(){
         tfNome.setText("");
         tfCargaHoraria.setText("");
+        lbCurso.setText("");
         disciplina = new Disciplina();
     }
     
@@ -53,7 +55,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnSalvarDisciplina = new javax.swing.JButton();
         btnVoltarDisciplina = new javax.swing.JButton();
         tfCargaHoraria = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lbCurso = new javax.swing.JLabel();
+        btnPesquisarCurso = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -68,11 +72,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 264, 40, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 40, 40));
 
         tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfNome.setBorder(null);
-        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 266, 410, 35));
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 410, 35));
 
         btnExcluirDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
         btnExcluirDisciplina.setBorder(null);
@@ -109,10 +113,24 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         tfCargaHoraria.setBorder(null);
         tfCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 35));
+        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 170, 35));
+        getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 40, 20));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrodisciplina.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnPesquisarCurso.setText("Pesquisar");
+        btnPesquisarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCursoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
+
+        jButton1.setText("Add Curso");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,9 +153,10 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
-        if(!tfNome.getText().equals("") && !tfCargaHoraria.getText().equals("")) {
+        if(!tfNome.getText().equals("") && !tfCargaHoraria.getText().equals("") && !lbCurso.getText().equals("")) {
             disciplina.setNome(tfNome.getText());
             disciplina.setCargaHoraria(Integer.parseInt(tfCargaHoraria.getText()));
+            disciplina.setCurso(curso);
             disciplinaDAO.salvar(disciplina);
             limparCampos();
         } else {
@@ -153,8 +172,24 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             disciplina = disciplinaDAO.consultarObjetoId("id", objetoRetorno);
             tfNome.setText(disciplina.getNome());
             tfCargaHoraria.setText(Integer.toString(disciplina.getCargaHoraria()));
+            lbCurso.setText(disciplina.getCurso().getNome());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnPesquisarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCursoActionPerformed
+        List<Curso> lista = cursoDAO.listar();
+        CursoTableModel model = new CursoTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Curso");
+        if(objetoRetorno != null){
+            curso = cursoDAO.consultarObjetoId("id", objetoRetorno);
+            lbCurso.setText(curso.getNome());
+        }
+    }//GEN-LAST:event_btnPesquisarCursoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastroCurso tela = new CadastroCurso();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,10 +228,12 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluirDisciplina;
+    private javax.swing.JButton btnPesquisarCurso;
     private javax.swing.JButton btnSalvarDisciplina;
     private javax.swing.JButton btnVoltarDisciplina;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbCurso;
     private javax.swing.JFormattedTextField tfCargaHoraria;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
