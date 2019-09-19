@@ -8,6 +8,8 @@ package telas;
 import curso.CursoDAO;
 import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
+import disciplina.DisciplinaTableModel;
+import java.util.List;
 import javax.swing.JOptionPane;
 import professor.ProfessorDAO;
 
@@ -50,7 +52,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnExcluirDisciplina = new javax.swing.JButton();
         btnSalvarDisciplina = new javax.swing.JButton();
         btnVoltarDisciplina = new javax.swing.JButton();
-        tfCargaHoraria = new javax.swing.JTextField();
+        tfCargaHoraria = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,9 +106,10 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnVoltarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
-        tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfCargaHoraria.setBorder(null);
-        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 321, 165, 35));
+        tfCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 35));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrodisciplina.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -132,7 +135,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
-        if(!tfNome.getText().equals("") && !tfCargaHoraria.equals("")) {
+        if(!tfNome.getText().equals("") && !tfCargaHoraria.getText().equals("")) {
             disciplina.setNome(tfNome.getText());
             disciplina.setCargaHoraria(Integer.parseInt(tfCargaHoraria.getText()));
             disciplinaDAO.salvar(disciplina);
@@ -143,7 +146,14 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarDisciplinaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        List<Disciplina> lista = disciplinaDAO.listar();
+        DisciplinaTableModel model = new DisciplinaTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Disciplina");
+        if(objetoRetorno != null){
+            disciplina = disciplinaDAO.consultarObjetoId("id", objetoRetorno);
+            tfNome.setText(disciplina.getNome());
+            tfCargaHoraria.setText(Integer.toString(disciplina.getCargaHoraria()));
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -187,7 +197,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltarDisciplina;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField tfCargaHoraria;
+    private javax.swing.JFormattedTextField tfCargaHoraria;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }

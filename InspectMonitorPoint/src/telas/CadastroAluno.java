@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import aluno.Aluno;
 import aluno.AlunoDAO;
+import aluno.AlunoTableModel;
 
 /**
  *
@@ -157,6 +158,11 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnPesquisar.setContentAreaFilled(false);
         btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisar.setFocusPainted(false);
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(788, 271, -1, -1));
 
         tfTelefone.setBorder(null);
@@ -219,6 +225,21 @@ public class CadastroAluno extends javax.swing.JFrame {
         limparCampos();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        List<Aluno> lista = alunoDAO.listar();
+        AlunoTableModel model = new AlunoTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Aluno");
+        if(objetoRetorno != null){
+            aluno = alunoDAO.consultarObjetoId("id", objetoRetorno);
+//            System.out.println(aluno.getNome());
+//            tfCpf.setText(aluno.getCpf());
+//            tfEmail.setText(aluno.getEmail());
+//            tfMatricula.setText(aluno.getMatricula());
+//            tfNome.setText(aluno.getNome());
+//            tfTelefone.setText(aluno.getTelefone());
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
