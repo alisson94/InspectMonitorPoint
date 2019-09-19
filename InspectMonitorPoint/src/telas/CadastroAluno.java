@@ -229,7 +229,6 @@ public class CadastroAluno extends javax.swing.JFrame {
         Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Aluno");
         if(objetoRetorno != null){
             aluno = alunoDAO.consultarObjetoId("id", objetoRetorno);
-            System.out.println(aluno.getNome());
             tfCpf.setText(aluno.getCpf());
             tfEmail.setText(aluno.getEmail());
             tfMatricula.setText(aluno.getMatricula());
