@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 public class MonitorTableModel extends AbstractTableModel {
 
     private List<Monitor> monitors = new ArrayList<>();
-    private String[] colunas = {"Matrícula", "Nome", "Professor", "Curso", "Disciplina"};
+    private String[] colunas = {"ID", "Nome", "Matrícula", "Professor", "Curso", "Disciplina"};
 
     public MonitorTableModel(List<Monitor> usuarios) {
         this.monitors = usuarios;
@@ -28,14 +28,16 @@ public class MonitorTableModel extends AbstractTableModel {
         Monitor monitor = monitors.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return monitor.getAluno().getMatricula();
+                return monitor.getId();
             case 1:
                 return monitor.getAluno().getNome();
             case 2:
-                return monitor.getProfessor().getNome();
+                return monitor.getAluno().getMatricula();
             case 3:
-                return monitor.getCurso().getNome();
+                return monitor.getProfessor().getNome();
             case 4:
+                return monitor.getCurso().getNome();
+            case 5:
                 return monitor.getDisciplina().getNome();
         }
         return null;
@@ -53,7 +55,8 @@ public class MonitorTableModel extends AbstractTableModel {
                 return colunas[3];
             case 4:
                 return colunas[4];
-
+            case 5:
+                return colunas[5];
         }
         return null;
     }
