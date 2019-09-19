@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import professor.Professor;
 
 @Entity
 public class Disciplina {
@@ -13,9 +14,6 @@ public class Disciplina {
     private int id;
     private String nome;
     private int cargaHoraria;
-    
-    @OneToOne
-    private Curso curso;
     
     public String getNome() {
         return nome;
@@ -31,14 +29,6 @@ public class Disciplina {
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
     
     public int getId() {
