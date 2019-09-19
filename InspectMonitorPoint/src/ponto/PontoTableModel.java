@@ -1,22 +1,22 @@
 package ponto;
 
-import aluno.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class PontoTableModel extends AbstractTableModel {
 
-    private List<Aluno> alunos = new ArrayList<>();
-    private String[] colunas = {"ID", "Matrícula", "Nome", "E-mail", "CPF", "Telefone"};
+    private List<Ponto> pontos = new ArrayList<>();
+    private String[] colunas = {"IDPonto", "Monitor","DataPonto", "HoraEntradaPonto", "HoraSaidaPonto", };
 
-    public PontoTableModel(List<Aluno> usuarios) {
-        this.alunos = usuarios;
+    public PontoTableModel(List<Ponto> usuarios) {
+        this.pontos = usuarios;
     }
 
     @Override
     public int getRowCount() {
-        return alunos.size();
+        return pontos.size();
     }
 
     @Override
@@ -26,25 +26,22 @@ public class PontoTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Aluno aluno = alunos.get(rowIndex);
+        Ponto ponto = pontos.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return aluno.getId();
+                return ponto.getIdPonto();
 
             case 1:
-                return aluno.getMatricula();
+                return ponto.getMonitor();
 
             case 2:
-                return aluno.getNome();
+                return ponto.getDataPonto();
 
             case 3:
-                return aluno.getEmail();
+                return ponto.getHoraEntradaPonto();
 
             case 4:
-                return aluno.getCpf();
-
-            case 5:
-                return aluno.getTelefone();
+                return ponto.getHoraSaidaPonto();
 
         }
         return null;
@@ -62,8 +59,6 @@ public class PontoTableModel extends AbstractTableModel {
                 return colunas[3];
             case 4:
                 return colunas[4];
-            case 5: 
-                return colunas[5];
 
         }
         return null;
