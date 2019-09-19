@@ -1,9 +1,11 @@
 package aluno;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Aluno {
@@ -15,6 +17,10 @@ public class Aluno {
     private String email;
     private String cpf;
     private String telefone;
+    
+    @Column
+    @Lob
+    private byte[] fotoAluno;
 
     public int getId() {
         return id;
@@ -59,5 +65,14 @@ public class Aluno {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public byte[] getFotoAluno() {
+        return fotoAluno;
+    }
+
+    public void setFotoAluno(byte[] fotoAluno) {
+        this.fotoAluno = fotoAluno;
+    }
+    
     
 }

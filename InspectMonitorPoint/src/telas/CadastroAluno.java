@@ -12,6 +12,14 @@ import javax.swing.JOptionPane;
 import aluno.Aluno;
 import aluno.AlunoDAO;
 import aluno.AlunoTableModel;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import util.Util;
 
 /**
  *
@@ -39,9 +47,45 @@ public class CadastroAluno extends javax.swing.JFrame {
         tfEmail.setText("");
         tfCpf.setText("");
         tfTelefone.setText("");
+        btnFoto.setIcon(new ImageIcon(getClass().getResource("")));
         aluno = new Aluno();
     }
     
+    public void selecionarFoto(){
+        BufferedImage bi;
+        File file;
+        selecionarFoto.setFileFilter(new javax.swing.filechooser.FileFilter() {
+            public boolean accept(File f) {
+                return (f.getName().endsWith(".jpg")) || f.isDirectory();
+            }
+
+            public String getDescription() {
+                return "Arquivos em Formato (*.jpg)";
+            }
+        });
+        int returnVal = selecionarFoto.showOpenDialog(this);
+        if (returnVal == selecionarFoto.APPROVE_OPTION) {
+            try {
+                file = selecionarFoto.getSelectedFile();
+                bi = ImageIO.read(file);//carrega a imagem real num buffer  
+                BufferedImage aux = new BufferedImage(120, 140, bi.getType());//cria um buffer auxiliar com o tamanho desejado    
+                Graphics2D g = aux.createGraphics();//pega a classe graphics do aux para edicao    
+                AffineTransform at = AffineTransform.getScaleInstance((double) 120 / bi.getWidth(), (double) 140 / bi.getHeight());//cria a transformacao  
+                g.drawRenderedImage(bi, at);//pinta e transforma a imagem real no auxiliar 
+                // Capturar foto formatada e converter bytes pra salvar
+                ImageIcon foto = new ImageIcon();
+                foto.setImage(aux);
+                btnFoto.setIcon(foto);
+                aluno.setFotoAluno(Util.imageToByte(aux));
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(rootPane, "Não foi possível carregar essa imagem",
+                        "Erro ao carregar imagem", JOptionPane.ERROR_MESSAGE);
+                btnFoto.setIcon(new ImageIcon(getClass().getResource("")));
+            }
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +95,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        selecionarFoto = new javax.swing.JFileChooser();
         tfNome = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         btnExcluir = new javax.swing.JButton();
@@ -62,6 +107,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnPesquisar = new javax.swing.JButton();
         tfTelefone = new javax.swing.JFormattedTextField();
+        btnFoto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +126,11 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         tfEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfEmail.setBorder(null);
+        tfEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEmailActionPerformed(evt);
+            }
+        });
         getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 323, 590, 35));
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
@@ -171,6 +222,17 @@ public class CadastroAluno extends javax.swing.JFrame {
         tfTelefone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         getContentPane().add(tfTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 374, 220, 35));
 
+        btnFoto.setBorder(null);
+        btnFoto.setBorderPainted(false);
+        btnFoto.setContentAreaFilled(false);
+        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 267, 120, 150));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastroaluno.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -191,6 +253,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             aluno.setTelefone(tfTelefone.getText());
             alunoDAO.salvar(aluno);
             limparCampos();
+            btnFoto.setIcon(new ImageIcon(getClass().getResource("")));
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se os campos estão preenchidos corretamente!");
         }    
@@ -235,8 +298,22 @@ public class CadastroAluno extends javax.swing.JFrame {
             tfMatricula.setText(aluno.getMatricula());
             tfNome.setText(aluno.getNome());
             tfTelefone.setText(aluno.getTelefone());
+            try {
+                ImageIcon foto = new ImageIcon();
+                foto.setImage(Util.byteToImage(aluno.getFotoAluno()));
+                btnFoto.setIcon(foto);
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEmailActionPerformed
+
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        selecionarFoto();
+    }//GEN-LAST:event_btnFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,12 +353,14 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JFileChooser selecionarFoto;
     private javax.swing.JFormattedTextField tfCpf;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfMatricula;
