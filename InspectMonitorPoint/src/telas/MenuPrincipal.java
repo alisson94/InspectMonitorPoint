@@ -262,7 +262,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnCadastrarMonitorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenuActionPerformed
         CadastroAluno frame = new CadastroAluno();
         frame.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btnCadastrarMonitorMenuActionPerformed
 
     private void btnCadastroMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroMenuMouseEntered

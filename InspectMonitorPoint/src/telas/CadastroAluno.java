@@ -260,8 +260,6 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        MenuPrincipal frame = new MenuPrincipal();
-        frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

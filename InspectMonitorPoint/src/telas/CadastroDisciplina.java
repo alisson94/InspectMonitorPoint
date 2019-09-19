@@ -61,6 +61,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
@@ -76,7 +77,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfNome.setBorder(null);
-        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 410, 35));
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 410, 35));
 
         btnExcluirDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
         btnExcluirDisciplina.setBorder(null);
@@ -108,12 +109,17 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltarDisciplina.setBorderPainted(false);
         btnVoltarDisciplina.setContentAreaFilled(false);
         btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVoltarDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDisciplinaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVoltarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
         tfCargaHoraria.setBorder(null);
         tfCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 170, 35));
+        getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, 35));
         getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 40, 20));
 
         btnPesquisarCurso.setText("Pesquisar");
@@ -133,6 +139,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirDisciplinaActionPerformed
@@ -190,6 +197,10 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         CadastroCurso tela = new CadastroCurso();
         tela.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVoltarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDisciplinaActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments
