@@ -1,12 +1,7 @@
 package aluno;
 
-import java.util.List;
 import javax.swing.JOptionPane;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import util.GenericDAO;
-import util.HibernateUtil;
 
 public class AlunoDAO extends GenericDAO<Aluno> {
 

@@ -1,12 +1,9 @@
 package aluno;
 
-import curso.Curso;
-import disciplina.Disciplina;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import professor.Professor;
 
 @Entity
 public class Aluno {

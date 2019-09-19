@@ -5,11 +5,8 @@
  */
 package telas;
 
-import curso.Curso;
 import curso.CursoDAO;
-import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import aluno.Aluno;
@@ -232,12 +229,12 @@ public class CadastroAluno extends javax.swing.JFrame {
         Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Aluno");
         if(objetoRetorno != null){
             aluno = alunoDAO.consultarObjetoId("id", objetoRetorno);
-//            System.out.println(aluno.getNome());
-//            tfCpf.setText(aluno.getCpf());
-//            tfEmail.setText(aluno.getEmail());
-//            tfMatricula.setText(aluno.getMatricula());
-//            tfNome.setText(aluno.getNome());
-//            tfTelefone.setText(aluno.getTelefone());
+            System.out.println(aluno.getNome());
+            tfCpf.setText(aluno.getCpf());
+            tfEmail.setText(aluno.getEmail());
+            tfMatricula.setText(aluno.getMatricula());
+            tfNome.setText(aluno.getNome());
+            tfTelefone.setText(aluno.getTelefone());
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
