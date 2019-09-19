@@ -54,13 +54,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         backgroundMenuPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCadastroMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaocadastro.png"))); // NOI18N
         btnCadastroMenu.setBorder(null);
         btnCadastroMenu.setBorderPainted(false);
-        btnCadastroMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastroMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCadastroMenu.setFocusPainted(false);
         btnCadastroMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -77,7 +78,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBiometriaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaobiometria.png"))); // NOI18N
         btnBiometriaMenu.setBorder(null);
         btnBiometriaMenu.setBorderPainted(false);
-        btnBiometriaMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBiometriaMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBiometriaMenu.setFocusPainted(false);
         btnBiometriaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -94,7 +95,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRelatorioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaorelatorio.png"))); // NOI18N
         btnRelatorioMenu.setBorder(null);
         btnRelatorioMenu.setBorderPainted(false);
-        btnRelatorioMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRelatorioMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRelatorioMenu.setFocusPainted(false);
         btnRelatorioMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -111,7 +112,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosair.png"))); // NOI18N
         jButton11.setBorder(null);
         jButton11.setContentAreaFilled(false);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 503, -1, -1));
 
         panelBotaoRelatorio.setBackground(new java.awt.Color(255, 255, 255));
@@ -303,6 +309,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments

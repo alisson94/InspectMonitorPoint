@@ -111,6 +111,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -225,7 +226,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnFoto.setBorder(null);
         btnFoto.setBorderPainted(false);
         btnFoto.setContentAreaFilled(false);
-        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFotoActionPerformed(evt);

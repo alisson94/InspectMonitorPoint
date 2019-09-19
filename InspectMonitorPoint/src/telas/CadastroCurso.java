@@ -49,6 +49,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,9 +97,15 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnVoltarCurso.setBorderPainted(false);
         btnVoltarCurso.setContentAreaFilled(false);
         btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarCursoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVoltarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 438, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastrocurso.jpg"))); // NOI18N
+        jLabel2.setInheritsPopupMenu(false);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
 
         pack();
@@ -141,6 +148,10 @@ public class CadastroCurso extends javax.swing.JFrame {
             tfNome.setText(curso.getNome());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnVoltarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCursoActionPerformed
+       dispose();
+    }//GEN-LAST:event_btnVoltarCursoActionPerformed
 
     /**
      * @param args the command line arguments
