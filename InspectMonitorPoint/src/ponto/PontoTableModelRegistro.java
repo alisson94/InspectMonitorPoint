@@ -43,7 +43,7 @@ public class PontoTableModelRegistro extends AbstractTableModel {
                     return ponto.getHoraSaidaPonto();
                 }
             case 2:
-                ponto.getTurnoPonto();
+                return ponto.getTurnoPonto();
             case 3:
                 if (ponto.getHoraSaidaPonto() == null) {
                     return "Entrada";
