@@ -20,6 +20,7 @@
         <mapping class="professor.Professor"/>
         <mapping class="monitor.Monitor"/>
         <mapping class="ponto.Ponto"/>
+        <mapping class="usuario.Usuario"/>
 
 
     </session-factory>
