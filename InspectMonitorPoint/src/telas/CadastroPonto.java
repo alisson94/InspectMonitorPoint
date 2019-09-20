@@ -5,19 +5,112 @@
  */
 package telas;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import monitor.Monitor;
+import monitor.MonitorDAO;
+import ponto.*;
+import util.Relogio;
+
 /**
  *
  * @author Everton
  */
 public class CadastroPonto extends javax.swing.JFrame {
-
-    /**
-     * Creates new form CadastroPonto
-     */
+    
+    Ponto ponto = new Ponto();
+    PontoDAO pontoDAO = new PontoDAO();
+    Monitor monitor = new Monitor();
+    MonitorDAO monitorDAO = new MonitorDAO();
+    
+    SimpleDateFormat formatarData = new SimpleDateFormat("dd/mm/yyyy");
+    SimpleDateFormat formatarHora = new SimpleDateFormat("HH");
+    SimpleDateFormat formatarMinuto = new SimpleDateFormat("mm");
+    SimpleDateFormat formatarDiaSemana = new SimpleDateFormat("E");
+    SimpleDateFormat formatarHoraCompleta = new SimpleDateFormat("HH:mm:ss");
+    Date dataHoraSistema;
+    
+    List<Ponto> listaPontoTabela = new ArrayList<>();
+    
     public CadastroPonto() {
         initComponents();
+        dataHoraSistema = new Date();
+        mostrarHora();
+        
+        new Thread(){
+            public void main(){
+                while(true){
+                    dataHoraSistema = new Date();
+                }
+            }
+        }.start();
     }
 
+    public void mostrarHora() {
+        Relogio ah = new Relogio(lbHora);
+        ah.mostrarData(true);
+        Thread thHora = ah;
+        thHora.start();
+    }
+    
+    public void atualizarTabela(){
+        PontoTableModelRegistro model = new PontoTableModelRegistro(listaPontoTabela);
+        tbPontoMonitor.setModel(model);
+        tbPontoMonitor.getColumnModel().getColumn(0).setPreferredWidth(300);
+    }
+    
+    public String carregarTurno() {
+        dataHoraSistema = new Date();
+        int hora = Integer.parseInt(formatarHora.format(dataHoraSistema));
+        int minuto = Integer.parseInt(formatarMinuto.format(dataHoraSistema));
+        if ((hora >= 5 && hora <= 12) || ((hora == 13) && minuto <= 15)) {
+            return "Manhã";
+        } else if ((hora >= 13 && hora <= 16) || ((hora == 17) && minuto <= 20)) {
+            return "Tarde";
+        } else {
+            return "Noite";
+        }
+    }
+    
+    public void registrarPresentePonto(Monitor monitor) {
+        ponto = new Ponto();
+        List<Object> listaPontosMonitor = pontoDAO.checkExistsPontoMonitor("dataPonto", formatarData.format(dataHoraSistema),
+                "monitor.id", monitor.getId(),
+                "turnoPonto", carregarTurno());
+        dataHoraSistema = new Date();
+        if (!listaPontosMonitor.isEmpty()) {
+            ponto = (Ponto) listaPontosMonitor.get(0);
+            if (ponto.getHoraEntradaPonto() == null) {
+                ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
+            } else if (ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() == null) {
+                ponto.setHoraSaidaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
+            } else {
+                ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
+                ponto.setHoraSaidaPonto(null);
+            }
+            listaPontoTabela.add(0, ponto);
+            atualizarTabela();
+            pontoDAO.atualizar(ponto);
+            //abrirTelaMensagemPonto(ponto);
+
+        } else {
+            ponto.setDataPontoCompleta(dataHoraSistema);
+            ponto.setDataPonto(formatarData.format(dataHoraSistema));
+            ponto.setDiaDaSemana(formatarDiaSemana.format(dataHoraSistema));
+            ponto.setMonitor(monitor);
+            ponto.setTurnoPonto(carregarTurno());
+            ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
+            listaPontoTabela.add(0, ponto);
+            atualizarTabela();
+            pontoDAO.adicionar(ponto);
+            //abrirTelaMensagemPonto(ponto);
+        }
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,14 +121,17 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbPontoMonitor = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        lbHora = new javax.swing.JLabel();
+        tfIdMonitor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPontoMonitor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -46,9 +142,21 @@ public class CadastroPonto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbPontoMonitor);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 780, 240));
+
+        jButton1.setText("Dar entrada/saida");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
+
+        lbHora.setText("Hora:");
+        getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
+        getContentPane().add(tfIdMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, -1));
 
         jLabel2.setText("CADASTRO DE PONTO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
@@ -58,6 +166,12 @@ public class CadastroPonto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int idMonitor = Integer.parseInt(tfIdMonitor.getText());
+        monitor = monitorDAO.consultarObjetoId("id", idMonitor);
+        registrarPresentePonto(monitor);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,9 +209,12 @@ public class CadastroPonto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbHora;
+    private javax.swing.JTable tbPontoMonitor;
+    private javax.swing.JTextField tfIdMonitor;
     // End of variables declaration//GEN-END:variables
 }

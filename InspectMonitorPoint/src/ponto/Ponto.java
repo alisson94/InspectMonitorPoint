@@ -35,7 +35,10 @@ public class Ponto {
 
     @Column
     private Time horaSaidaPonto;
-
+    
+    private String turnoPonto;
+    private String diaDaSemana;
+    
     public int getIdPonto() {
         return idPonto;
     }
@@ -83,4 +86,21 @@ public class Ponto {
     public void setHoraSaidaPonto(Time horaSaidaPonto) {
         this.horaSaidaPonto = horaSaidaPonto;
     }
+
+    public String getTurnoPonto() {
+        return turnoPonto;
+    }
+
+    public void setTurnoPonto(String turnoPonto) {
+        this.turnoPonto = turnoPonto;
+    }
+
+    public String getDiaDaSemana() {
+        return diaDaSemana;
+    }
+
+    public void setDiaDaSemana(String diaDaSemana) {
+        this.diaDaSemana = diaDaSemana;
+    }
+    
 }
