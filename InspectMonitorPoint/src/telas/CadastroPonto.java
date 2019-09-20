@@ -6,14 +6,24 @@
 package telas;
 
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import monitor.Monitor;
 import monitor.MonitorDAO;
 import ponto.*;
 import util.Relogio;
+import org.joda.time.DateTime;
+import org.joda.time.Hours;
+import org.joda.time.Minutes;
+import org.joda.time.Seconds;
+
+
 
 /**
  *
@@ -26,7 +36,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     Monitor monitor = new Monitor();
     MonitorDAO monitorDAO = new MonitorDAO();
     
-    SimpleDateFormat formatarData = new SimpleDateFormat("dd/mm/yyyy");
+    SimpleDateFormat formatarData = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat formatarHora = new SimpleDateFormat("HH");
     SimpleDateFormat formatarMinuto = new SimpleDateFormat("mm");
     SimpleDateFormat formatarDiaSemana = new SimpleDateFormat("E");
@@ -41,14 +51,33 @@ public class CadastroPonto extends javax.swing.JFrame {
         mostrarHora();
         
         new Thread(){
-            public void main(){
-                while(true){
-                    dataHoraSistema = new Date();
+            @Override
+            public void run(){
+                try {
+                    while(true){
+                        dataHoraSistema = new Date();
+                        String hora = formatarHora.format(dataHoraSistema);
+                        String minuto = formatarMinuto.format(dataHoraSistema);
+                        String diaDaSemana = formatarDiaSemana.format(dataHoraSistema);
+
+                        if(hora.equals("09") && minuto.equals("59") && diaDaSemana.equals("Sex")){
+                            for(Monitor monitor : monitorDAO.listar()){
+                                verificarHorasSemanais(monitor);
+                            }
+                        }
+                        
+                        sleep(1000);
+                    }
+                } catch (Exception e) {
                 }
             }
         }.start();
     }
-
+    
+    public void verificarHorasSemanais(Monitor monitor){
+        
+    }
+    
     public void mostrarHora() {
         Relogio ah = new Relogio(lbHora);
         ah.mostrarData(true);
@@ -75,18 +104,33 @@ public class CadastroPonto extends javax.swing.JFrame {
         }
     }
     
+    public void calcularDiferencaHoras(Time horaInicio, Time horaFinal){
+        JOptionPane.showMessageDialog(null, horaInicio);
+        JOptionPane.showMessageDialog(null, horaFinal);
+        
+        DateTime inicio = new DateTime(horaFinal);
+        DateTime fim = new DateTime(horaFinal);
+        
+        Seconds  horas = Seconds.secondsBetween(inicio, fim);
+        JOptionPane.showMessageDialog(null, horas.getSeconds());
+    }
+    
     public void registrarPresentePonto(Monitor monitor) {
         ponto = new Ponto();
         List<Object> listaPontosMonitor = pontoDAO.checkExistsPontoMonitor("dataPonto", formatarData.format(dataHoraSistema),
                 "monitor.id", monitor.getId(),
                 "turnoPonto", carregarTurno());
         dataHoraSistema = new Date();
+        
         if (!listaPontosMonitor.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "lista cheia");
             ponto = (Ponto) listaPontosMonitor.get(0);
             if (ponto.getHoraEntradaPonto() == null) {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
             } else if (ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() == null) {
                 ponto.setHoraSaidaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
+                calcularDiferencaHoras(ponto.getHoraEntradaPonto(), ponto.getHoraSaidaPonto());
+                //ponto.setHorasTrabalhadas();
             } else {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
                 ponto.setHoraSaidaPonto(null);
@@ -125,6 +169,9 @@ public class CadastroPonto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         lbHora = new javax.swing.JLabel();
         tfIdMonitor = new javax.swing.JTextField();
+        tfHoraInicial = new javax.swing.JTextField();
+        tfHoraFinal = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -155,8 +202,18 @@ public class CadastroPonto extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
 
         lbHora.setText("Hora:");
-        getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
+        getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
         getContentPane().add(tfIdMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, -1));
+        getContentPane().add(tfHoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 70, -1));
+        getContentPane().add(tfHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 80, -1));
+
+        jButton2.setText("ir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
 
         jLabel2.setText("CADASTRO DE PONTO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
@@ -172,6 +229,22 @@ public class CadastroPonto extends javax.swing.JFrame {
         monitor = monitorDAO.consultarObjetoId("id", idMonitor);
         registrarPresentePonto(monitor);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String TextoHoraI = tfHoraInicial.getText();
+        String TextoHoraF = tfHoraFinal.getText();
+        
+        Time horaInicio = null;
+        Time horaFinal = null;
+        try {
+            horaInicio = new java.sql.Time(formatarHoraCompleta.parse(TextoHoraI).getTime()) ;
+            horaFinal = new java.sql.Time(formatarHoraCompleta.parse(TextoHoraI).getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroPonto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //calcularDiferencaHoras(horaInicio, horaFinal);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +283,14 @@ public class CadastroPonto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
+    private javax.swing.JTextField tfHoraFinal;
+    private javax.swing.JTextField tfHoraInicial;
     private javax.swing.JTextField tfIdMonitor;
     // End of variables declaration//GEN-END:variables
 }

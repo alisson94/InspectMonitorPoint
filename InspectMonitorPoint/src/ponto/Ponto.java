@@ -38,6 +38,7 @@ public class Ponto {
     
     private String turnoPonto;
     private String diaDaSemana;
+    private Time horasTrabalhadas;
     
     public int getIdPonto() {
         return idPonto;
@@ -102,5 +103,14 @@ public class Ponto {
     public void setDiaDaSemana(String diaDaSemana) {
         this.diaDaSemana = diaDaSemana;
     }
+
+    public Time getHorasTrabalhadas() {
+        return horasTrabalhadas;
+    }
+
+    public void setHorasTrabalhadas(Time horasTrabalhadas) {
+        this.horasTrabalhadas = horasTrabalhadas;
+    }
+    
     
 }

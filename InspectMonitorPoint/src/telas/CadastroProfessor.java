@@ -39,7 +39,18 @@ public class CadastroProfessor extends javax.swing.JFrame {
         tfTelefone.setText("");
         professor = new Professor();
     }
-            
+    
+    public boolean existeCpf(){
+        List<Professor> lista = professorDAO.checkExistseq("cpf", tfCpf.getText());
+        if(!lista.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Já existe um Professor cadastrado com esse número de CPF");
+            tfCpf.setText("");
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -142,8 +153,10 @@ public class CadastroProfessor extends javax.swing.JFrame {
             professor.setEmail(tfEmail.getText());
             professor.setCpf(tfCpf.getText());
             professor.setTelefone(tfTelefone.getText());
-            professorDAO.salvar(professor);
-            limparCampos();
+            if(!existeCpf()){
+                professorDAO.salvar(professor);
+                limparCampos();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
         }

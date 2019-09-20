@@ -86,6 +86,18 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         }
     }
+    
+    public boolean existeMatricula(){
+        List<Aluno> lista = alunoDAO.checkExistseq("matricula", tfMatricula.getText());
+        if(!lista.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Já existe um Aluno cadastrado com essa matrícula");
+            tfMatricula.setText("");
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,7 +149,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -149,7 +161,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnSalvar.setBorder(null);
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -160,7 +172,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
-        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -171,7 +183,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
         btnVoltar.setBorder(null);
         btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -187,6 +199,11 @@ public class CadastroAluno extends javax.swing.JFrame {
         }
         tfMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tfMatricula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        tfMatricula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfMatriculaFocusLost(evt);
+            }
+        });
         getContentPane().add(tfMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 423, 190, 35));
 
         tfCpf.setBorder(null);
@@ -252,9 +269,12 @@ public class CadastroAluno extends javax.swing.JFrame {
             aluno.setMatricula(tfMatricula.getText());
             aluno.setCpf(tfCpf.getText());
             aluno.setTelefone(tfTelefone.getText());
-            alunoDAO.salvar(aluno);
-            limparCampos();
-            btnFoto.setIcon(new ImageIcon(getClass().getResource("")));
+            if(!existeMatricula()){
+                alunoDAO.salvar(aluno);
+                limparCampos();
+                btnFoto.setIcon(new ImageIcon(getClass().getResource("")));
+            }
+            
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se os campos estão preenchidos corretamente!");
         }    
@@ -312,6 +332,10 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
         selecionarFoto();
     }//GEN-LAST:event_btnFotoActionPerformed
+
+    private void tfMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMatriculaFocusLost
+        
+    }//GEN-LAST:event_tfMatriculaFocusLost
 
     /**
      * @param args the command line arguments
