@@ -76,8 +76,9 @@ public class TelaAcessar extends javax.swing.JFrame {
             usuario = usuarioDAO.autenticarUsuario(tfUsuario.getText(), pfSenha.getText());
             if (usuario != null) {
                 MenuPrincipal frame = new MenuPrincipal();
-                frame.setVisible(true);
                 dispose();
+                frame.setVisible(true);
+                
             }
 
         }
