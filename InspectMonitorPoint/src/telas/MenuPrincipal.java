@@ -6,6 +6,8 @@
 
 package telas;
 
+import usuario.Usuario;
+
 /**
  *
  * @author Everton
@@ -24,6 +26,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         seVisivelPainelCadastro = false;
         seVisivelPainelBiometria = false;
         seVisivelPainelRelatorio = false;
+    }
+
+    MenuPrincipal(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /** This method is called from within the constructor to

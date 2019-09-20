@@ -1,8 +1,15 @@
 
 package telas;
 
+import usuario.Usuario;
+import usuario.UsuarioDAO;
+import util.Util;
+
 public class TelaAcessar extends javax.swing.JFrame {
 
+    Usuario usuario = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    
     public TelaAcessar() {
         initComponents();
     }
@@ -39,7 +46,7 @@ public class TelaAcessar extends javax.swing.JFrame {
 
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/btnentrar.png"))); // NOI18N
         btnEntrar.setBorder(null);
-        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -65,7 +72,15 @@ public class TelaAcessar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        limparCampos();
+        if (Util.chkVazio(tfUsuario.getText(), pfSenha.getText())) {
+            usuario = usuarioDAO.autenticarUsuario(tfUsuario.getText(), pfSenha.getText());
+            if (usuario != null) {
+                MenuPrincipal frame = new MenuPrincipal();
+                frame.setVisible(true);
+                dispose();
+            }
+
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     
