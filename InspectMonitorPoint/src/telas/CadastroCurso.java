@@ -62,13 +62,13 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnSalvarCurso.setBorderPainted(false);
         btnSalvarCurso.setContentAreaFilled(false);
         btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalvarCurso.setPreferredSize(new java.awt.Dimension(159, 49));
+        btnSalvarCurso.setPreferredSize(new java.awt.Dimension(1111, 1111));
         btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 429, -1, -1));
+        getContentPane().add(btnSalvarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 436, 105, 34));
 
         btnExcluirCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluirpequeno.png"))); // NOI18N
         btnExcluirCurso.setBorder(null);
@@ -80,7 +80,7 @@ public class CadastroCurso extends javax.swing.JFrame {
                 btnExcluirCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluirCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 428, 130, 50));
+        getContentPane().add(btnExcluirCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 436, 105, 34));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         jButton3.setBorder(null);

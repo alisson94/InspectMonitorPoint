@@ -67,7 +67,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -83,32 +83,32 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnExcluirDisciplina.setBorder(null);
         btnExcluirDisciplina.setBorderPainted(false);
         btnExcluirDisciplina.setContentAreaFilled(false);
-        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluirDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirDisciplinaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluirDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 436, 105, 35));
+        getContentPane().add(btnExcluirDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 436, 105, 34));
 
         btnSalvarDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvarpequeno.png"))); // NOI18N
         btnSalvarDisciplina.setBorder(null);
         btnSalvarDisciplina.setBorderPainted(false);
         btnSalvarDisciplina.setContentAreaFilled(false);
-        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarDisciplina.setPreferredSize(new java.awt.Dimension(159, 49));
         btnSalvarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarDisciplinaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 434, 105, 35));
+        getContentPane().add(btnSalvarDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 434, 105, 34));
 
         btnVoltarDisciplina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
         btnVoltarDisciplina.setBorder(null);
         btnVoltarDisciplina.setBorderPainted(false);
         btnVoltarDisciplina.setContentAreaFilled(false);
-        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarDisciplinaActionPerformed(evt);
