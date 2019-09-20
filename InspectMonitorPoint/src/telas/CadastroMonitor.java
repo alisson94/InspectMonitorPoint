@@ -57,12 +57,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
         lbCurso = new javax.swing.JLabel();
         lbDisciplina = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAddProf = new javax.swing.JButton();
+        btnAddAluno = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnAddCurso = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnAddDisciplina = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
@@ -86,9 +86,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Add");
+        btnAddProf.setText("Add");
+        btnAddProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProfActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Add");
+        btnAddAluno.setText("Add");
+        btnAddAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAlunoActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Pesquisar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +107,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Add");
+        btnAddCurso.setText("Add");
+        btnAddCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCursoActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Pesquisar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +121,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Add");
+        btnAddDisciplina.setText("Add");
+        btnAddDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDisciplinaActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Pesquisar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -161,19 +181,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(btnAddProf))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(btnAddAluno))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5))
+                        .addComponent(btnAddCurso))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
+                        .addComponent(btnAddDisciplina)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -194,25 +214,25 @@ public class CadastroMonitor extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(lbAluno)
                     .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(btnAddAluno))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lbProfessor)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnAddProf))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lbCurso)
                     .addComponent(jButton6)
-                    .addComponent(jButton5))
+                    .addComponent(btnAddCurso))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lbDisciplina)
                     .addComponent(jButton8)
-                    .addComponent(jButton7))
+                    .addComponent(btnAddDisciplina))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
@@ -285,6 +305,26 @@ public class CadastroMonitor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void btnAddAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAlunoActionPerformed
+        CadastroAluno frame = new CadastroAluno();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnAddAlunoActionPerformed
+
+    private void btnAddProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProfActionPerformed
+        CadastroProfessor frame = new CadastroProfessor();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnAddProfActionPerformed
+
+    private void btnAddCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCursoActionPerformed
+        CadastroCurso frame = new CadastroCurso();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnAddCursoActionPerformed
+
+    private void btnAddDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDisciplinaActionPerformed
+        CadastroDisciplina frame = new CadastroDisciplina();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnAddDisciplinaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,16 +361,16 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAluno;
+    private javax.swing.JButton btnAddCurso;
+    private javax.swing.JButton btnAddDisciplina;
+    private javax.swing.JButton btnAddProf;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
