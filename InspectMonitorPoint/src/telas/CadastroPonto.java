@@ -169,8 +169,8 @@ public class CadastroPonto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         lbHora = new javax.swing.JLabel();
         tfIdMonitor = new javax.swing.JTextField();
-        tfHoraInicial = new javax.swing.JTextField();
-        tfHoraFinal = new javax.swing.JTextField();
+        tfHoraFinal = new javax.swing.JFormattedTextField();
+        tfHoraInicial = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -204,8 +204,20 @@ public class CadastroPonto extends javax.swing.JFrame {
         lbHora.setText("Hora:");
         getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
         getContentPane().add(tfIdMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, -1));
-        getContentPane().add(tfHoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 70, -1));
-        getContentPane().add(tfHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 80, -1));
+
+        try {
+            tfHoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(tfHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 120, -1));
+
+        try {
+            tfHoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(tfHoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 120, -1));
 
         jButton2.setText("ir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +225,7 @@ public class CadastroPonto extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
 
         jLabel2.setText("CADASTRO DE PONTO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
@@ -234,11 +246,23 @@ public class CadastroPonto extends javax.swing.JFrame {
         String TextoHoraI = tfHoraInicial.getText();
         String TextoHoraF = tfHoraFinal.getText();
         
-        Time horaInicio = null;
-        Time horaFinal = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        
+        Date horaInicio = null;
+        Date horaFinal = null;
         try {
-            horaInicio = new java.sql.Time(formatarHoraCompleta.parse(TextoHoraI).getTime()) ;
-            horaFinal = new java.sql.Time(formatarHoraCompleta.parse(TextoHoraI).getTime());
+            horaInicio = format.parse(TextoHoraI);
+	    horaFinal = format.parse(TextoHoraF);
+            
+            long diff = horaFinal.getTime() - horaInicio.getTime();
+
+            long diffSeconds = diff / 1000 % 60;
+            long diffMinutes = diff / (60 * 1000) % 60;
+            long diffHours = diff / (60 * 60 * 1000) % 24;
+            long diffDays = diff / (24 * 60 * 60 * 1000);
+            
+            JOptionPane.showMessageDialog(null, diffHours);
+            
         } catch (ParseException ex) {
             Logger.getLogger(CadastroPonto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -289,8 +313,8 @@ public class CadastroPonto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
-    private javax.swing.JTextField tfHoraFinal;
-    private javax.swing.JTextField tfHoraInicial;
+    private javax.swing.JFormattedTextField tfHoraFinal;
+    private javax.swing.JFormattedTextField tfHoraInicial;
     private javax.swing.JTextField tfIdMonitor;
     // End of variables declaration//GEN-END:variables
 }
