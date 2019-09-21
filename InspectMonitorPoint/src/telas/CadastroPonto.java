@@ -105,14 +105,14 @@ public class CadastroPonto extends javax.swing.JFrame {
     }
     
     public void calcularDiferencaHoras(Time horaInicio, Time horaFinal){
-        JOptionPane.showMessageDialog(null, horaInicio);
-        JOptionPane.showMessageDialog(null, horaFinal);
+        long diff = horaFinal.getTime() - horaInicio.getTime();
         
-        DateTime inicio = new DateTime(horaFinal);
-        DateTime fim = new DateTime(horaFinal);
-        
-        Seconds  horas = Seconds.secondsBetween(inicio, fim);
-        JOptionPane.showMessageDialog(null, horas.getSeconds());
+        long diffSeconds = diff / 1000 % 60;
+        long diffMinutes = diff / (60 * 1000) % 60;
+        long diffHours = diff / (60 * 60 * 1000) % 24;
+        long diffDays = diff / (24 * 60 * 60 * 1000);
+
+        JOptionPane.showMessageDialog(null, diffSeconds);
     }
     
     public void registrarPresentePonto(Monitor monitor) {
@@ -123,7 +123,6 @@ public class CadastroPonto extends javax.swing.JFrame {
         dataHoraSistema = new Date();
         
         if (!listaPontosMonitor.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "lista cheia");
             ponto = (Ponto) listaPontosMonitor.get(0);
             if (ponto.getHoraEntradaPonto() == null) {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
@@ -243,31 +242,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String TextoHoraI = tfHoraInicial.getText();
-        String TextoHoraF = tfHoraFinal.getText();
-        
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        
-        Date horaInicio = null;
-        Date horaFinal = null;
-        try {
-            horaInicio = format.parse(TextoHoraI);
-	    horaFinal = format.parse(TextoHoraF);
-            
-            long diff = horaFinal.getTime() - horaInicio.getTime();
-
-            long diffSeconds = diff / 1000 % 60;
-            long diffMinutes = diff / (60 * 1000) % 60;
-            long diffHours = diff / (60 * 60 * 1000) % 24;
-            long diffDays = diff / (24 * 60 * 60 * 1000);
-            
-            JOptionPane.showMessageDialog(null, diffHours);
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(CadastroPonto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //calcularDiferencaHoras(horaInicio, horaFinal);
+        // COLOCA AQUI
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
