@@ -6,24 +6,16 @@
 package telas;
 
 import java.sql.Time;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import monitor.Monitor;
 import monitor.MonitorDAO;
 import ponto.*;
 import util.Relogio;
-import org.joda.time.DateTime;
-import org.joda.time.Hours;
-import org.joda.time.Minutes;
-import org.joda.time.Seconds;
+import email.Email;
 
 
 
@@ -32,7 +24,7 @@ import org.joda.time.Seconds;
  * @author Everton
  */
 public class CadastroPonto extends javax.swing.JFrame {
-    
+    Email email = new Email();
     Ponto ponto = new Ponto();
     PontoDAO pontoDAO = new PontoDAO();
     Monitor monitor = new Monitor();
@@ -64,12 +56,15 @@ public class CadastroPonto extends javax.swing.JFrame {
                         String diaDaSemana = formatarDiaSemana.format(dataHoraSistema);
 
                         if(hora.equals("23") && diaDaSemana.equals("Sex")){
+                            JOptionPane.showMessageDialog(null, "Entrou");
                             for(Monitor monitor : monitorDAO.listar()){
-                                verificarHorasSemanais(monitor.getId());
+                                verificarHorasSemanais(monitor);
                             }
+                            JOptionPane.showMessageDialog(null, "Saiu");
+                            System.exit(0);
                         }
                         
-                        sleep(2700000);
+                        sleep(1000);
                     }
                 } catch (Exception e) {
                 }
@@ -77,7 +72,7 @@ public class CadastroPonto extends javax.swing.JFrame {
         }.start();
     }
     
-    public void verificarHorasSemanais(int monitorId){
+    public void verificarHorasSemanais(Monitor monitor){
       List<Ponto> listaPontos = pontoDAO.listar();
       String semanaDoAno = formatarSemandaDoAno.format(dataHoraSistema);
       int horasTrabalhadasSemana = 0;
@@ -85,15 +80,15 @@ public class CadastroPonto extends javax.swing.JFrame {
       if(!listaPontos.isEmpty()){
         for(Ponto ponto : listaPontos){
             String semanaDoAnoPonto = formatarSemandaDoAno.format(ponto.getDataPontoCompleta());
-            if(ponto.getMonitor().getId() == monitorId && semanaDoAnoPonto.equals(semanaDoAno)){
+            if(ponto.getMonitor().getId() == monitor.getId() && semanaDoAnoPonto.equals(semanaDoAno)){
                 horasTrabalhadasSemana += ponto.getHorasTrabalhadas();
             }
         }
         if(horasTrabalhadasSemana < 8){
-            JOptionPane.showMessageDialog(null, "Enviar Email");
+            //email.enviarEmail(monitor, horasTrabalhadasSemana);
+            email.enviarEmail(monitor, horasTrabalhadasSemana);
         }else{
             JOptionPane.showMessageDialog(null, "Nao enviar Email");
-
         }
       }
     }
@@ -284,7 +279,8 @@ public class CadastroPonto extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int idMonitor = Integer.parseInt(tfIdMonitor.getText());
-        verificarHorasSemanais(idMonitor);
+        monitor = monitorDAO.consultarObjetoId("id", idMonitor);
+        verificarHorasSemanais(monitor);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
