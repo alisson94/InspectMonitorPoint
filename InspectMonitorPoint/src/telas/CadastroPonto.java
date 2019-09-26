@@ -9,7 +9,9 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +43,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     SimpleDateFormat formatarMinuto = new SimpleDateFormat("mm");
     SimpleDateFormat formatarDiaSemana = new SimpleDateFormat("E");
     SimpleDateFormat formatarHoraCompleta = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat formatarSemandaDoAno = new SimpleDateFormat("w");
     Date dataHoraSistema;
     
     List<Ponto> listaPontoTabela = new ArrayList<>();
@@ -60,13 +63,13 @@ public class CadastroPonto extends javax.swing.JFrame {
                         String minuto = formatarMinuto.format(dataHoraSistema);
                         String diaDaSemana = formatarDiaSemana.format(dataHoraSistema);
 
-                        if(hora.equals("09") && minuto.equals("59") && diaDaSemana.equals("Sex")){
+                        if(hora.equals("23") && diaDaSemana.equals("Sex")){
                             for(Monitor monitor : monitorDAO.listar()){
-                                verificarHorasSemanais(monitor);
+                                verificarHorasSemanais(monitor.getId());
                             }
                         }
                         
-                        sleep(1000);
+                        sleep(2700000);
                     }
                 } catch (Exception e) {
                 }
@@ -74,8 +77,25 @@ public class CadastroPonto extends javax.swing.JFrame {
         }.start();
     }
     
-    public void verificarHorasSemanais(Monitor monitor){
-        
+    public void verificarHorasSemanais(int monitorId){
+      List<Ponto> listaPontos = pontoDAO.listar();
+      String semanaDoAno = formatarSemandaDoAno.format(dataHoraSistema);
+      int horasTrabalhadasSemana = 0;
+      
+      if(!listaPontos.isEmpty()){
+        for(Ponto ponto : listaPontos){
+            String semanaDoAnoPonto = formatarSemandaDoAno.format(ponto.getDataPontoCompleta());
+            if(ponto.getMonitor().getId() == monitorId && semanaDoAnoPonto.equals(semanaDoAno)){
+                horasTrabalhadasSemana += ponto.getHorasTrabalhadas();
+            }
+        }
+        if(horasTrabalhadasSemana < 8){
+            JOptionPane.showMessageDialog(null, "Enviar Email");
+        }else{
+            JOptionPane.showMessageDialog(null, "Nao enviar Email");
+
+        }
+      }
     }
     
     public void mostrarHora() {
@@ -104,20 +124,29 @@ public class CadastroPonto extends javax.swing.JFrame {
         }
     }
     
-    public void calcularDiferencaHoras(Time horaInicio, Time horaFinal){
-        long diff = horaFinal.getTime() - horaInicio.getTime();
+    public int calcularDiferencaHoras(Time horaInicio, Time horaFinal){
+        int horaEntrada;
+        int horaSaida;
         
-        long diffSeconds = diff / 1000 % 60;
-        long diffMinutes = diff / (60 * 1000) % 60;
-        long diffHours = diff / (60 * 60 * 1000) % 24;
-        long diffDays = diff / (24 * 60 * 60 * 1000);
-
-        JOptionPane.showMessageDialog(null, diffSeconds);
+        if(horaInicio.getMinutes() < 15){
+            horaEntrada = horaInicio.getHours();
+        }else{
+            horaEntrada = horaInicio.getHours() + 1;
+        }
+        
+        if(horaFinal.getMinutes() > 50){
+            horaSaida = horaFinal.getHours() + 1;
+        }else{
+            horaSaida = horaFinal.getHours();
+        }
+        
+        JOptionPane.showMessageDialog(null, horaEntrada + "  " + horaSaida);
+        return horaSaida - horaEntrada;
     }
     
     public void registrarPresentePonto(Monitor monitor) {
         ponto = new Ponto();
-        List<Object> listaPontosMonitor = pontoDAO.checkExistsPontoMonitor("dataPonto", formatarData.format(dataHoraSistema),
+        List<Ponto> listaPontosMonitor = pontoDAO.checkExistsPontoMonitor("dataPonto", formatarData.format(dataHoraSistema),
                 "monitor.id", monitor.getId(),
                 "turnoPonto", carregarTurno());
         dataHoraSistema = new Date();
@@ -128,8 +157,7 @@ public class CadastroPonto extends javax.swing.JFrame {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
             } else if (ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() == null) {
                 ponto.setHoraSaidaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
-                calcularDiferencaHoras(ponto.getHoraEntradaPonto(), ponto.getHoraSaidaPonto());
-                //ponto.setHorasTrabalhadas();
+                ponto.setHorasTrabalhadas(calcularDiferencaHoras(ponto.getHoraEntradaPonto(), ponto.getHoraSaidaPonto()));
             } else {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
                 ponto.setHoraSaidaPonto(null);
@@ -171,6 +199,7 @@ public class CadastroPonto extends javax.swing.JFrame {
         tfHoraFinal = new javax.swing.JFormattedTextField();
         tfHoraInicial = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -226,6 +255,14 @@ public class CadastroPonto extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
 
+        jButton3.setText("Verificar horas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
+
         jLabel2.setText("CADASTRO DE PONTO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
 
@@ -244,6 +281,11 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // COLOCA AQUI
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int idMonitor = Integer.parseInt(tfIdMonitor.getText());
+        verificarHorasSemanais(idMonitor);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,6 +325,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

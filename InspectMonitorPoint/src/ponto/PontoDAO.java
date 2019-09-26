@@ -13,7 +13,7 @@ import util.GenericDAO;
  *
  * @author Everton
  */
-public class PontoDAO extends GenericDAO<Object>{
+public class PontoDAO extends GenericDAO<Ponto>{
     
     public PontoDAO() {
         super(Ponto.class);
