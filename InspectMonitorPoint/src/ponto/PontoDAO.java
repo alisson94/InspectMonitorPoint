@@ -5,7 +5,6 @@
  */
 package ponto;
 
-import javax.swing.JOptionPane;
 import monitor.Monitor;
 import util.GenericDAO;
 

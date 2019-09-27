@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -233,6 +234,36 @@ public abstract class GenericDAO<T> {
 
     }
 
+    public List<T> consultarIntervaloPonto(int monitor, Date dataInicio, Date dataFim) {
+        List<T> lista = null;
+        try {
+            this.setSessao(HibernateUtil.getSessionFactory().openSession());
+            setTransacao(getSessao().beginTransaction());
+            lista = this.getSessao().createCriteria(classe).add(Restrictions.eq("monitor.id", monitor))
+                    .add(Restrictions.between("dataPontoCompleta", dataInicio, dataFim))
+                    .list();
+            sessao.close();
+        } catch (Throwable e) {
+
+        }
+        return lista;
+    }
+    
+    public List<T> consultarIntervaloPonto(Date dataInicio, Date dataFim) {
+        List<T> lista = null;
+        try {
+            this.setSessao(HibernateUtil.getSessionFactory().openSession());
+            setTransacao(getSessao().beginTransaction());
+            lista = this.getSessao().createCriteria(classe)
+                    .add(Restrictions.between("dataPontoCompleta", dataInicio, dataFim))
+                    .list();
+            sessao.close();
+        } catch (Throwable e) {
+
+        }
+        return lista;
+    }
+    
     /**
      * @return the sessao
      */
