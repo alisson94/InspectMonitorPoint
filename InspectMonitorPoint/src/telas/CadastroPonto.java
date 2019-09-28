@@ -28,7 +28,7 @@ import util.LeitorBiometrico;
  * @author Everton
  */
 public class CadastroPonto extends javax.swing.JFrame {
-    Email email = new Email();
+    //Email email = new Email();
     Ponto ponto = new Ponto();
     PontoDAO pontoDAO = new PontoDAO();
     Monitor monitor = new Monitor();
@@ -98,15 +98,15 @@ public class CadastroPonto extends javax.swing.JFrame {
       if(!listaPontos.isEmpty()){
         for(Ponto ponto : listaPontos){
             String semanaDoAnoPonto = formatarSemandaDoAno.format(ponto.getDataPontoCompleta());
-            if(ponto.getMonitor().getId() == monitor.getId() && semanaDoAnoPonto.equals(semanaDoAno)){
-                horasTrabalhadasSemana += ponto.getHorasTrabalhadas().getTime();
+            if(ponto.getMonitor().getId() == monitor.getId() && semanaDoAnoPonto.equals(semanaDoAno) && ponto.getHorasTrabalhadas() != null){
+                horasTrabalhadasSemana += (ponto.getHorasTrabalhadas().getTime() - 10800000);
             }
         }
         if(horasTrabalhadasSemana < 28800000){
-            JOptionPane.showMessageDialog(null, "enviar email");
-            email.enviarEmail(monitor, horasTrabalhadasSemana);
+            JOptionPane.showMessageDialog(null, "enviar email" + monitor.getAluno().getNome() + horasTrabalhadasSemana);
+            //email.enviarEmail(monitor, horasTrabalhadasSemana);
         }else{
-            JOptionPane.showMessageDialog(null, "Nao enviar Email");
+            JOptionPane.showMessageDialog(null, "Nao enviar Email" + monitor.getAluno().getNome() + horasTrabalhadasSemana);
         }
       }
     }
@@ -181,6 +181,7 @@ public class CadastroPonto extends javax.swing.JFrame {
             } else {
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
                 ponto.setHoraSaidaPonto(null);
+                ponto.setHorasTrabalhadas(null);
             }
             listaPontoTabela.add(0, ponto);
             atualizarTabela();
