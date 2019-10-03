@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import monitor.*;
 import ponto.Ponto;
 import ponto.PontoDAO;
+import relatorio.Relatorio;
 
 /**
  *
@@ -182,6 +183,9 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
             for(Ponto ponto : listaPontos){
                 JOptionPane.showMessageDialog(null, ponto.getMonitor().getAluno().getNome() + ponto.getDataPonto());
             }
+            
+            Relatorio.gerarRelatorio(listaPontos);
+            
         }else{
             JOptionPane.showMessageDialog(null, "É obrigatório informar as duas datas!");
         }
