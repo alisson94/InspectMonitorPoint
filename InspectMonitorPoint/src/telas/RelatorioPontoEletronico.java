@@ -180,11 +180,15 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
             }else{
                 listaPontos = pontoDAO.consultarIntervaloPonto(dataInicial, dataFinal);
             }
-            for(Ponto ponto : listaPontos){
-                JOptionPane.showMessageDialog(null, ponto.getMonitor().getAluno().getNome() + ponto.getDataPonto());
-            }
+//            for(Ponto ponto : listaPontos){
+//                JOptionPane.showMessageDialog(null, ponto.getMonitor().getAluno().getNome() + ponto.getDataPonto());
+//            }
             
-            Relatorio.gerarRelatorio(listaPontos);
+            if(!listaPontos.isEmpty()){
+                Relatorio.gerarRelatorio(listaPontos);
+            }else{
+                JOptionPane.showMessageDialog(null, "Nenhum registro de ponto foi encontrado");
+            }
             
         }else{
             JOptionPane.showMessageDialog(null, "É obrigatório informar as duas datas!");

@@ -132,9 +132,6 @@ public class CadastroPonto extends javax.swing.JFrame {
         diferencaHora = (int) (diferencaEmMillis / 60000) / 60;
         diferencaMinute =(int) (diferencaEmMillis / 60000) % 60;
         
-        JOptionPane.showMessageDialog(null, diferencaHora);
-        JOptionPane.showMessageDialog(null, diferencaMinute);
-        
         Date date = formatarHoraCompleta.parse(diferencaHora + ":" + diferencaMinute + ":00");
         
         return Time.valueOf(formatarHoraCompleta.format(date));
