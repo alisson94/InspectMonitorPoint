@@ -75,7 +75,7 @@ public class CadastroPonto extends javax.swing.JFrame {
         }.start();
     }
     
-    public void verificarHorasSemanais(Monitor monitor){
+    public void verificarHorasSemanais(Monitor monitor) throws ParseException{
       List<Ponto> listaPontos = pontoDAO.listar();
       String semanaDoAno = formatarSemandaDoAno.format(dataHoraSistema);
       int horasTrabalhadasSemana = 0;
@@ -282,7 +282,11 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int idMonitor = Integer.parseInt(tfIdMonitor.getText());
         monitor = monitorDAO.consultarObjetoId("id", idMonitor);
-        verificarHorasSemanais(monitor);
+        try {
+            verificarHorasSemanais(monitor);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroPonto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
