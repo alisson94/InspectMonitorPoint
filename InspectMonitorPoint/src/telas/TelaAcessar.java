@@ -42,11 +42,16 @@ public class TelaAcessar extends javax.swing.JFrame {
 
         tfUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfUsuario.setBorder(null);
+        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 290, 60));
 
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/btnentrar.png"))); // NOI18N
         btnEntrar.setBorder(null);
-        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -83,6 +88,10 @@ public class TelaAcessar extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUsuarioActionPerformed
 
     
     public static void main(String args[]) {

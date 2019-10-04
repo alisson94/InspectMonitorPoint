@@ -215,13 +215,18 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        monitor.setAluno(aluno);
-        monitor.setProfessor(professor);
-        monitor.setCurso(curso);
-        monitor.setDisciplina(disciplina);
-        monitor.setAtivo(true);
-        monitorDAO.salvar(monitor);
-        limparCampos();
+
+        if(!lbAluno.getText().equals("") && !lbProfessor.getText().equals("") && !lbCurso.getText().equals("") && !lbDisciplina.getText().equals("")){
+            monitor.setAluno(aluno);
+            monitor.setProfessor(professor);
+            monitor.setCurso(curso);
+            monitor.setDisciplina(disciplina);
+            monitor.setAtivo(true);
+            monitorDAO.salvar(monitor);
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

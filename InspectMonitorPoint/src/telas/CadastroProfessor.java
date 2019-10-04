@@ -148,7 +148,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProfessorActionPerformed
-        if(!tfNome.getText().equals("") && !tfCpf.getText().equals("   .   .   -  ") && !tfTelefone.getText().equals("(  )     -    ")) {
+        if(!tfNome.getText().equals("") && !tfCpf.getText().equals("   .   .   -  ")) {
             professor.setNome(tfNome.getText());
             professor.setEmail(tfEmail.getText());
             professor.setCpf(tfCpf.getText());

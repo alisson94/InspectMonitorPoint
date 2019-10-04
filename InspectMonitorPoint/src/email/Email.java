@@ -25,7 +25,7 @@ import monitor.Monitor;
  * @author Everton
  */
 public class Email {
-    public void enviarEmail(Monitor monitor, int horasTrabalhadas) throws ParseException{
+    public void enviarEmail(Monitor monitor, int horasTrabalhadas){
     
     int diferencaEmMillis = 28800000 - horasTrabalhadas;
     
@@ -37,9 +37,7 @@ public class Email {
     
     SimpleDateFormat formatarHoraCompleta = new SimpleDateFormat("HH:mm:ss");
     
-    Date date = formatarHoraCompleta.parse(diferencaHora + ":" + diferencaMinute + ":00");
-    
-    Time horasPendentes = Time.valueOf(formatarHoraCompleta.format(date));
+    Time horasPendentes = Time.valueOf(diferencaHora + ":" + diferencaMinute + ":00");
     
     Properties props = new Properties();
     /** Parâmetros de conexão com servidor Gmail */

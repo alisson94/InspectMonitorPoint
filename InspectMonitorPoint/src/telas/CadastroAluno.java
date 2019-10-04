@@ -260,7 +260,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(!tfNome.getText().equals("") && !tfEmail.getText().equals("") && !tfCpf.getText().equals("   .   .   -  ") && !tfTelefone.getText().equals("(  )     -    ") && !tfMatricula.getText().equals("          ")) {
+        if(!tfNome.getText().equals("") && !tfEmail.getText().equals("") && !tfMatricula.getText().equals("          ")) {
             aluno.setNome(tfNome.getText());
             aluno.setEmail(tfEmail.getText());
             aluno.setMatricula(tfMatricula.getText());
