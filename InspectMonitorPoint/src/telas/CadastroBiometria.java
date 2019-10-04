@@ -60,7 +60,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -207,13 +207,13 @@ public class CadastroBiometria extends javax.swing.JFrame {
     private void btnMaoDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoDireitaActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão DIREITA que ele gostaria de cadastrar\n\n"
         + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoDireita();
+        capturarDigitalMaoEsquerda();
     }//GEN-LAST:event_btnMaoDireitaActionPerformed
 
     private void btnMaoEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoEsquerdaActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão ESQUERDA que ele gostaria de cadastrar\n\n"
                 + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoEsquerda();
+        capturarDigitalMaoDireita();
     }//GEN-LAST:event_btnMaoEsquerdaActionPerformed
 
     /**

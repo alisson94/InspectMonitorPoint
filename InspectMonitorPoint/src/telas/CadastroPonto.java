@@ -19,6 +19,7 @@ import email.Email;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import util.LeitorBiometrico;
 
 
 
@@ -32,6 +33,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     PontoDAO pontoDAO = new PontoDAO();
     Monitor monitor = new Monitor();
     MonitorDAO monitorDAO = new MonitorDAO();
+    LeitorBiometrico digital = new LeitorBiometrico();
     
     SimpleDateFormat formatarData = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat formatarHora = new SimpleDateFormat("HH");
@@ -42,11 +44,24 @@ public class CadastroPonto extends javax.swing.JFrame {
     Date dataHoraSistema;
     
     List<Ponto> listaPontoTabela = new ArrayList<>();
+    List<Monitor> listaMonitores;
     
     public CadastroPonto() {
         initComponents();
         dataHoraSistema = new Date();
         mostrarHora();
+        listaMonitores = monitorDAO.listar();
+        
+        new Thread() {
+            @Override
+            public void run() {
+                try {     
+                    compararDigital();
+                } catch (ParseException ex) {
+                }
+            }
+        }.start();
+
         
         new Thread(){
             @Override
@@ -93,6 +108,19 @@ public class CadastroPonto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nao enviar Email");
         }
       }
+    }
+    
+    private void compararDigital() throws ParseException {
+        monitor = new Monitor();
+        monitor = digital.verificarSeCadastrado(null, listaMonitores);
+        if (monitor != null) {
+            registrarPresentePonto(monitor);
+            jlMonitorNaoLocalizado.setText("");
+
+        } else {
+            jlMonitorNaoLocalizado.setText("Monitor não localizado!");
+        }
+        compararDigital();
     }
     
     public void mostrarHora() {
@@ -169,6 +197,7 @@ public class CadastroPonto extends javax.swing.JFrame {
             ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
             listaPontoTabela.add(0, ponto);
             atualizarTabela();
+            
             pontoDAO.adicionar(ponto);
             //abrirTelaMensagemPonto(ponto);
         }
@@ -194,6 +223,7 @@ public class CadastroPonto extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jlMonitorNaoLocalizado = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -258,6 +288,7 @@ public class CadastroPonto extends javax.swing.JFrame {
 
         jLabel2.setText("CADASTRO DE PONTO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
+        getContentPane().add(jlMonitorNaoLocalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 220, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundpesquisagenerica.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -331,6 +362,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlMonitorNaoLocalizado;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
     private javax.swing.JFormattedTextField tfHoraFinal;
