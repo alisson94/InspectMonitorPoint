@@ -49,15 +49,12 @@ public class CadastroMonitor extends javax.swing.JFrame {
         professor = new Professor();
         curso = new Curso();
         disciplina = new Disciplina();
+        monitor = new Monitor();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lbAluno = new javax.swing.JLabel();
         lbProfessor = new javax.swing.JLabel();
         lbCurso = new javax.swing.JLabel();
@@ -74,190 +71,144 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Aluno:");
+        lbAluno.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(lbAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 268, 540, 35));
 
-        jLabel2.setText("Professor:");
+        lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 315, 540, 35));
 
-        jLabel3.setText("Curso:");
+        lbCurso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 540, 35));
 
-        jLabel4.setText("Disciplina:");
+        lbDisciplina.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(lbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 540, 35));
 
-        jButton1.setText("Pesquisar");
+        jButton1.setToolTipText("");
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 314, 36, 36));
 
-        btnAddProf.setText("Add");
+        btnAddProf.setContentAreaFilled(false);
+        btnAddProf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddProfActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 314, 36, 36));
 
-        btnAddAluno.setText("Add");
+        btnAddAluno.setBorder(null);
+        btnAddAluno.setContentAreaFilled(false);
+        btnAddAluno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddAlunoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 267, 36, 36));
 
-        jButton4.setText("Pesquisar");
+        jButton4.setBorder(null);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 267, 36, 36));
 
-        btnAddCurso.setText("Add");
+        btnAddCurso.setBorder(null);
+        btnAddCurso.setContentAreaFilled(false);
+        btnAddCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCursoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 362, 36, 36));
 
-        jButton6.setText("Pesquisar");
+        jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 361, 36, 36));
 
-        btnAddDisciplina.setText("Add");
+        btnAddDisciplina.setBorder(null);
+        btnAddDisciplina.setContentAreaFilled(false);
+        btnAddDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDisciplinaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 408, 36, 36));
 
-        jButton8.setText("Pesquisar");
+        jButton8.setBorder(null);
+        jButton8.setContentAreaFilled(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 408, 36, 36));
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setBorder(null);
+        btnSalvar.setContentAreaFilled(false);
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(707, 499, 120, 40));
 
-        btnExcluir.setText("Excluir");
+        btnExcluir.setBorder(null);
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 499, 120, 40));
 
-        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setBorder(null);
+        btnPesquisar.setContentAreaFilled(false);
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 499, 120, 40));
 
-        btnVoltar.setText("Voltar");
+        btnVoltar.setBorder(null);
+        btnVoltar.setContentAreaFilled(false);
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 499, 120, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbAluno))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbDisciplina))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbCurso))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbProfessor)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddProf))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddAluno))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddCurso))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddDisciplina)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(btnPesquisar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvar)
-                .addGap(25, 25, 25))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbAluno)
-                    .addComponent(jButton4)
-                    .addComponent(btnAddAluno))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbProfessor)
-                    .addComponent(jButton1)
-                    .addComponent(btnAddProf))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lbCurso)
-                    .addComponent(jButton6)
-                    .addComponent(btnAddCurso))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lbDisciplina)
-                    .addComponent(jButton8)
-                    .addComponent(btnAddDisciplina))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnPesquisar)
-                    .addComponent(btnVoltar))
-                .addGap(46, 46, 46))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroMonitor.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -415,10 +366,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lbAluno;
     private javax.swing.JLabel lbCurso;
     private javax.swing.JLabel lbDisciplina;

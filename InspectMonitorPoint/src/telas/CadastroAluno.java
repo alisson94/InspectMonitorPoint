@@ -135,7 +135,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 tfNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 274, 540, 35));
+        getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 274, 590, 35));
 
         tfEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfEmail.setBorder(null);
@@ -146,44 +146,42 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
         getContentPane().add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 323, 590, 35));
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoexcluir.png"))); // NOI18N
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 507, -1, -1));
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 507, 121, 36));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosalvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 503, -1, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 507, 121, 36));
 
-        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolimpar.png"))); // NOI18N
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
-        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 505, -1, -1));
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 507, 121, 36));
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltar.png"))); // NOI18N
         btnVoltar.setBorder(null);
         btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -218,18 +216,17 @@ public class CadastroAluno extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/labelmatricula.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 420, -1, -1));
 
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         btnPesquisar.setBorder(null);
         btnPesquisar.setBorderPainted(false);
         btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisar.setFocusPainted(false);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(788, 271, -1, -1));
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 507, 125, 36));
 
         tfTelefone.setBorder(null);
         try {
@@ -251,7 +248,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
         getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 267, 120, 150));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundcadastroaluno.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroAluno.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

@@ -70,109 +70,119 @@ public class CadastroBiometria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
         lbMonitor = new javax.swing.JLabel();
         btnMaoDireita = new javax.swing.JButton();
         btnMaoEsquerda = new javax.swing.JButton();
         jlMaoDireita = new javax.swing.JLabel();
         jlMaoEsquerda = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnFoto = new javax.swing.JButton();
+        backLa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("MONITOR.:");
-
-        btnAdicionar.setText("Add");
+        btnAdicionar.setBorder(null);
+        btnAdicionar.setContentAreaFilled(false);
+        btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 245, 38, 38));
 
-        btnMaoDireita.setText("Direita");
+        lbMonitor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        getContentPane().add(lbMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 245, 330, 35));
+
+        btnMaoDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaodireita.png"))); // NOI18N
+        btnMaoDireita.setBorder(null);
+        btnMaoDireita.setContentAreaFilled(false);
+        btnMaoDireita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMaoDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoDireitaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMaoDireita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 97, 117));
 
-        btnMaoEsquerda.setText("Esquerda");
+        btnMaoEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoesquerda.png"))); // NOI18N
+        btnMaoEsquerda.setBorder(null);
+        btnMaoEsquerda.setBorderPainted(false);
+        btnMaoEsquerda.setContentAreaFilled(false);
+        btnMaoEsquerda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMaoEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoEsquerdaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMaoEsquerda, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 97, 117));
 
-        jlMaoDireita.setText("Não capturado");
+        jlMaoDireita.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jlMaoDireita.setText("Não capturada");
+        getContentPane().add(jlMaoDireita, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 420, -1, -1));
 
-        jlMaoEsquerda.setText("Não capturado");
+        jlMaoEsquerda.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jlMaoEsquerda.setText("Não capturada");
+        getContentPane().add(jlMaoEsquerda, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 420, -1, -1));
 
-        btnSalvar.setText("Salvar");
+        btnVoltar.setBorder(null);
+        btnVoltar.setContentAreaFilled(false);
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 485, 100, 30));
+
+        btnLimpar.setBorder(null);
+        btnLimpar.setContentAreaFilled(false);
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 485, 100, 30));
+
+        btnPesquisar.setBorder(null);
+        btnPesquisar.setContentAreaFilled(false);
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 485, 100, 30));
+
+        btnSalvar.setBorder(null);
+        btnSalvar.setContentAreaFilled(false);
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 485, 100, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(lbMonitor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdicionar)
-                .addGap(53, 53, 53))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
-                        .addGap(41, 41, 41))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlMaoDireita)
-                            .addComponent(btnMaoEsquerda))
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlMaoEsquerda)
-                            .addComponent(btnMaoDireita))
-                        .addGap(72, 72, 72))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnAdicionar)
-                    .addComponent(lbMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMaoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMaoEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlMaoDireita)
-                            .addComponent(jlMaoEsquerda))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalvar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)))
-                .addGap(24, 24, 24))
-        );
+        btnFoto.setBorder(null);
+        btnFoto.setContentAreaFilled(false);
+        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 243, 110, 140));
+
+        backLa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroBiometria.jpg"))); // NOI18N
+        backLa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(backLa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
@@ -207,14 +217,26 @@ public class CadastroBiometria extends javax.swing.JFrame {
     private void btnMaoDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoDireitaActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão DIREITA que ele gostaria de cadastrar\n\n"
         + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoEsquerda();
+        capturarDigitalMaoDireita();
     }//GEN-LAST:event_btnMaoDireitaActionPerformed
 
     private void btnMaoEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoEsquerdaActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão ESQUERDA que ele gostaria de cadastrar\n\n"
                 + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoDireita();
+        capturarDigitalMaoEsquerda();
     }//GEN-LAST:event_btnMaoEsquerdaActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +275,15 @@ public class CadastroBiometria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backLa;
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnFoto;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnMaoDireita;
     private javax.swing.JButton btnMaoEsquerda;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jlMaoDireita;
     private javax.swing.JLabel jlMaoEsquerda;
     private javax.swing.JLabel lbMonitor;
