@@ -16,6 +16,9 @@ import monitor.MonitorDAO;
 import ponto.*;
 import util.Relogio;
 import email.Email;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -81,11 +84,10 @@ public class CadastroPonto extends javax.swing.JFrame {
         for(Ponto ponto : listaPontos){
             String semanaDoAnoPonto = formatarSemandaDoAno.format(ponto.getDataPontoCompleta());
             if(ponto.getMonitor().getId() == monitor.getId() && semanaDoAnoPonto.equals(semanaDoAno)){
-                horasTrabalhadasSemana += ponto.getHorasTrabalhadas();
+                horasTrabalhadasSemana += ponto.getHorasTrabalhadas().getTime();
             }
         }
-        if(horasTrabalhadasSemana < 8){
-            //email.enviarEmail(monitor, horasTrabalhadasSemana);
+        if(horasTrabalhadasSemana < 28800000){
             email.enviarEmail(monitor, horasTrabalhadasSemana);
         }else{
             JOptionPane.showMessageDialog(null, "Nao enviar Email");
@@ -119,27 +121,26 @@ public class CadastroPonto extends javax.swing.JFrame {
         }
     }
     
-    public int calcularDiferencaHoras(Time horaInicio, Time horaFinal){
-        int horaEntrada;
-        int horaSaida;
+    public Time calcularDiferencaHoras(Time horaInicio, Time horaFinal) throws ParseException{
+        long diferencaEmMillis;
         
-        if(horaInicio.getMinutes() < 15){
-            horaEntrada = horaInicio.getHours();
-        }else{
-            horaEntrada = horaInicio.getHours() + 1;
-        }
+        int diferencaHora;
+        int diferencaMinute;
         
-        if(horaFinal.getMinutes() > 50){
-            horaSaida = horaFinal.getHours() + 1;
-        }else{
-            horaSaida = horaFinal.getHours();
-        }
+        diferencaEmMillis = horaFinal.getTime() - horaInicio.getTime();
         
-        JOptionPane.showMessageDialog(null, horaEntrada + "  " + horaSaida);
-        return horaSaida - horaEntrada;
+        diferencaHora = (int) (diferencaEmMillis / 60000) / 60;
+        diferencaMinute =(int) (diferencaEmMillis / 60000) % 60;
+        
+        JOptionPane.showMessageDialog(null, diferencaHora);
+        JOptionPane.showMessageDialog(null, diferencaMinute);
+        
+        Date date = formatarHoraCompleta.parse(diferencaHora + ":" + diferencaMinute + ":00");
+        
+        return Time.valueOf(formatarHoraCompleta.format(date));
     }
     
-    public void registrarPresentePonto(Monitor monitor) {
+    public void registrarPresentePonto(Monitor monitor) throws ParseException {
         ponto = new Ponto();
         List<Ponto> listaPontosMonitor = pontoDAO.checkExistsPontoMonitor("dataPonto", formatarData.format(dataHoraSistema),
                 "monitor.id", monitor.getId(),
@@ -270,7 +271,11 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int idMonitor = Integer.parseInt(tfIdMonitor.getText());
         monitor = monitorDAO.consultarObjetoId("id", idMonitor);
-        registrarPresentePonto(monitor);
+        try {
+            registrarPresentePonto(monitor);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroPonto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
