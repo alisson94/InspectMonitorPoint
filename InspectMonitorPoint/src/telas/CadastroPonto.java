@@ -48,6 +48,7 @@ public class CadastroPonto extends javax.swing.JFrame {
     
     public CadastroPonto() {
         initComponents();
+        jlMonitorNaoLocalizado.setVisible(false);
         dataHoraSistema = new Date();
         mostrarHora();
         listaMonitores = monitorDAO.listar();
@@ -116,10 +117,10 @@ public class CadastroPonto extends javax.swing.JFrame {
         monitor = digital.verificarSeCadastrado(null, listaMonitores);
         if (monitor != null) {
             registrarPresentePonto(monitor);
-            jlMonitorNaoLocalizado.setText("");
+            jlMonitorNaoLocalizado.setVisible(false);
 
         } else {
-            jlMonitorNaoLocalizado.setText("Monitor não localizado!");
+            jlMonitorNaoLocalizado.setVisible(true);
         }
         compararDigital();
     }
@@ -215,20 +216,16 @@ public class CadastroPonto extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbPontoMonitor = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         lbHora = new javax.swing.JLabel();
-        tfIdMonitor = new javax.swing.JTextField();
-        tfHoraFinal = new javax.swing.JFormattedTextField();
-        tfHoraInicial = new javax.swing.JFormattedTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jlMonitorNaoLocalizado = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbPontoMonitor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbPontoMonitor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -242,76 +239,36 @@ public class CadastroPonto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbPontoMonitor);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 780, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 235, 600, 294));
 
-        jButton1.setText("Dar entrada/saida");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
-
+        lbHora.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbHora.setText("Hora:");
-        getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-        getContentPane().add(tfIdMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, -1));
+        getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 450, -1, -1));
 
-        try {
-            tfHoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        getContentPane().add(tfHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 120, -1));
+        jlMonitorNaoLocalizado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/monitornaoencontrado.png"))); // NOI18N
+        getContentPane().add(jlMonitorNaoLocalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 162, 460, 60));
 
-        try {
-            tfHoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        getContentPane().add(tfHoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 120, -1));
-
-        jButton2.setText("ir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
+        btnVoltar.setBorder(null);
+        btnVoltar.setContentAreaFilled(false);
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 500, -1, -1));
 
-        jButton3.setText("Verificar horas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
-
-        jLabel2.setText("CADASTRO DE PONTO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 260, 30));
-        getContentPane().add(jlMonitorNaoLocalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 220, 20));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundpesquisagenerica.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaPontoEletronico.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int idMonitor = Integer.parseInt(tfIdMonitor.getText());
-        monitor = monitorDAO.consultarObjetoId("id", idMonitor);
-        registrarPresentePonto(monitor);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // COLOCA AQUI
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int idMonitor = Integer.parseInt(tfIdMonitor.getText());
-        monitor = monitorDAO.consultarObjetoId("id", idMonitor);
-        verificarHorasSemanais(monitor);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,17 +306,11 @@ public class CadastroPonto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlMonitorNaoLocalizado;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
-    private javax.swing.JFormattedTextField tfHoraFinal;
-    private javax.swing.JFormattedTextField tfHoraInicial;
-    private javax.swing.JTextField tfIdMonitor;
     // End of variables declaration//GEN-END:variables
 }
