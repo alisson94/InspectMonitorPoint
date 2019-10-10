@@ -15,6 +15,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -51,6 +52,15 @@ public class Relatorio {
             document.open();
 
             for (Monitor monitor : listaMonitor) {
+                List<Ponto> listaPontoFiltrada = new ArrayList<>();
+                int horasTrabalhadasEmMilisegundos = 0;
+                
+                for (Ponto ponto : listaPontos) {
+                    if(ponto.getMonitor().getId() == monitor.getId()){
+                        listaPontoFiltrada.add(ponto);
+                    }
+                }
+                
                 Image jpg = Image.getInstance("src/imagens/relatorio.jpg");
                 jpg.setAlignment(1);
                 document.add(jpg);
@@ -97,14 +107,20 @@ public class Relatorio {
                 table.addCell(col2);
                 table.addCell(col3);
                 table.addCell(col4);
-
-                for(Ponto ponto : listaPontos){
+                        
+                for(Ponto ponto : listaPontoFiltrada){
                     table.addCell(ponto.getDataPonto());
                     table.addCell(String.valueOf(ponto.getHoraEntradaPonto()));
                     table.addCell((ponto.getHoraSaidaPonto() == null) ? "-------" : String.valueOf(ponto.getHoraSaidaPonto()));
                     table.addCell((ponto.getHorasTrabalhadas() == null) ? "-------" : String.valueOf(ponto.getHorasTrabalhadas()));
+                    if(ponto.getHorasTrabalhadas() != null){
+                        horasTrabalhadasEmMilisegundos += (ponto.getHorasTrabalhadas().getTime() - 10800000);
+                    }
                 }
-
+                
+                int somaHora = (int) (horasTrabalhadasEmMilisegundos / 60000) / 60;
+                int somaMinute =(int)(horasTrabalhadasEmMilisegundos / 60000) % 60;
+                
                 table.setWidthPercentage(100.0f);
 
                 PdfPCell colNull = new PdfPCell();
@@ -114,11 +130,10 @@ public class Relatorio {
                 PdfPCell colTotal = new PdfPCell(new Paragraph("TOTAL DE HORAS TRABALHADAS"));
                 colTotal.setHorizontalAlignment(Element.ALIGN_CENTER);
                 colTotal.setBackgroundColor(new BaseColor(180, 180, 180));
-                colTotal.setColspan(2);
+                colTotal.setColspan(3);
 
-                PdfPCell colTotal2 = new PdfPCell(new Paragraph("TOTAL"));
+                PdfPCell colTotal2 = new PdfPCell(new Paragraph(String.valueOf(Time.valueOf(somaHora + ":" + somaMinute + ":00"))));
                 colTotal2.setHorizontalAlignment(Element.ALIGN_CENTER);
-                colTotal2.setColspan(2);
 
                 table.addCell(colNull);
                 table.addCell(colTotal);
@@ -126,9 +141,6 @@ public class Relatorio {
 
                 document.add(table);
                 document.newPage();
-
-                document.add(new Paragraph("Nova pagina"));
-
             }
         }
         catch(DocumentException de) {
