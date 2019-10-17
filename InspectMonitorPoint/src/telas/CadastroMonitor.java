@@ -9,6 +9,7 @@ import curso.CursoTableModel;
 import disciplina.Disciplina;
 import disciplina.DisciplinaDAO;
 import disciplina.DisciplinaTableModel;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import monitor.Monitor;
@@ -33,6 +34,9 @@ public class CadastroMonitor extends javax.swing.JFrame {
     ProfessorDAO professorDAO = new ProfessorDAO();
     Curso curso = new Curso();
     CursoDAO cursoDAO = new CursoDAO();
+    
+    List<Disciplina> listaDisciplinas = new ArrayList<>();
+    
     Disciplina disciplina = new Disciplina();
     DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     
@@ -256,16 +260,29 @@ public class CadastroMonitor extends javax.swing.JFrame {
         if(objetoRetorno != null){
             curso = cursoDAO.consultarObjetoId("id", objetoRetorno);
             lbCurso.setText(curso.getNome());
+            
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        List<Disciplina> lista = disciplinaDAO.listar();
-        DisciplinaTableModel model = new DisciplinaTableModel(lista);
-        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Disciplina");
-        if(objetoRetorno != null){
-            disciplina = disciplinaDAO.consultarObjetoId("id", objetoRetorno);
-            lbDisciplina.setText(disciplina.getNome());
+        if(curso.getId() != 0){
+            List<Disciplina> lista = disciplinaDAO.listar();
+            List<Disciplina> listaFiltrada = new ArrayList<>();
+
+            for (Disciplina disciplina : lista) {
+                if(disciplina.getCurso().getId() == curso.getId()){
+                    listaFiltrada.add(disciplina);
+                }
+            }
+            
+            DisciplinaTableModel model = new DisciplinaTableModel(listaFiltrada);
+            Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Disciplina");
+            if(objetoRetorno != null){
+                disciplina = disciplinaDAO.consultarObjetoId("id", objetoRetorno);
+                lbDisciplina.setText(disciplina.getNome());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um Curso antes");
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 

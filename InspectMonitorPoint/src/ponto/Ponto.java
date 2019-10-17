@@ -17,7 +17,7 @@ import monitor.Monitor;
 @Entity
 public class Ponto {
     
-     @Id
+    @Id
     @GeneratedValue
     private int idPonto;
      

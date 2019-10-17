@@ -24,7 +24,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
     
     public void salvar(Usuario usuario) {
         Object[] options = {"Sim", "Não"};
-        if (usuario.getIdUsuario()== 0) {
+        if (usuario.getId()== 0) {
             if (adicionar(usuario)) {
                 JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
             }

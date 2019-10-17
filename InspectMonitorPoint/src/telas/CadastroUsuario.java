@@ -27,7 +27,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         tfNome.setText("");
         tfUsuario.setText("");
         tfSenha.setText("");
-        tfPermissao.setSelectedIndex(0);
         usuario = new Usuario();
     }
     @SuppressWarnings("unchecked")
@@ -42,8 +41,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tfPermissao = new javax.swing.JComboBox<>();
         btnLimpar = new javax.swing.JButton();
         tfSenha = new javax.swing.JPasswordField();
 
@@ -58,6 +55,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         });
 
         btnPesquisar.setText("PESQUISAR");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         VOLTAR.setText("VOLTAR");
         VOLTAR.addActionListener(new java.awt.event.ActionListener() {
@@ -71,10 +73,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel2.setText("Usuário");
 
         jLabel3.setText("Senha");
-
-        jLabel4.setText("Permissão");
-
-        tfPermissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---------", "Admin", "Func", "Prof" }));
 
         btnLimpar.setText("LIMPAR");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +96,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(btnSalvar)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -111,11 +109,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfNome)
-                            .addComponent(tfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfPermissao, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,17 +127,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfPermissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnPesquisar)
                     .addComponent(VOLTAR)
                     .addComponent(btnLimpar))
-                .addGap(29, 29, 29))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,27 +141,30 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (usuarioDAO.consultarValorRepetido("loginUsuario", tfUsuario.getText()) && usuario.getIdUsuario() == 0) {
+        if (usuarioDAO.consultarValorRepetido("loginUsuario", tfUsuario.getText()) && usuario.getId() == 0) {
             JOptionPane.showMessageDialog(rootPane, "O usuário '" + tfUsuario.getText() + "' já está sendo utilizado!",
                     "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (Util.chkVazio(tfUsuario.getText(), tfNome.getText(), tfSenha.getText(), String.valueOf(tfPermissao.getSelectedItem()))) {
-                usuario.setLoginUsuario(tfUsuario.getText());
-                usuario.setNomeUsuario(tfNome.getText().toUpperCase());
-                usuario.setSenhaUsuario(tfSenha.getText());
-                usuario.setTipoDeAcessoUsuario(String.valueOf(tfPermissao.getSelectedItem()));
+            if (Util.chkVazio(tfUsuario.getText(), tfNome.getText(), tfSenha.getText())) {
+                usuario.setLogin(tfUsuario.getText());
+                usuario.setNome(tfNome.getText().toUpperCase());
+                usuario.setSenha(tfSenha.getText());
                 usuarioDAO.salvar(usuario);
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void VOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTARActionPerformed
-                dispose();
+        dispose();
     }//GEN-LAST:event_VOLTARActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,9 +210,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField tfNome;
-    private javax.swing.JComboBox<String> tfPermissao;
     private javax.swing.JPasswordField tfSenha;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables

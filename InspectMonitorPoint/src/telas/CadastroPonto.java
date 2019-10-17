@@ -53,15 +53,15 @@ public class CadastroPonto extends javax.swing.JFrame {
         mostrarHora();
         listaMonitores = monitorDAO.listar();
         
-        new Thread() {
-            @Override
-            public void run() {
-                try {     
-                    compararDigital();
-                } catch (ParseException ex) {
-                }
-            }
-        }.start();
+//        new Thread() {;
+//            @Override
+//            public void run() {
+//                try {     
+//                    compararDigital();
+//                } catch (ParseException ex) {
+//                }
+//            }
+//        }.start();
 
         
         new Thread(){
@@ -219,6 +219,8 @@ public class CadastroPonto extends javax.swing.JFrame {
         lbHora = new javax.swing.JLabel();
         jlMonitorNaoLocalizado = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
+        tfInOut = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -251,13 +253,22 @@ public class CadastroPonto extends javax.swing.JFrame {
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaovoltarpequeno.png"))); // NOI18N
         btnVoltar.setBorder(null);
         btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
         getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 500, -1, -1));
+        getContentPane().add(tfInOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, -1));
+
+        jButton1.setText("entrada/saida");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaPontoEletronico.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -269,6 +280,12 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id = Integer.parseInt(tfInOut.getText());
+        Monitor monitor = monitorDAO.consultarObjetoId("id", id);
+        registrarPresentePonto(monitor);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,10 +324,12 @@ public class CadastroPonto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlMonitorNaoLocalizado;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
+    private javax.swing.JTextField tfInOut;
     // End of variables declaration//GEN-END:variables
 }

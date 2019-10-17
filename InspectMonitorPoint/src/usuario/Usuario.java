@@ -19,92 +19,48 @@ public class Usuario {
     
     @Id
     @GeneratedValue
-    private int idUsuario;
+    private int id;
     
-    @Column(length = 100, nullable = false)
-    private String nomeUsuario;
+    private String nome;
     
-    @Column(length = 100, nullable = false)
-    private String loginUsuario;
+    private String login;
     
-    @Column(length = 100, nullable = false)
-    private String senhaUsuario;
-    
-    @Column(length = 100, nullable = false)
-    private String tipoDeAcessoUsuario;
-
+    private String senha;
     
     
-    /**
-     * @return the idUsuario
-     */
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getId() {
+        return id;
     }
 
-    /**
-     * @param idUsuario the idUsuario to set
-     */
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * @return the nomeUsuario
-     */
-    public String getNomeUsuario() {
-        return nomeUsuario;
+    public String getNome() {
+        return nome;
     }
 
-    /**
-     * @param nomeUsuario the nomeUsuario to set
-     */
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    /**
-     * @return the loginUsuario
-     */
-    public String getLoginUsuario() {
-        return loginUsuario;
+    public String getLogin() {
+        return login;
     }
 
-    /**
-     * @param loginUsuario the loginUsuario to set
-     */
-    public void setLoginUsuario(String loginUsuario) {
-        this.loginUsuario = loginUsuario;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    /**
-     * @return the senhaUsuario
-     */
-    public String getSenhaUsuario() {
-        return senhaUsuario;
+    public String getSenha() {
+        return senha;
     }
 
-    /**
-     * @param senhaUsuario the senhaUsuario to set
-     */
-    public void setSenhaUsuario(String senhaUsuario) {
-        this.senhaUsuario = senhaUsuario;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-
-    /**
-     * @return the tipoDeAcessoUsuario
-     */
-    public String getTipoDeAcessoUsuario() {
-        return tipoDeAcessoUsuario;
-    }
-
-    /**
-     * @param tipoDeAcessoUsuario the tipoDeAcessoUsuario to set
-     */
-    public void setTipoDeAcessoUsuario(String tipoDeAcessoUsuario) {
-        this.tipoDeAcessoUsuario = tipoDeAcessoUsuario;
-    }
-
+    
+    
 
     
 }
