@@ -173,20 +173,33 @@ public class CadastroPonto extends javax.swing.JFrame {
         dataHoraSistema = new Date();
         
         if (!listaPontosMonitor.isEmpty()) {
-            ponto = (Ponto) listaPontosMonitor.get(0);
-            if (ponto.getHoraEntradaPonto() == null) {
-                ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
-            } else if (ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() == null) {
+            ponto = listaPontosMonitor.get(listaPontosMonitor.size() - 1);
+            
+            if (ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() == null) {
                 ponto.setHoraSaidaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
                 ponto.setHorasTrabalhadas(calcularDiferencaHoras(ponto.getHoraEntradaPonto(), ponto.getHoraSaidaPonto()));
-            } else {
+                
+                listaPontoTabela.add(0, ponto);
+                atualizarTabela();
+                pontoDAO.atualizar(ponto);
+                
+            }else if(ponto.getHoraEntradaPonto() != null && ponto.getHoraSaidaPonto() != null){
+                ponto.setDataPontoCompleta(dataHoraSistema);
+                ponto.setDataPonto(formatarData.format(dataHoraSistema));
+                ponto.setDiaDaSemana(formatarDiaSemana.format(dataHoraSistema));
+                ponto.setMonitor(monitor);
+                ponto.setTurnoPonto(carregarTurno());
                 ponto.setHoraEntradaPonto(Time.valueOf(formatarHoraCompleta.format(dataHoraSistema)));
                 ponto.setHoraSaidaPonto(null);
                 ponto.setHorasTrabalhadas(null);
+                listaPontoTabela.add(0, ponto);
+                atualizarTabela();
+
+                pontoDAO.adicionar(ponto);
             }
-            listaPontoTabela.add(0, ponto);
-            atualizarTabela();
-            pontoDAO.atualizar(ponto);
+            
+            
+            
             //abrirTelaMensagemPonto(ponto);
 
         } else {
