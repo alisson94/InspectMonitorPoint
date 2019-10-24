@@ -15,10 +15,7 @@ import monitor.Monitor;
 import monitor.MonitorDAO;
 import ponto.*;
 import util.Relogio;
-import email.Email;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import util.LeitorBiometrico;
 
 
@@ -156,13 +153,15 @@ public class CadastroPonto extends javax.swing.JFrame {
         
         int diferencaHora;
         int diferencaMinute;
+        int diferencaSegundos;
         
         diferencaEmMillis = horaFinal.getTime() - horaInicio.getTime();
         
         diferencaHora = (int) (diferencaEmMillis / 60000) / 60;
         diferencaMinute =(int) (diferencaEmMillis / 60000) % 60;
+        diferencaSegundos = (int) (diferencaEmMillis / 1000) % 60;
         
-        return Time.valueOf(diferencaHora + ":" + diferencaMinute + ":00");
+        return Time.valueOf(diferencaHora + ":" + diferencaMinute + ":" + diferencaSegundos);
     }
     
     public void registrarPresentePonto(Monitor monitor){

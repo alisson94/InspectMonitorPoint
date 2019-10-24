@@ -6,9 +6,7 @@
 package email;
 
 import java.sql.Time;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Message;
@@ -31,13 +29,17 @@ public class Email {
     
     int diferencaHora;
     int diferencaMinute;
+    int diferencaSegundos;
+
 
     diferencaHora = (int) (diferencaEmMillis / 60000) / 60;
     diferencaMinute =(int) (diferencaEmMillis / 60000) % 60;
+    diferencaSegundos = (int) (diferencaEmMillis / 1000) % 60;
+
     
     SimpleDateFormat formatarHoraCompleta = new SimpleDateFormat("HH:mm:ss");
     
-    Time horasPendentes = Time.valueOf(diferencaHora + ":" + diferencaMinute + ":00");
+    Time horasPendentes = Time.valueOf(diferencaHora + ":" + diferencaMinute + ":" + diferencaSegundos);
     
     Properties props = new Properties();
     /** Parâmetros de conexão com servidor Gmail */
@@ -71,7 +73,7 @@ public class Email {
             message.setSubject("Ponto Eletrônico - InspectMonitorPoint | Faculdade Vale do Salgado");//Assunto
             message.setText("Olá " + monitor.getAluno().getNome() + "!\n\n"
                     + "Você não cumpriu com sua meta de 8 horas semanais."
-                    + "\nVocê tem uma pendência de " + horasPendentes + " horas."
+                    + "\nVocê tem uma pendência de " + horasPendentes + "."
                     + "\n\n\nEste é um e-mail automático, por favor, não responda!"
                     + "\n\nFábrica de Software EEEP © 2019 - Todos os direitos reservados."
             );
