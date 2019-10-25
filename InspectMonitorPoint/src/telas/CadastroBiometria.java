@@ -90,7 +90,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnAdicionar.setBorder(null);
         btnAdicionar.setContentAreaFilled(false);
-        btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -104,7 +104,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         btnMaoDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaodireita.png"))); // NOI18N
         btnMaoDireita.setBorder(null);
         btnMaoDireita.setContentAreaFilled(false);
-        btnMaoDireita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMaoDireita.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMaoDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoDireitaActionPerformed(evt);
@@ -116,7 +116,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         btnMaoEsquerda.setBorder(null);
         btnMaoEsquerda.setBorderPainted(false);
         btnMaoEsquerda.setContentAreaFilled(false);
-        btnMaoEsquerda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMaoEsquerda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMaoEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoEsquerdaActionPerformed(evt);
@@ -134,7 +134,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnVoltar.setBorder(null);
         btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -144,7 +144,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnLimpar.setBorder(null);
         btnLimpar.setContentAreaFilled(false);
-        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -154,7 +154,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnPesquisar.setBorder(null);
         btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -164,7 +164,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnSalvar.setBorder(null);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -174,7 +174,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
         btnFoto.setBorder(null);
         btnFoto.setContentAreaFilled(false);
-        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 243, 110, 140));
 
         backLa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroBiometria.jpg"))); // NOI18N
@@ -184,6 +184,56 @@ public class CadastroBiometria extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+            monitorDAO.salvar(monitor);
+            
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnMaoDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoDireitaActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão DIREITA que ele gostaria de cadastrar\n\n"
+        + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
+        capturarDigitalMaoDireita();
+    }//GEN-LAST:event_btnMaoDireitaActionPerformed
+
+    private void btnMaoEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoEsquerdaActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão ESQUERDA que ele gostaria de cadastrar\n\n"
+                + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
+        capturarDigitalMaoEsquerda();
+    }//GEN-LAST:event_btnMaoEsquerdaActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+         List<Monitor> lista = monitorDAO.listar();
+        MonitorTableModel model = new MonitorTableModel(lista);
+        Object objetoRetorno = PesquisaGenerica.exibeTela(model, "Monitor");
+        if (objetoRetorno != null) {
+            monitor = monitorDAO.consultarObjetoId("id", objetoRetorno);
+            lbMonitor.setText(monitor.getAluno().getNome());
+            try {
+                ImageIcon foto = new ImageIcon();
+                foto.setImage(Util.byteToImage(monitor.getAluno().getFotoAluno()));
+                btnFoto.setIcon(foto);
+            } catch (Exception e) {
+            }
+            if (monitor.getDigitalDireita() != null) {
+                jlMaoDireita.setText("Capturada!");
+            }
+            if (monitor.getDigitalEsquerda() != null) {
+                jlMaoEsquerda.setText("Capturada!");
+            }
+            btnMaoDireita.setEnabled(true);
+            btnMaoEsquerda.setEnabled(true);
+        }   
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        //System.exit(0);
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         List<Monitor> lista = monitorDAO.listar();
@@ -206,37 +256,8 @@ public class CadastroBiometria extends javax.swing.JFrame {
             }
             btnMaoDireita.setEnabled(true);
             btnMaoEsquerda.setEnabled(true);
-        }    
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-            monitorDAO.salvar(monitor);
-            
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnMaoDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoDireitaActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão DIREITA que ele gostaria de cadastrar\n\n"
-        + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoDireita();
-    }//GEN-LAST:event_btnMaoDireitaActionPerformed
-
-    private void btnMaoEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaoEsquerdaActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Peça que por gentileza o professor(a) " + lbMonitor.getText() + "\n\n Escolha um dedo da mão ESQUERDA que ele gostaria de cadastrar\n\n"
-                + "Após a escolha dele clique no OK abaixo para continuar o cadastro da digital");
-        capturarDigitalMaoEsquerda();
-    }//GEN-LAST:event_btnMaoEsquerdaActionPerformed
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimparActionPerformed
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
