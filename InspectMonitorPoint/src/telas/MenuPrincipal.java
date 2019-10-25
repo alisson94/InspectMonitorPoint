@@ -19,10 +19,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private boolean seVisivelPainelRelatorio;
    
     public MenuPrincipal() {
+        
+        
         initComponents();
         panelBotaoCadastro.setVisible(false);
-        panelBotaoBiometria.setVisible(false);
-        panelBotaoRelatorio.setVisible(false);
+        //panelBotaoBiometria.setVisible(false);
+        //panelBotaoRelatorio.setVisible(false);
         seVisivelPainelCadastro = false;
         seVisivelPainelBiometria = false;
         seVisivelPainelRelatorio = false;
@@ -41,22 +43,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCadastroMenu = new javax.swing.JButton();
-        btnBiometriaMenu = new javax.swing.JButton();
-        btnRelatorioMenu = new javax.swing.JButton();
+        btnCadastro = new javax.swing.JButton();
+        btnBiometria = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        panelBotaoRelatorio = new javax.swing.JPanel();
-        btnCadastrarMonitorMenu2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        panelBotaoBiometria = new javax.swing.JPanel();
-        btnCadastrarMonitorMenu1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         panelBotaoCadastro = new javax.swing.JPanel();
-        btnCadastrarMonitorMenu = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCadastrarAlunoMenu3 = new javax.swing.JButton();
+        btnCadastroProfessorMenu3 = new javax.swing.JButton();
+        btnCadastroCursoMenu3 = new javax.swing.JButton();
+        btnCadastrarMonitorMenu3 = new javax.swing.JButton();
+        btnCadastrarMonitorMenu4 = new javax.swing.JButton();
         backgroundMenuPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,56 +60,57 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCadastroMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaocadastro.png"))); // NOI18N
-        btnCadastroMenu.setBorder(null);
-        btnCadastroMenu.setBorderPainted(false);
-        btnCadastroMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCadastroMenu.setFocusPainted(false);
-        btnCadastroMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaocadastro.png"))); // NOI18N
+        btnCadastro.setBorder(null);
+        btnCadastro.setBorderPainted(false);
+        btnCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastro.setFocusPainted(false);
+        btnCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCadastroMenuMouseEntered(evt);
+                btnCadastroMouseEntered(evt);
             }
         });
-        btnCadastroMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroMenuActionPerformed(evt);
+                btnCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastroMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 175, -1, -1));
+        getContentPane().add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 175, -1, -1));
 
-        btnBiometriaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaobiometria.png"))); // NOI18N
-        btnBiometriaMenu.setBorder(null);
-        btnBiometriaMenu.setBorderPainted(false);
-        btnBiometriaMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnBiometriaMenu.setFocusPainted(false);
-        btnBiometriaMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBiometria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaobiometria.png"))); // NOI18N
+        btnBiometria.setBorder(null);
+        btnBiometria.setBorderPainted(false);
+        btnBiometria.setContentAreaFilled(false);
+        btnBiometria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBiometria.setFocusPainted(false);
+        btnBiometria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBiometriaMenuMouseEntered(evt);
+                btnBiometriaMouseEntered(evt);
             }
         });
-        btnBiometriaMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnBiometria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBiometriaMenuActionPerformed(evt);
+                btnBiometriaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBiometriaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 175, -1, -1));
+        getContentPane().add(btnBiometria, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 175, -1, -1));
 
-        btnRelatorioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaorelatorio.png"))); // NOI18N
-        btnRelatorioMenu.setBorder(null);
-        btnRelatorioMenu.setBorderPainted(false);
-        btnRelatorioMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnRelatorioMenu.setFocusPainted(false);
-        btnRelatorioMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaorelatorio.png"))); // NOI18N
+        btnRelatorio.setBorder(null);
+        btnRelatorio.setBorderPainted(false);
+        btnRelatorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRelatorio.setFocusPainted(false);
+        btnRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRelatorioMenuMouseEntered(evt);
+                btnRelatorioMouseEntered(evt);
             }
         });
-        btnRelatorioMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioMenuActionPerformed(evt);
+                btnRelatorioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRelatorioMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 175, -1, -1));
+        getContentPane().add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 175, -1, -1));
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaosair.png"))); // NOI18N
         jButton11.setBorder(null);
@@ -126,92 +123,61 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 503, -1, -1));
 
-        panelBotaoRelatorio.setBackground(new java.awt.Color(255, 255, 255));
-        panelBotaoRelatorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelBotaoRelatorio.setPreferredSize(new java.awt.Dimension(148, 120));
-        panelBotaoRelatorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCadastrarMonitorMenu2.setText("Cadastrar Monitor");
-        btnCadastrarMonitorMenu2.setBorder(null);
-        btnCadastrarMonitorMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarMonitorMenu2ActionPerformed(evt);
-            }
-        });
-        panelBotaoRelatorio.add(btnCadastrarMonitorMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 147, 30));
-
-        jButton6.setText("Cadastrar Professor");
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        panelBotaoRelatorio.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 147, 30));
-
-        jButton7.setText("Cadastrar Curso");
-        jButton7.setBorder(null);
-        panelBotaoRelatorio.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 147, 30));
-
-        getContentPane().add(panelBotaoRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 149, 135));
-
-        panelBotaoBiometria.setBackground(new java.awt.Color(255, 255, 255));
-        panelBotaoBiometria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelBotaoBiometria.setPreferredSize(new java.awt.Dimension(148, 120));
-        panelBotaoBiometria.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCadastrarMonitorMenu1.setText("Cadastrar Monitor");
-        btnCadastrarMonitorMenu1.setBorder(null);
-        btnCadastrarMonitorMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarMonitorMenu1ActionPerformed(evt);
-            }
-        });
-        panelBotaoBiometria.add(btnCadastrarMonitorMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 147, 30));
-
-        jButton4.setText("Cadastrar Professor");
-        jButton4.setBorder(null);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        panelBotaoBiometria.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 147, 30));
-
-        jButton5.setText("Cadastrar Curso");
-        jButton5.setBorder(null);
-        panelBotaoBiometria.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 147, 30));
-
-        getContentPane().add(panelBotaoBiometria, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 180, 149, 135));
-
         panelBotaoCadastro.setBackground(new java.awt.Color(255, 255, 255));
         panelBotaoCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelBotaoCadastro.setPreferredSize(new java.awt.Dimension(148, 120));
         panelBotaoCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCadastrarMonitorMenu.setText("Cadastrar Monitor");
-        btnCadastrarMonitorMenu.setBorder(null);
-        btnCadastrarMonitorMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarAlunoMenu3.setText("Cadastrar Aluno");
+        btnCadastrarAlunoMenu3.setBorder(null);
+        btnCadastrarAlunoMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrarAlunoMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarMonitorMenuActionPerformed(evt);
+                btnCadastrarAlunoMenu3ActionPerformed(evt);
             }
         });
-        panelBotaoCadastro.add(btnCadastrarMonitorMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 147, 30));
+        panelBotaoCadastro.add(btnCadastrarAlunoMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 147, 30));
 
-        jButton2.setText("Cadastrar Professor");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroProfessorMenu3.setText("Cadastrar Professor");
+        btnCadastroProfessorMenu3.setBorder(null);
+        btnCadastroProfessorMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastroProfessorMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCadastroProfessorMenu3ActionPerformed(evt);
             }
         });
-        panelBotaoCadastro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 147, 30));
+        panelBotaoCadastro.add(btnCadastroProfessorMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 147, 30));
 
-        jButton3.setText("Cadastrar Curso");
-        jButton3.setBorder(null);
-        panelBotaoCadastro.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 147, 30));
+        btnCadastroCursoMenu3.setText("Cadastrar Curso");
+        btnCadastroCursoMenu3.setBorder(null);
+        btnCadastroCursoMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastroCursoMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroCursoMenu3ActionPerformed(evt);
+            }
+        });
+        panelBotaoCadastro.add(btnCadastroCursoMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 147, 30));
 
-        getContentPane().add(panelBotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 149, 135));
+        btnCadastrarMonitorMenu3.setText("Cadastrar Monitor");
+        btnCadastrarMonitorMenu3.setBorder(null);
+        btnCadastrarMonitorMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrarMonitorMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMonitorMenu3ActionPerformed(evt);
+            }
+        });
+        panelBotaoCadastro.add(btnCadastrarMonitorMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 147, 30));
+
+        btnCadastrarMonitorMenu4.setText("Cadastrar Monitor");
+        btnCadastrarMonitorMenu4.setBorder(null);
+        btnCadastrarMonitorMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMonitorMenu4ActionPerformed(evt);
+            }
+        });
+        panelBotaoCadastro.add(btnCadastrarMonitorMenu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 147, 30));
+
+        getContentPane().add(panelBotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 149, 160));
 
         backgroundMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundmenuprincipal.jpg"))); // NOI18N
         backgroundMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +194,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastroMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroMenuActionPerformed
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         if(seVisivelPainelCadastro){
             panelBotaoCadastro.setVisible(false);
             seVisivelPainelCadastro = false;
@@ -236,89 +202,106 @@ public class MenuPrincipal extends javax.swing.JFrame {
             panelBotaoCadastro.setVisible(true);
             seVisivelPainelCadastro = true;
         }
-    }//GEN-LAST:event_btnCadastroMenuActionPerformed
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void backgroundMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMenuPrincipalMouseClicked
+       
+        
         panelBotaoCadastro.setVisible(false);
         seVisivelPainelCadastro = false;
-        panelBotaoBiometria.setVisible(false);
+        btnBiometria.setVisible(false);
         seVisivelPainelBiometria = false;
-        panelBotaoRelatorio.setVisible(false);
+        btnRelatorio.setVisible(false);
         seVisivelPainelRelatorio = false;
     }//GEN-LAST:event_backgroundMenuPrincipalMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnCadastroProfessorMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProfessorMenu3ActionPerformed
+        CadastroProfessor frame = new CadastroProfessor();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnCadastroProfessorMenu3ActionPerformed
 
-    private void btnBiometriaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiometriaMenuActionPerformed
-        if(seVisivelPainelBiometria){
+    private void btnBiometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiometriaActionPerformed
+        CadastroBiometria frame = new CadastroBiometria();
+        frame.setVisible(true);
+       
+        
+        /* if(seVisivelPainelBiometria){
             panelBotaoBiometria.setVisible(false);
             seVisivelPainelBiometria = false;
         } else{
             panelBotaoBiometria.setVisible(true);
             seVisivelPainelBiometria = true;
-        }
-    }//GEN-LAST:event_btnBiometriaMenuActionPerformed
+        }*/ 
+    }//GEN-LAST:event_btnBiometriaActionPerformed
 
-    private void btnRelatorioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioMenuActionPerformed
-        if(seVisivelPainelRelatorio){
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        RelatorioPontoEletronico frame = new RelatorioPontoEletronico();
+        frame.setVisible(true);
+
+        
+         /*if(seVisivelPainelRelatorio){
             panelBotaoRelatorio.setVisible(false);
             seVisivelPainelRelatorio = false;
         } else{
             panelBotaoRelatorio.setVisible(true);
             seVisivelPainelRelatorio = true;
-        }
-    }//GEN-LAST:event_btnRelatorioMenuActionPerformed
+        } */
+    }//GEN-LAST:event_btnRelatorioActionPerformed
 
-    private void btnCadastrarMonitorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenuActionPerformed
+    private void btnCadastrarAlunoMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlunoMenu3ActionPerformed
         CadastroAluno frame = new CadastroAluno();
         frame.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarMonitorMenuActionPerformed
+    }//GEN-LAST:event_btnCadastrarAlunoMenu3ActionPerformed
 
-    private void btnCadastroMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroMenuMouseEntered
+    private void btnCadastroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroMouseEntered
+      
+        
         panelBotaoCadastro.setVisible(true);
-        panelBotaoBiometria.setVisible(false);
-        panelBotaoRelatorio.setVisible(false);
-    }//GEN-LAST:event_btnCadastroMenuMouseEntered
+        //panelBotaoBiometria.setVisible(false);
+        //panelBotaoRelatorio.setVisible(false); 
+    }//GEN-LAST:event_btnCadastroMouseEntered
 
-    private void btnBiometriaMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBiometriaMenuMouseEntered
-        panelBotaoBiometria.setVisible(true);
-        panelBotaoCadastro.setVisible(false);
-        panelBotaoRelatorio.setVisible(false);
-    }//GEN-LAST:event_btnBiometriaMenuMouseEntered
+    private void btnBiometriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBiometriaMouseEntered
+       
+        
+        //panelBotaoBiometria.setVisible(true);
+        //panelBotaoCadastro.setVisible(false);
+        //panelBotaoRelatorio.setVisible(false);
+    }//GEN-LAST:event_btnBiometriaMouseEntered
 
-    private void btnRelatorioMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMenuMouseEntered
-        panelBotaoRelatorio.setVisible(true);
-        panelBotaoCadastro.setVisible(false);
-        panelBotaoBiometria.setVisible(false);
-    }//GEN-LAST:event_btnRelatorioMenuMouseEntered
+    private void btnRelatorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMouseEntered
+      
+        
+        //panelBotaoRelatorio.setVisible(true);
+       //panelBotaoCadastro.setVisible(false);
+        //panelBotaoBiometria.setVisible(false);
+    }//GEN-LAST:event_btnRelatorioMouseEntered
 
     private void backgroundMenuPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMenuPrincipalMouseEntered
-        panelBotaoRelatorio.setVisible(false);
+       
+        
+       // panelBotaoRelatorio.setVisible(false);
         panelBotaoCadastro.setVisible(false);
-        panelBotaoBiometria.setVisible(false);
+        //panelBotaoBiometria.setVisible(false);
     }//GEN-LAST:event_backgroundMenuPrincipalMouseEntered
 
-    private void btnCadastrarMonitorMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenu1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastrarMonitorMenu1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void btnCadastrarMonitorMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenu2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastrarMonitorMenu2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void btnCadastrarMonitorMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenu3ActionPerformed
+        CadastroMonitor frame = new CadastroMonitor();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarMonitorMenu3ActionPerformed
+
+    private void btnCadastrarMonitorMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMonitorMenu4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastrarMonitorMenu4ActionPerformed
+
+    private void btnCadastroCursoMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroCursoMenu3ActionPerformed
+        CadastroCurso frame = new CadastroCurso();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnCadastroCursoMenu3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,22 +340,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundMenuPrincipal;
-    private javax.swing.JButton btnBiometriaMenu;
-    private javax.swing.JButton btnCadastrarMonitorMenu;
-    private javax.swing.JButton btnCadastrarMonitorMenu1;
-    private javax.swing.JButton btnCadastrarMonitorMenu2;
-    private javax.swing.JButton btnCadastroMenu;
-    private javax.swing.JButton btnRelatorioMenu;
+    private javax.swing.JButton btnBiometria;
+    private javax.swing.JButton btnCadastrarAlunoMenu3;
+    private javax.swing.JButton btnCadastrarMonitorMenu3;
+    private javax.swing.JButton btnCadastrarMonitorMenu4;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnCadastroCursoMenu3;
+    private javax.swing.JButton btnCadastroProfessorMenu3;
+    private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JPanel panelBotaoBiometria;
     private javax.swing.JPanel panelBotaoCadastro;
-    private javax.swing.JPanel panelBotaoRelatorio;
     // End of variables declaration//GEN-END:variables
 
 }
