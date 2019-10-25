@@ -180,6 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(panelBotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 149, 160));
 
         backgroundMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundmenuprincipal.jpg"))); // NOI18N
+        backgroundMenuPrincipal.setFocusCycleRoot(true);
         backgroundMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backgroundMenuPrincipalMouseClicked(evt);
