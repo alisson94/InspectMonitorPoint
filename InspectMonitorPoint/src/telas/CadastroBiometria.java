@@ -35,7 +35,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
     private void capturarDigitalMaoDireita() {
         if (jlMaoDireita.getText().equals("Capturada!")) {
-            jlMaoDireita.setText("Não Capturada");
+            jlMaoDireita.setText("Não capturada");
         }
         DPFPTemplate temp = digital.getTemplate(null, 1);
         byte[] b;
@@ -49,7 +49,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
 
     private void capturarDigitalMaoEsquerda() {
         if (jlMaoEsquerda.getText().equals("Capturada!")) {
-            jlMaoEsquerda.setText("Não Capturada");
+            jlMaoEsquerda.setText("Não capturada");
         }
         DPFPTemplate temp = digital.getTemplate(null, 1);
         byte[] b;
@@ -59,6 +59,12 @@ public class CadastroBiometria extends javax.swing.JFrame {
             jlMaoEsquerda.setText("Capturada!");
         } catch (Exception e) {
         }
+    }
+    
+    public void limparCampos(){
+        monitor = new Monitor();
+        jlMaoDireita.setText("Não capturada");
+        jlMaoEsquerda.setText("Não capturada");
     }
     
     /**
@@ -99,6 +105,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         getContentPane().add(btnAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 245, 38, 38));
 
         lbMonitor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbMonitor.setText("SELECIONE UM MONITOR...");
         getContentPane().add(lbMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 245, 330, 35));
 
         btnMaoDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaodireita.png"))); // NOI18N
@@ -186,7 +193,11 @@ public class CadastroBiometria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if(!lbMonitor.getText().equals("SELECIONE UM MONITOR...") && !jlMaoDireita.getText().equals("Não capturada") && !jlMaoEsquerda.getText().equals("Não capturada")){
             monitorDAO.salvar(monitor);
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifique se a leitura biométrica foi feita corretamente");
+        }
             
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -227,7 +238,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
+        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

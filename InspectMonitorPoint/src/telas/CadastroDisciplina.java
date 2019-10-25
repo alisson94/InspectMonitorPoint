@@ -66,7 +66,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -81,7 +81,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnExcluirDisciplina.setBorder(null);
         btnExcluirDisciplina.setBorderPainted(false);
         btnExcluirDisciplina.setContentAreaFilled(false);
-        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirDisciplinaActionPerformed(evt);
@@ -93,7 +93,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnSalvarDisciplina.setBorder(null);
         btnSalvarDisciplina.setBorderPainted(false);
         btnSalvarDisciplina.setContentAreaFilled(false);
-        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarDisciplina.setPreferredSize(new java.awt.Dimension(159, 49));
         btnSalvarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltarDisciplina.setBorder(null);
         btnVoltarDisciplina.setBorderPainted(false);
         btnVoltarDisciplina.setContentAreaFilled(false);
-        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltarDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarDisciplinaActionPerformed(evt);
@@ -117,12 +117,15 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         tfCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         tfCargaHoraria.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         getContentPane().add(tfCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 361, 170, 35));
+
+        lbCurso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbCurso.setText("SELECIONE UM CURSO...");
         getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 309, 410, 35));
 
         btnPesquisarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaolupa.png"))); // NOI18N
         btnPesquisarCurso.setBorder(null);
         btnPesquisarCurso.setContentAreaFilled(false);
-        btnPesquisarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarCursoActionPerformed(evt);
@@ -155,7 +158,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirDisciplinaActionPerformed
 
     private void btnSalvarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDisciplinaActionPerformed
-        if(!tfNome.getText().equals("") && !tfCargaHoraria.getText().equals("") && !lbCurso.getText().equals("")) {
+        if(!tfNome.getText().equals("") && !tfCargaHoraria.getText().equals("") && !lbCurso.getText().equals("SELECIONE UM CURSO...")) {
             disciplina.setNome(tfNome.getText());
             disciplina.setCargaHoraria(Integer.parseInt(tfCargaHoraria.getText()));
             disciplina.setCurso(curso);

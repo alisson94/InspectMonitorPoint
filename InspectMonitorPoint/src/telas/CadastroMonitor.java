@@ -46,10 +46,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }
 
     public void limparCampos(){
-        lbAluno.setText("");
-        lbProfessor.setText("");
-        lbCurso.setText("");
-        lbDisciplina.setText("");
+        lbAluno.setText("SELECIONE UM ALUNO...");
+        lbProfessor.setText("SELECIONE UM PROFESSOR...");
+        lbCurso.setText("SELECIONE UM CURSO...");
+        lbDisciplina.setText("SELECIONE UMA DISCIPLINA");
         aluno = new Aluno();
         professor = new Professor();
         curso = new Curso();
@@ -88,27 +88,32 @@ public class CadastroMonitor extends javax.swing.JFrame {
         btnPesquisar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        btnLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbAluno.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbAluno.setText("SELECIONE UM ALUNO...");
         getContentPane().add(lbAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 268, 540, 35));
 
         lbProfessor.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbProfessor.setText("SELECIONE UM PROFESSOR...");
         getContentPane().add(lbProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 315, 540, 35));
 
         lbCurso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbCurso.setText("SELECIONE UM CURSO...");
         getContentPane().add(lbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 540, 35));
 
         lbDisciplina.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbDisciplina.setText("SELECIONE UMA DISCIPLINA...");
         getContentPane().add(lbDisciplina, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 540, 35));
 
         jButton1.setToolTipText("");
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -117,7 +122,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 314, 36, 36));
 
         btnAddProf.setContentAreaFilled(false);
-        btnAddProf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddProf.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddProfActionPerformed(evt);
@@ -127,7 +132,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnAddAluno.setBorder(null);
         btnAddAluno.setContentAreaFilled(false);
-        btnAddAluno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddAluno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddAlunoActionPerformed(evt);
@@ -137,7 +142,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -147,7 +152,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnAddCurso.setBorder(null);
         btnAddCurso.setContentAreaFilled(false);
-        btnAddCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCursoActionPerformed(evt);
@@ -156,7 +161,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
         getContentPane().add(btnAddCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 362, 36, 36));
 
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -166,7 +171,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnAddDisciplina.setBorder(null);
         btnAddDisciplina.setContentAreaFilled(false);
-        btnAddDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDisciplinaActionPerformed(evt);
@@ -176,7 +181,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         jButton8.setBorder(null);
         jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -186,7 +191,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnSalvar.setBorder(null);
         btnSalvar.setContentAreaFilled(false);
-        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -196,7 +201,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -206,7 +211,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
 
         btnPesquisar.setBorder(null);
         btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -226,13 +231,20 @@ public class CadastroMonitor extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroMonitor.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, 120, 40));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         
-        if(!lbAluno.getText().equals("") && !lbProfessor.getText().equals("") && !lbCurso.getText().equals("") && !lbDisciplina.getText().equals("")){
+        if(!lbAluno.getText().equals("SELECIONE UM ALUNO...") && !lbProfessor.getText().equals("SELECIONE UM PROFESSOR...") && !lbCurso.getText().equals("SELECIONE UM CURSO...") && !lbDisciplina.getText().equals("SELECIONE UMA DISCIPLINA")){
             if(!isAlunoMonitor()){
                 monitor.setAluno(aluno);
                 monitor.setProfessor(professor);
@@ -356,6 +368,10 @@ public class CadastroMonitor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,6 +413,7 @@ public class CadastroMonitor extends javax.swing.JFrame {
     private javax.swing.JButton btnAddDisciplina;
     private javax.swing.JButton btnAddProf;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
