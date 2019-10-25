@@ -24,19 +24,20 @@ import professor.ProfessorTableModel;
  * @author Alisson
  */
 public class CadastroMonitor extends javax.swing.JFrame {
-
+    List<Monitor> listaMonitores = new ArrayList<>();
     Monitor monitor = new Monitor();
     MonitorDAO monitorDAO = new MonitorDAO();
     
     Aluno aluno = new Aluno();
     AlunoDAO alunoDAO = new AlunoDAO();
+    
     Professor professor = new Professor();
     ProfessorDAO professorDAO = new ProfessorDAO();
+    
     Curso curso = new Curso();
     CursoDAO cursoDAO = new CursoDAO();
     
     List<Disciplina> listaDisciplinas = new ArrayList<>();
-    
     Disciplina disciplina = new Disciplina();
     DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     
@@ -55,6 +56,17 @@ public class CadastroMonitor extends javax.swing.JFrame {
         disciplina = new Disciplina();
         monitor = new Monitor();
     }
+    
+    public boolean isAlunoMonitor(){
+        listaMonitores = monitorDAO.listar();
+        for (Monitor monitor : listaMonitores) {
+            if(monitor.getAluno().getId() == aluno.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -219,15 +231,19 @@ public class CadastroMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        
         if(!lbAluno.getText().equals("") && !lbProfessor.getText().equals("") && !lbCurso.getText().equals("") && !lbDisciplina.getText().equals("")){
-            monitor.setAluno(aluno);
-            monitor.setProfessor(professor);
-            monitor.setCurso(curso);
-            monitor.setDisciplina(disciplina);
-            monitor.setAtivo(true);
-            monitorDAO.salvar(monitor);
-            limparCampos();
+            if(!isAlunoMonitor()){
+                monitor.setAluno(aluno);
+                monitor.setProfessor(professor);
+                monitor.setCurso(curso);
+                monitor.setDisciplina(disciplina);
+                monitor.setAtivo(true);
+                monitorDAO.salvar(monitor);
+                limparCampos();
+            }else{
+                JOptionPane.showMessageDialog(null, "Este aluno já é monitor");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Verifique se não existe nenhum campo vazio!");
         }
