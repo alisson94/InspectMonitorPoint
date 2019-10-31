@@ -50,15 +50,15 @@ public class CadastroPonto extends javax.swing.JFrame {
         mostrarHora();
         listaMonitores = monitorDAO.listar();
         
-//        new Thread() {;
-//            @Override
-//            public void run() {
-//                try {     
-//                    compararDigital();
-//                } catch (ParseException ex) {
-//                }
-//            }
-//        }.start();
+        new Thread() {
+            @Override
+            public void run() {
+                try {     
+                    compararDigital();
+                } catch (ParseException ex) {
+                }
+            }
+        }.start();
 
         
         new Thread(){

@@ -63,8 +63,11 @@ public class CadastroBiometria extends javax.swing.JFrame {
     
     public void limparCampos(){
         monitor = new Monitor();
+        lbMonitor.setText("SELECIONE UM MONITOR...");
         jlMaoDireita.setText("Não capturada");
         jlMaoEsquerda.setText("Não capturada");
+        btnMaoDireita.setEnabled(false);
+        btnMaoEsquerda.setEnabled(false);
     }
     
     /**
@@ -112,6 +115,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         btnMaoDireita.setBorder(null);
         btnMaoDireita.setContentAreaFilled(false);
         btnMaoDireita.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMaoDireita.setEnabled(false);
         btnMaoDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoDireitaActionPerformed(evt);
@@ -124,6 +128,7 @@ public class CadastroBiometria extends javax.swing.JFrame {
         btnMaoEsquerda.setBorderPainted(false);
         btnMaoEsquerda.setContentAreaFilled(false);
         btnMaoEsquerda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMaoEsquerda.setEnabled(false);
         btnMaoEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaoEsquerdaActionPerformed(evt);
@@ -193,10 +198,11 @@ public class CadastroBiometria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(!lbMonitor.getText().equals("SELECIONE UM MONITOR...") && !jlMaoDireita.getText().equals("Não capturada") && !jlMaoEsquerda.getText().equals("Não capturada")){
+        if(!lbMonitor.getText().equals("SELECIONE UM MONITOR...")){
             monitorDAO.salvar(monitor);
+            limparCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "Verifique se a leitura biométrica foi feita corretamente");
+            JOptionPane.showMessageDialog(null, "Selecione um Monitor primeiro");
         }
             
     }//GEN-LAST:event_btnSalvarActionPerformed
