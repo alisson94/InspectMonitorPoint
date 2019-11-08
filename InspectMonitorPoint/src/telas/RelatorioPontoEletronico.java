@@ -39,6 +39,7 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbMonitor = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -47,12 +48,15 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
         tfDataFim = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         Layout = new javax.swing.JLabel();
-        lbMonitor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbMonitor.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        lbMonitor.setText("SELECIONE UM MONITOR...");
+        getContentPane().add(lbMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 360, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,13 +66,14 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 100, 90));
 
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 110, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 100, 30));
 
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
@@ -108,7 +113,6 @@ public class RelatorioPontoEletronico extends javax.swing.JFrame {
 
         Layout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaGerarRelatorio.jpg"))); // NOI18N
         getContentPane().add(Layout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 490));
-        getContentPane().add(lbMonitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 360, 30));
 
         pack();
         setLocationRelativeTo(null);
