@@ -41,6 +41,8 @@ public class CadastroCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         btnSalvarCurso = new javax.swing.JButton();
         btnExcluirCurso = new javax.swing.JButton();
@@ -53,6 +55,14 @@ public class CadastroCurso extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 24, 100, 70));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 100, 100));
+
         tfNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         tfNome.setBorder(null);
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 267, 410, 35));
@@ -60,7 +70,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnSalvarCurso.setBorder(null);
         btnSalvarCurso.setBorderPainted(false);
         btnSalvarCurso.setContentAreaFilled(false);
-        btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalvarCurso.setPreferredSize(new java.awt.Dimension(1111, 1111));
         btnSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +82,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnExcluirCurso.setBorder(null);
         btnExcluirCurso.setBorderPainted(false);
         btnExcluirCurso.setContentAreaFilled(false);
-        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCursoActionPerformed(evt);
@@ -82,7 +92,7 @@ public class CadastroCurso extends javax.swing.JFrame {
 
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -93,7 +103,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         btnVoltarCurso.setBorder(null);
         btnVoltarCurso.setBorderPainted(false);
         btnVoltarCurso.setContentAreaFilled(false);
-        btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVoltarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarCursoActionPerformed(evt);
@@ -190,7 +200,9 @@ public class CadastroCurso extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarCurso;
     private javax.swing.JButton btnVoltarCurso;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -226,18 +226,26 @@ public class CadastroPonto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbPontoMonitor = new javax.swing.JTable();
         lbHora = new javax.swing.JLabel();
         jlMonitorNaoLocalizado = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
-        tfInOut = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 26, 100, 70));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 100, 90));
 
         tbPontoMonitor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbPontoMonitor.setModel(new javax.swing.table.DefaultTableModel(
@@ -272,15 +280,6 @@ public class CadastroPonto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 500, -1, -1));
-        getContentPane().add(tfInOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 70, -1));
-
-        jButton1.setText("entrada/saida");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaPontoEletronico.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -292,12 +291,6 @@ public class CadastroPonto extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int id = Integer.parseInt(tfInOut.getText());
-        Monitor monitor = monitorDAO.consultarObjetoId("id", id);
-        registrarPresentePonto(monitor);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,12 +329,12 @@ public class CadastroPonto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlMonitorNaoLocalizado;
     private javax.swing.JLabel lbHora;
     private javax.swing.JTable tbPontoMonitor;
-    private javax.swing.JTextField tfInOut;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,6 +79,8 @@ public class CadastroBiometria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
         lbMonitor = new javax.swing.JLabel();
         btnMaoDireita = new javax.swing.JButton();
@@ -96,6 +98,14 @@ public class CadastroBiometria extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 18, 110, 80));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 100, 90));
 
         btnAdicionar.setBorder(null);
         btnAdicionar.setContentAreaFilled(false);
@@ -322,6 +332,8 @@ public class CadastroBiometria extends javax.swing.JFrame {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlMaoDireita;
     private javax.swing.JLabel jlMaoEsquerda;
     private javax.swing.JLabel lbMonitor;

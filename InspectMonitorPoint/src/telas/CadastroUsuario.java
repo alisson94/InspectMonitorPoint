@@ -33,6 +33,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
@@ -45,6 +47,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 15, 100, 80));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 100, 100));
 
         btnExcluir.setBorder(null);
         btnExcluir.setContentAreaFilled(false);
@@ -86,10 +96,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         getContentPane().add(tfNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 254, 460, 35));
 
         tfUsuario.setBorder(null);
-        getContentPane().add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 355, 330, 38));
+        getContentPane().add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 305, 330, 38));
 
         tfSenha.setBorder(null);
-        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 304, 460, 35));
+        getContentPane().add(tfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 353, 325, 43));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/TelaCadastroUsuario.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 480));
@@ -99,7 +109,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (usuarioDAO.consultarValorRepetido("loginUsuario", tfUsuario.getText()) && usuario.getId() == 0) {
+        if (usuarioDAO.consultarValorRepetido("login", tfUsuario.getText()) && usuario.getId() == 0) {
             JOptionPane.showMessageDialog(rootPane, "O usuário '" + tfUsuario.getText() + "' já está sendo utilizado!",
                     "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -165,7 +175,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tfNome;
     private javax.swing.JPasswordField tfSenha;
     private javax.swing.JTextField tfUsuario;
